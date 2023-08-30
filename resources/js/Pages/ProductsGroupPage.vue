@@ -1,0 +1,90 @@
+<template>
+	<Head>
+		<title>{{ _t(productsGroup.seo_entity.title) }}</title>
+		<meta
+			name="description"
+			:content="_t(productsGroup.seo_entity.description)"
+		/>
+		<meta
+			v-if="productsGroup.seo_entity.og_image"
+			property="og:image"
+			:content="productsGroup.seo_entity.og_image"
+		/>
+		<link
+			rel="canonical"
+			:href="baseUrl + '/' + productsGroup.seo_entity.slug"
+		/>
+		<link
+			rel="prev"
+			:href="productsCatalogData.products.prev_page_url"
+			v-if="productsCatalogData.products.prev_page_url"
+		/>
+		<link
+			rel="next"
+			:href="productsCatalogData.products.next_page_url"
+			v-if="productsCatalogData.products.next_page_url"
+		/>
+	</Head>
+	<WebsitePage>
+		<PageHeadSpacer class="mb-60" />
+		<section class="container mb-88">
+			<h2 class="fs-h2 mb-68">
+				{{
+					getMeta(productsGroup.meta, 'title') ||
+					_t(productsGroup.name)
+				}}
+			</h2>
+			<div ref="productsCatalogLayoutRef">
+				<ProductsCatalog
+					:catalog-slug="productsGroup.seo_entity.slug"
+					:products-catalog-data="productsCatalogData"
+					mode="catalogFull"
+				/>
+			</div>
+		</section>
+
+		<PageSeparator class="mb-116" />
+		<PageContentSection
+			class="mb-48"
+			v-if="getMeta(productsGroup.meta, 'contentTitle')"
+			:title="getMeta(productsGroup.meta, 'contentTitle')"
+		>
+			<div v-html="getMeta(productsGroup.meta, 'content')"></div>
+		</PageContentSection>
+		<PageSeparator v-if="faqItems.length" class="mb-116" />
+		<FaqSection
+			v-if="faqItems.length"
+			:faq-items="faqItems"
+			class="mb-116"
+		/>
+		<PageSeparator class="mb-116" />
+	</WebsitePage>
+</template>
+
+<script setup lang="ts">
+import WebsitePage from '@/Layouts/WebsitePage.vue';
+import PageSeparator from '@/Components/PageSeparator.vue';
+import PageHeadSpacer from '@/Components/PageHeadSpacer.vue';
+import PageContentSection from '@/Components/PageContentSection.vue';
+import FaqSection from '@/Components/FaqSection.vue';
+import { Head, usePage } from '@inertiajs/vue3';
+import { getMeta } from '@/utils/getMeta';
+import { TFaqItemProps } from '@/types/TFaqItemProps';
+import { TproductsCatalogData } from '@/types/TproductsCatalogData';
+import ProductsCatalog from '@/Components/ProductsCatalog.vue';
+import { TProductsGroup } from '@/types/TProductsGroup';
+
+const { _t, __ } = useTranslations();
+
+const { baseUrl } = usePage().props;
+
+const props = defineProps<{
+	productsCatalogData: TproductsCatalogData;
+	productsGroup: TProductsGroup;
+}>();
+
+const faqItems =
+	getMeta<TFaqItemProps[]>(props.productsGroup.meta, 'faqItems') || [];
+</script>
+
+<style scoped></style>

@@ -1,0 +1,277 @@
+<template>
+	<AdminLayout>
+		<div class="row">
+			<div class="col-9">
+				<KeepAlive>
+					<template v-if="currentTab === 'contacts'">
+						<FormFieldWrapper label="Phone" class="mb-1">
+							<input
+								type="text"
+								placeholder="Phone"
+								class="form-control"
+								v-model="form.globalSettings.phone"
+							/>
+						</FormFieldWrapper>
+						<FormFieldWrapper label="Work Time" class="mb-1">
+							<input
+								type="text"
+								placeholder="Phone"
+								class="form-control"
+								v-model="form.globalSettings.workTime"
+							/>
+						</FormFieldWrapper>
+						<FormFieldWrapper label="Email" class="mb-1">
+							<input
+								type="text"
+								placeholder="Email"
+								class="form-control"
+								v-model="form.globalSettings.email"
+							/>
+						</FormFieldWrapper>
+						<FormFieldWrapper label="Whatsapp" class="mb-1">
+							<input
+								type="text"
+								placeholder="Whatsapp"
+								class="form-control"
+								v-model="form.globalSettings.whatsapp"
+							/>
+						</FormFieldWrapper>
+						<FormFieldWrapper label="Facebook" class="mb-1">
+							<input
+								type="text"
+								placeholder="Facebook"
+								class="form-control"
+								v-model="form.globalSettings.facebook"
+							/>
+						</FormFieldWrapper>
+						<FormFieldWrapper label="Instagram" class="mb-1">
+							<input
+								type="text"
+								placeholder="Instagram"
+								class="form-control"
+								v-model="form.globalSettings.instagram"
+							/>
+						</FormFieldWrapper>
+						<FormFieldWrapper label="Telegram" class="mb-1">
+							<input
+								type="text"
+								placeholder="Telegram"
+								class="form-control"
+								v-model="form.globalSettings.telegram"
+							/>
+						</FormFieldWrapper>
+					</template>
+				</KeepAlive>
+				<KeepAlive>
+					<template v-if="currentTab === 'header'">
+						<FormFieldWrapper label="Header Menu" class="mb-1">
+							<div
+								class="card mb-1"
+								v-for="item in form.globalSettings.headerMenu"
+							>
+								<div class="card-body">
+									<div class="d-flex gap-1">
+										<div class="flex-grow-1">
+											<input
+												type="text"
+												placeholder="Title"
+												class="form-control"
+												v-model="item.title"
+											/>
+											<input
+												type="text"
+												placeholder="Link"
+												class="form-control mt-1"
+												v-model="item.url"
+											/>
+										</div>
+										<button
+											class="btn btn-danger w-auto"
+											@click="
+												form.globalSettings.headerMenu =
+													form.globalSettings.headerMenu.filter(
+														i => i !== item
+													)
+											"
+										>
+											<i class="bi bi-trash"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							<button
+								class="btn btn-success mt-1"
+								@click="
+									form.globalSettings.headerMenu.push({
+										title: '',
+										url: ''
+									})
+								"
+							>
+								Add
+							</button>
+						</FormFieldWrapper>
+					</template>
+				</KeepAlive>
+				<KeepAlive>
+					<template v-if="currentTab === 'footer'">
+						<FormFieldWrapper label="Footer Text" class="mb-1">
+							<textarea
+								class="form-control"
+								v-model="form.globalSettings.footerText"
+							></textarea>
+						</FormFieldWrapper>
+						<FormFieldWrapper label="Footer Menu" class="mb-1">
+							<FooterMenuEdit
+								v-model="form.globalSettings.footerMenu"
+							/>
+						</FormFieldWrapper>
+					</template>
+				</KeepAlive>
+				<KeepAlive>
+					<template v-if="currentTab === 'pages'">
+						<FormFieldWrapper label="Products Catalog">
+							<input
+								type="text"
+								placeholder="Products Catalog Slug"
+								class="form-control"
+								v-model="
+									form.globalSettings.productsCatalogSlug
+								"
+							/>
+						</FormFieldWrapper>
+					</template>
+				</KeepAlive>
+			</div>
+			<div class="col-3">
+				<div class="sticky-top">
+					<div class="p-2 bg-light">
+						<button
+							@click="currentTab = 'contacts'"
+							class="btn w-100 mb-1"
+							:class="{
+								'btn-outline-primary':
+									currentTab !== 'contacts',
+								'btn-primary': currentTab === 'contacts'
+							}"
+						>
+							Contacts
+						</button>
+						<button
+							@click="currentTab = 'header'"
+							class="btn w-100 mb-1"
+							:class="{
+								'btn-outline-primary': currentTab !== 'header',
+								'btn-primary': currentTab === 'header'
+							}"
+						>
+							Header
+						</button>
+						<button
+							@click="currentTab = 'footer'"
+							class="btn w-100 mb-1"
+							:class="{
+								'btn-outline-primary': currentTab !== 'footer',
+								'btn-primary': currentTab === 'footer'
+							}"
+						>
+							Footer
+						</button>
+						<button
+							@click="currentTab = 'pages'"
+							class="btn w-100 mb-1"
+							:class="{
+								'btn-outline-primary': currentTab !== 'pages',
+								'btn-primary': currentTab === 'pages'
+							}"
+						>
+							Pages
+						</button>
+					</div>
+					<button
+						class="btn btn-success w-100 mt-3"
+						@click="onSubmit"
+					>
+						Save
+					</button>
+				</div>
+			</div>
+		</div>
+	</AdminLayout>
+</template>
+
+<script setup lang="ts">
+import FooterMenuEdit from '@/AdminComponents/FooterMenuEdit.vue';
+import FormError from '@/AdminComponents/FormError.vue';
+import FormFieldWrapper from '@/AdminComponents/FormFieldWrapper.vue';
+import AdminLayout from '@/Layouts/AdminLayout.vue';
+import useMessages from '@/modules/useMessages';
+import { TFooterMenuSection } from '@/types/TFooterMenu';
+import { TGlobalSetting } from '@/types/TGlobalSetting';
+import { THeaderMenuItem } from '@/types/THeaderMenu';
+import { getGlobalSetting } from '@/utils/getGlobalSetting';
+import { useForm } from '@inertiajs/vue3';
+import { onMounted } from 'vue';
+import { watch } from 'vue';
+import { ref } from 'vue';
+
+const props = defineProps<{
+	globalSettings: TGlobalSetting[];
+}>();
+
+const { addMessage } = useMessages();
+
+const currentTab = ref<'contacts' | 'header' | 'footer' | 'pages'>('contacts');
+watch(currentTab, () => {
+	localStorage.setItem('currentGlobalSettingsTab', currentTab.value);
+});
+
+onMounted(() => {
+	const tab = localStorage.getItem('currentGlobalSettingsTab');
+	if (tab) {
+		currentTab.value = tab as any;
+	}
+});
+
+const form = useForm({
+	globalSettings: {
+		phone: getGlobalSetting('phone') ?? '',
+		workTime: getGlobalSetting('workTime') ?? '',
+		email: getGlobalSetting('email') ?? '',
+		whatsapp: getGlobalSetting('whatsapp') ?? '',
+		facebook: getGlobalSetting('facebook') ?? '',
+		instagram: getGlobalSetting('instagram') ?? '',
+		telegram: getGlobalSetting('telegram') ?? '',
+
+		headerMenu: getGlobalSetting<THeaderMenuItem[]>('headerMenu') ?? [],
+		footerMenu: getGlobalSetting<TFooterMenuSection[]>('footerMenu') ?? [],
+
+		footerText: getGlobalSetting('footerText') ?? '',
+
+		productsCatalogSlug: getGlobalSetting('productsCatalogSlug') ?? ''
+	},
+	translatableGlobalSettings: [
+		'headerMenu',
+		'workTime',
+		'footerMenu',
+		'footerText'
+	]
+});
+
+const onSubmit = () => {
+	form.put(route('admin.globalSettings.updateAll'), {
+		preserveScroll: true,
+
+		onError: () => {
+			Object.entries(form.errors).forEach(([key, value]) => {
+				addMessage({
+					type: 'error',
+					text: value
+				});
+			});
+		}
+	});
+};
+</script>
+
+<style scoped></style>
