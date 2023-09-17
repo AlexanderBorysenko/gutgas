@@ -12,14 +12,14 @@
 					v-if="dataGetter"
 					@click="onCopy"
 				>
-					Copy data
+					Скопіювати
 				</button>
 				<button
 					class="btn btn-sm btn-outline-secondary"
 					v-if="dataSetter"
 					@click="onPaste"
 				>
-					Paste data
+					Втавити
 				</button>
 			</div>
 		</div>

@@ -15,7 +15,7 @@
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmitSeoEntityForm"
 					>
-						Save
+						Зберегти
 					</button>
 				</div>
 			</div>

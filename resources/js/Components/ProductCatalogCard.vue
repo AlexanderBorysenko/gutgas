@@ -9,7 +9,14 @@
 		]"
 	>
 		<Link
-			:href="route('seo-entity', product.seo_entity?.slug) || ''"
+			:href="
+				product.seo_entity
+					? route('seo-entity', [
+							usePage().props.locale,
+							product.seo_entity.slug
+					  ])
+					: ''
+			"
 			class="head"
 		>
 			<img class="image" :src="imageUrl" :alt="_t(product.name)" />
@@ -40,7 +47,7 @@ import ProductCatalogCardCartButton from './ProductCatalogCardCartButton.vue';
 import useCart from '@/composables/cart';
 import { computed } from 'vue';
 import getMediaFileUrl from '@/modules/helpers/getMediaFileUrl';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 
 const { _t } = useTranslations();
 
@@ -106,9 +113,9 @@ const inCart = computed(() => isInCart(props.product));
 }
 .image {
 	width: 100%;
-	max-width: 188px;
+	max-width: 215px;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	opacity: 0.7;
 	transition: opacity 0.3s ease-in-out;
 	position: relative;

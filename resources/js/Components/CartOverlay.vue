@@ -23,7 +23,7 @@
 		</div>
 		<div class="footer">
 			<BaseButton
-				@click="router.get(route('checkout'))"
+				@click="router.get(route('checkout', usePage().props.locale))"
 				class="block p-16 w-100"
 			>
 				{{ __('toCheckout') }}
@@ -44,7 +44,7 @@ import CartToggleButton from '@/Components/CartToggleButton.vue';
 import CartProductsList from '@/Components/CartProductsList.vue';
 import { ref } from 'vue';
 import BaseButton from './BaseButton.vue';
-import { Link, router } from '@inertiajs/vue3';
+import { Link, router, usePage } from '@inertiajs/vue3';
 
 const { __ } = useTranslations();
 

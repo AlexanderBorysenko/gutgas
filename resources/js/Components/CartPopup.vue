@@ -33,7 +33,9 @@
 					</button>
 				</div>
 				<BaseButton
-					@click="router.get(route('checkout'))"
+					@click="
+						router.get(route('checkout', usePage().props.locale))
+					"
 					class="checkout-button"
 				>
 					{{ __('toCheckout') }}
@@ -56,7 +58,7 @@
 import useCart from '@/composables/cart';
 import ProductCartCard from './ProductCartCard.vue';
 import BaseButton from './BaseButton.vue';
-import { router } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
 import CartProductsList from './CartProductsList.vue';
 const { cartProducts, cartTotal } = useCart();
 

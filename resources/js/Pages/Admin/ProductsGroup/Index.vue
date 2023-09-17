@@ -6,16 +6,16 @@
 				class="btn btn-primary"
 				:href="route('admin.productsGroup.create') || ''"
 			>
-				Create Product Group
+				Створити Категорію
 			</Link>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Is Active</th>
-						<th class="text-right">Actions</th>
+						<th>Назва</th>
+						<th>Є Активним</th>
+						<th class="text-right">Дії</th>
 					</tr>
 				</thead>
 				<tbody>

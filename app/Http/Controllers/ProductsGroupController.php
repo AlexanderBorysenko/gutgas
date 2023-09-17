@@ -95,7 +95,7 @@ class ProductsGroupController extends Controller
     {
         $productsGroup->delete();
 
-        return redirect()->route('admin.productsGroup.index')->with('message', [
+        return redirect()->route('admin.productsGroup.indexAdmin')->with('message', [
             'type' => 'success',
             'text' => 'Products group deleted successfully',
         ]);

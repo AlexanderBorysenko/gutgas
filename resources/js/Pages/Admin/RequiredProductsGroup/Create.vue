@@ -7,7 +7,7 @@
 			@click="onSubmitForm"
 			:disabled="requiredProductsGroupForm.processing"
 		>
-			Save
+			Створити
 		</button>
 	</AdminLayout>
 </template>

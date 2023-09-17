@@ -13,7 +13,7 @@
 					data-bs-toggle="dropdown"
 					aria-expanded="false"
 				>
-					{{ form.type ? form.type : 'Select Page Type' }}
+					{{ form.type ? form.type : 'Вибрати Тип Сторінки' }}
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 					<li v-for="pageType in pageTypes">
@@ -35,7 +35,7 @@
 				@click="createPage"
 			>
 				<div class="bi-plus-circle"></div>
-				Create Page
+				Створити Сторінку
 			</button>
 			<SearchForm
 				class="ms-auto"
@@ -50,10 +50,10 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Title</th>
+						<th>Заголовок</th>
 						<th>Slug</th>
-						<th>Type</th>
-						<th class="text-right">Actions</th>
+						<th>Тип</th>
+						<th class="text-right">Дії</th>
 					</tr>
 				</thead>
 				<tbody>

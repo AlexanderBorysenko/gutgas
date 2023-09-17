@@ -3,11 +3,11 @@
 	<div class="bg-light">
 		<div class="py-2 d-none d-md-flex flex-column admin-sidebar sticky-top">
 			<Link
-				:href="route('seo-entity', '/')"
+				:href="route('admin.home')"
 				class="d-flex align-items-center p-3 mb-1 text-decoration-none"
 			>
 				<i class="bi bi-box fs-3 me-2" />
-				<span class="fs-5 fw-semibold">Mindblowing Dashboard</span>
+				<span class="fs-5 fw-semibold">Gutgas</span>
 			</Link>
 			<LocaleSelect class="mb-1" />
 			<ul
@@ -40,7 +40,7 @@
 					{{ user.name }}
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-					<li>
+					<!-- <li>
 						<a class="dropdown-item" href="#"> Settings </a>
 					</li>
 					<li>
@@ -48,7 +48,7 @@
 					</li>
 					<li>
 						<hr class="dropdown-divider" />
-					</li>
+					</li> -->
 					<li>
 						<Link
 							:href="route('logout') || ''"

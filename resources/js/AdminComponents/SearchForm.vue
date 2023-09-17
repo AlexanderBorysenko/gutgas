@@ -2,7 +2,7 @@
 	<div class="d-flex gap-1">
 		<input class="form-control" placeholder="Search..." v-model="search" />
 		<div class="btn-group">
-			<button class="btn btn-primary" @click="onSearch">Search</button>
+			<button class="btn btn-primary" @click="onSearch">Пошук</button>
 			<button
 				v-if="search"
 				class="btn btn-primary"
@@ -13,7 +13,7 @@
 					}
 				"
 			>
-				Clear
+				Очистити
 			</button>
 		</div>
 	</div>

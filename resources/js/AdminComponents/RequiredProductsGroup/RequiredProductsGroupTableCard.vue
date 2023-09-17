@@ -17,7 +17,7 @@
 						) || ''
 					"
 				>
-					Edit
+					Редагувати
 				</Link>
 				<Link
 					class="btn btn-danger"
@@ -29,7 +29,8 @@
 					"
 					method="delete"
 					as="button"
-					>Delete
+				>
+					Видалити
 				</Link>
 			</div>
 		</td>

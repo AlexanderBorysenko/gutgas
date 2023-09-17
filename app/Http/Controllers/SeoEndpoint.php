@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\App;
 
 class SeoEndpoint extends Controller
 {
-    public function __invoke(Request $request, $route = '')
+    public function __invoke(Request $request, $locale, $route = '')
     {
+        $route = ltrim(str_replace($locale, '', $route), '/');
 
         if ($route === '') {
             $seoEntity = SeoEntity::where('slug', 'LIKE', '/')->firstOrFail();
@@ -25,7 +26,6 @@ class SeoEndpoint extends Controller
         if (!$seoEntiteable) {
             abort(404);
         }
-
 
         return App::make($seoEntity->controller)->callAction($seoEntity->action, [
             $request,

@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<FormFieldWrapper label="Title" class="mb-3">
+		<FormFieldWrapper label="Заголовок" class="mb-3">
 			<input
 				class="form-control fs-4"
 				v-model="form.title"
-				placeholder="Title"
+				placeholder="Заголовок"
 			/>
 			<FormError :error="form.errors.title" />
 		</FormFieldWrapper>
@@ -13,7 +13,7 @@
 			<FormError :error="form.errors.media_gallery" />
 		</FormFieldWrapper>
 		<FormFieldWrapper
-			label="Description"
+			label="Опис"
 			class="mb-3"
 			:data-getter="() => form.description"
 			:data-setter="value => (form.description = value)"
@@ -26,7 +26,7 @@
 			/>
 		</FormFieldWrapper>
 		<FormFieldWrapper
-			label="Characteristic Icons"
+			label="Зображення До Характеристики"
 			class="mb-3"
 			:dataGetter="() => form.characteristic_icons"
 			:dataSetter="value => (form.characteristic_icons = value)"
@@ -35,7 +35,7 @@
 			<FormError :error="form.errors.characteristic_icons" />
 		</FormFieldWrapper>
 		<FormFieldWrapper
-			label="Documentations"
+			label="Документація"
 			class="mb-3"
 			:dataGetter="() => form.documentations"
 			:dataSetter="value => (form.documentations = value)"
@@ -44,7 +44,7 @@
 			<FormError :error="form.errors.documentations" />
 		</FormFieldWrapper>
 		<FormFieldWrapper
-			label="Faq Items"
+			label="Питання та Відповіді"
 			:dataGetter="() => form.faqItems"
 			:dataSetter="value => (form.faqItems = value)"
 			class="mb-3"
@@ -54,7 +54,7 @@
 		<FormFieldWrapper
 			:dataGetter="() => form.advantageItems"
 			:dataSetter="value => (form.advantageItems = value)"
-			label="Advantage Items"
+			label="Переваги"
 		>
 			<AdvantagesEditBlock v-model="form.advantageItems" />
 		</FormFieldWrapper>

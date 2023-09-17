@@ -8,19 +8,19 @@
 						<input
 							class="form-control mb-1"
 							v-model="item.title"
-							placeholder="Title"
+							placeholder="Заголовок"
 						/>
 						<textarea
 							rows="5"
 							class="form-control"
 							v-model="item.description"
-							placeholder="Description"
+							placeholder="Опис"
 						/>
 						<button
 							class="btn btn-danger mt-1"
 							@click="items.splice(index, 1)"
 						>
-							Delete
+							Видалити
 						</button>
 					</div>
 				</div>

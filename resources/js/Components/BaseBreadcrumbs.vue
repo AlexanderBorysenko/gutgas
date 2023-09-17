@@ -3,8 +3,8 @@
 		<nav class="base-breadcrumbs fw-600 lh-150">
 			<template v-for="breadcrumb in breadcrumbs">
 				<Link
-					v-if="currentUrl !== breadcrumb.url"
-					:href="breadcrumb.url || ''"
+					v-if="currentUrl !== '/' + breadcrumb.slug"
+					:href="breadcrumb.slug || ''"
 					class="item"
 				>
 					{{ breadcrumb.title }}
@@ -26,7 +26,7 @@ const {
 
 const currentUrl = ref('');
 onMounted(() => {
-	currentUrl.value = window.location.href;
+	currentUrl.value = window.location.href.replace(window.location.origin, '');
 });
 </script>
 

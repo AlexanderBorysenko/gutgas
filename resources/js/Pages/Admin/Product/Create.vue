@@ -17,7 +17,7 @@
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmitForm"
 					>
-						Create Product
+						Створити Продукт
 					</button>
 				</div>
 			</div>

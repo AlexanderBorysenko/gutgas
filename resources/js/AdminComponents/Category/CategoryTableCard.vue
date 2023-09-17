@@ -19,14 +19,14 @@
 					class="btn btn-primary"
 					:href="route('admin.category.edit', category.id) || ''"
 				>
-					Edit
+					Редагувати
 				</Link>
 				<Link
 					class="btn btn-danger"
 					:href="route('admin.category.destroy', category.id) || ''"
 					method="delete"
 					as="button"
-					>Delete
+					>Видалити
 				</Link>
 			</div>
 		</td>

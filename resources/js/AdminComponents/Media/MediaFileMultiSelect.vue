@@ -13,13 +13,13 @@
 						class="btn btn-danger"
 						@click="removeMediaFile(file)"
 					>
-						Remove
+						Прибрати
 					</button>
 				</template>
 			</MediaFileCard>
 		</div>
 		<button class="btn btn-primary" @click="setupMediaGalleryModal()">
-			Select Media Files
+			Вибрати Медіа Файли
 		</button>
 	</div>
 </template>

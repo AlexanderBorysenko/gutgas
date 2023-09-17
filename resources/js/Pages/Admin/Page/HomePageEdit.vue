@@ -1,15 +1,15 @@
 <template>
 	<AdminLayout>
 		<h3 class="mb-3">
-			Edit Page - {{ _t(page.title) || 'Untitled' }}
+			Edit Page - {{ _t(page.title) || 'Без Заголовка' }}
 			<em>({{ page.type }})</em>
 		</h3>
 		<div class="row">
 			<div class="col-9">
-				<FormFieldWrapper class="mb-3" label="Title">
+				<FormFieldWrapper class="mb-3" label="Заголовок">
 					<input
 						type="text"
-						placeholder="Title"
+						placeholder="Заголовок"
 						class="form-control"
 						v-model="pageForm.title"
 					/>
@@ -18,7 +18,7 @@
 				<FormFieldWrapper label="Hero" class="mb-3">
 					<input
 						type="text"
-						placeholder="Hero Title"
+						placeholder="Заголовок Головного Екрану"
 						class="form-control mb-1"
 						v-model="pageForm.meta.heroTitle"
 					/>
@@ -33,10 +33,10 @@
 						:content="pageForm.meta.heroSubTitle"
 					/>
 				</FormFieldWrapper>
-				<FormFieldWrapper label="About Section" class="mb-3">
+				<FormFieldWrapper label="Секція Про Нас" class="mb-3">
 					<input
 						type="text"
-						placeholder="About Title"
+						placeholder="Заголовок"
 						class="form-control mb-1"
 						v-model="pageForm.meta.aboutTitle"
 					/>
@@ -52,7 +52,7 @@
 					/>
 				</FormFieldWrapper>
 				<FormFieldWrapper
-					label="Catalog Preview"
+					label="Каталог"
 					class="mb-3"
 					:data-getter="
 						() => {
@@ -73,13 +73,13 @@
 				>
 					<input
 						type="text"
-						placeholder="Catalog Preview Title"
+						placeholder="Заголовок"
 						class="form-control mb-1"
 						v-model="pageForm.meta.catalogPreviewTitle"
 					/>
 					<input
 						type="text"
-						placeholder="Catalog Preview Slug"
+						placeholder="Шлях до повного каталогу"
 						class="form-control mb-1"
 						v-model="pageForm.meta.catalogPreviewSlug"
 					/>
@@ -88,7 +88,7 @@
 					/>
 				</FormFieldWrapper>
 				<FormFieldWrapper
-					label="Product Pros Cons"
+					label="Переваги Та Недоліки"
 					class="mb-3"
 					:data-getter="
 						() => {
@@ -109,11 +109,11 @@
 				>
 					<input
 						type="text"
-						placeholder="Product Pros Cons Title"
+						placeholder="Заголовок"
 						class="form-control mb-1"
 						v-model="pageForm.meta.compairTitle"
 					/>
-					<label>Product Pros Cons Sub Title</label>
+					<label>Підзаголовок</label>
 					<QuillEditor
 						:toolbar="{
 							container: [['bold']]
@@ -128,7 +128,7 @@
 					<ProsConsEditBlock v-model="pageForm.meta.compairItems" />
 				</FormFieldWrapper>
 				<FormFieldWrapper
-					label="Use Cases"
+					label="Способи Використання"
 					class="mb-3"
 					:data-getter="
 						() => {
@@ -147,22 +147,22 @@
 				>
 					<input
 						type="text"
-						placeholder="Use Cases Title"
+						placeholder="Заголовок"
 						class="form-control mb-1"
 						v-model="pageForm.meta.useCasesTitle"
 					/>
 					<UseCaseEditBlock v-model="pageForm.meta.useCasesItems" />
 				</FormFieldWrapper>
-				<FormFieldWrapper label="Contact Form" class="mb-3">
+				<FormFieldWrapper label="Контатктна Форма" class="mb-3">
 					<input
 						type="text"
-						placeholder="Title"
+						placeholder="Заголовок"
 						class="form-control mb-1"
 						v-model="pageForm.meta.contactFormTitle"
 					/>
 					<input
 						type="text"
-						placeholder="Sub Title"
+						placeholder="Підзаголовок"
 						class="form-control mb-1"
 						v-model="pageForm.meta.contactFormSubTitle"
 					/>
@@ -179,7 +179,7 @@
 					/>
 				</FormFieldWrapper>
 				<FormFieldWrapper
-					label="Advantages"
+					label="Переваги"
 					class="mb-3"
 					:data-getter="
 						() => {
@@ -208,7 +208,7 @@
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmitSeoEntityForm"
 					>
-						Save
+						Зберегти
 					</button>
 				</div>
 			</div>

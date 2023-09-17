@@ -3,7 +3,7 @@
 		<title>{{ _t(seoEntity.title ?? product.name) }}</title>
 		<link
 			rel="canonical"
-			:href="route('seo-entity', seoEntity.slug)"
+			:href="route('seo-entity', [usePage().props.locale,seoEntity.slug])"
 		/>
 		<meta
 			name="description"
@@ -15,12 +15,15 @@
 			:content="_t(seoEntity.description ?? product.description)"
 		/>
 		<meta property="og:type" content="website" />
-		<meta property="og:url" :content="route('seo-entity', seoEntity.slug)" />
+		<meta property="og:url" :content="route('seo-entity', [usePage().props.locale,seoEntity.slug])" />
 		<meta
 			v-if="seoEntity.og_image"
 			property="og:image"
 			:content="seoEntity.og_image"
 		/>
+		<component :is="'script'" type="application/ld+json">
+			{{ JSON.stringify(productStructuredData) }}
+    	</component>
 	</Head>
 	<WebsitePage>
 		<PageHeadSpacer class="mb-60" />
@@ -150,7 +153,7 @@ import { getMeta } from '@/utils/getMeta';
 import { ref } from 'vue';
 import { TFaqItemProps } from '@/types/TFaqItemProps';
 import { TAdvantageCardProps } from '@/types/TAdvantageCardProps';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import { TSeoEntity } from '@/types/TSeoEntity';
 
 const { __, _t } = useTranslations();
@@ -161,6 +164,7 @@ const copyToClipboard = (text: string) => {
 
 const props = defineProps<{
 	product: TProduct;
+	productStructuredData: any;
 	productPage: TProductPage;
 	attributeGroups: TAttributeGroup[];
 	seoEntity: TSeoEntity;

@@ -47,6 +47,11 @@ const setProductQuantity = (product: TProduct, quantity: number) => {
 const isInCart = (product: TProduct) => {
 	return cartProducts.value.some(p => p.id === product.id);
 };
+
+const findInCart = (product: TProduct) => {
+	return cartProducts.value.find(p => p.id === product.id);
+};
+
 watch(
 	cartProducts,
 	() => {
@@ -84,6 +89,7 @@ export default function useCart() {
 		setProductQuantity,
 		setupCart,
 		resetCart,
+		findInCart,
 		isInCart
 	};
 }

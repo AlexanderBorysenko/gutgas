@@ -1,6 +1,6 @@
 <template>
 	<AdminLayout>
-		<h1>Hello Admin!</h1>
+		<h1>Вітаємо</h1>
 	</AdminLayout>
 </template>
 

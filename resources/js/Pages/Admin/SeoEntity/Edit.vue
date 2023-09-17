@@ -1,6 +1,6 @@
 <template>
 	<AdminLayout>
-		<h3 class="mb-3">Edit Seo Data</h3>
+		<h3 class="mb-3">Редагувати SEO дані</h3>
 		<div class="row">
 			<div class="col-9">
 				<SeoEntityForm :form="productSeoEntityForm" />
@@ -13,7 +13,7 @@
 							class="btn btn-primary w-100"
 							@click="backToParent"
 						>
-							Back to parent
+							Назад До батьківської сторінки
 						</Link>
 					</div>
 					<button
@@ -21,7 +21,7 @@
 						@click="onSubmitSeoEntityForm"
 						:disabled="productSeoEntityForm.processing"
 					>
-						Save Seo Data
+						Зберегти SEO Дані
 					</button>
 				</div>
 			</div>

@@ -7,18 +7,18 @@
 						<input
 							class="form-control mb-1"
 							v-model="faqItem.question"
-							placeholder="Question"
+							placeholder="Питання"
 						/>
 						<textarea
 							class="form-control"
 							v-model="faqItem.answer"
-							placeholder="Answer"
+							placeholder="Відповідь"
 						/>
 						<button
 							class="btn btn-danger mt-1"
 							@click="items.splice(index, 1)"
 						>
-							Delete
+							Видалити
 						</button>
 					</div>
 				</div>
@@ -28,7 +28,7 @@
 			class="btn btn-primary"
 			@click="items.push({ question: '', answer: '' })"
 		>
-			Add Faq Item
+			Додати Елемент
 		</button>
 	</div>
 </template>

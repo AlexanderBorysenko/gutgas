@@ -18,29 +18,20 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/set-locale/{language}', function (string $language) {
-    Session()->put('locale', $language);
-
-    return redirect()->back();
-})->name('set-locale');
-
-Route::get('/checkout', CheckoutController::class)->name('checkout');
-
-Route::post('/mail/consultation', [MailController::class, 'consultationMail'])->name('consultationMail');
-
-Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
-
-Route::get('/thank-you', function () {
-    return Inertia::render('ThankYou')->with('thankYouTranslations', trans('thank-you'));
-})->name('thankYou');
-
-require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
-
+require __DIR__ . '/auth.php';
 require __DIR__ . '/ajax.php';
 
-Route::fallback(function ($route) {
-    dd($route);
-});
+Route::prefix('{locale?}')->middleware(['urlLocaleHandler'])->group(function () {
+    Route::get('/checkout', CheckoutController::class)->name('checkout');
 
-Route::get('{route}', SeoEndpoint::class)->where('route', '.*')->name('seo-entity');
+    Route::post('/mail/consultation', [MailController::class, 'consultationMail'])->name('consultationMail');
+
+    Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+
+    Route::get('/thank-you', function () {
+        return Inertia::render('ThankYou')->with('thankYouTranslations', trans('thank-you'));
+    })->name('thankYou');
+
+    Route::get('/{route?}', SeoEndpoint::class)->where('route', '.*')->name('seo-entity');
+});

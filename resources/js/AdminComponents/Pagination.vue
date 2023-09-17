@@ -7,7 +7,7 @@
 					class="page-link"
 					aria-label="Previous"
 				>
-					Prev
+					Попереднє
 				</Link>
 			</li>
 
@@ -27,7 +27,7 @@
 					class="page-link"
 					aria-label="Next"
 				>
-					Next
+					Наступне
 				</Link>
 			</li>
 		</ul>

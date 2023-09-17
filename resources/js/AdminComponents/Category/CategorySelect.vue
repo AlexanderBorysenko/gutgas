@@ -9,14 +9,14 @@
 			<div class="input-group-prepend">
 				<input
 					class="form-control"
-					placeholder="Search"
+					placeholder="Пошук"
 					type="text"
 					v-model="search"
 				/>
 			</div>
 			<select class="form-select" @change="onChange">
 				<option :value="null" :selected="modelValue === null">
-					No Parent
+					Без Батька
 				</option>
 				<option
 					v-for="category in categories"

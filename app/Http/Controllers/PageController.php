@@ -118,7 +118,7 @@ class PageController extends Controller
     {
         $page->delete();
 
-        return redirect()->route('admin.page.index')->with([
+        return redirect()->route('admin.page.indexAdmin')->with([
             'message' => [
                 'type' => 'success',
                 'text' => 'Page deleted successfully'

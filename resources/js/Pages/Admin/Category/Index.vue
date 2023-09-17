@@ -6,16 +6,16 @@
 				class="btn btn-primary"
 				:href="route('admin.category.create') || ''"
 			>
-				Create Category
+				Створити Категорію
 			</Link>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Attached Products</th>
-						<th>Actions</th>
+						<th>Назва</th>
+						<th>Товари В Категорії</th>
+						<th>Дії</th>
 					</tr>
 				</thead>
 				<tbody>

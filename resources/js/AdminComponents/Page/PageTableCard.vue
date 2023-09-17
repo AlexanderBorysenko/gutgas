@@ -7,22 +7,23 @@
 				target="_blank"
 				:href="route('seo-entity', page.seo_entity.slug)"
 			>
-				{{ _t(page.title) || 'Untitled' }}
+				{{ _t(page.title) || 'Без Заголовка' }}
 			</a>
-			<span v-else>{{ _t(page.title) || 'Untitled' }}</span>
+			<span v-else>{{ _t(page.title) || 'Без Заголовка' }}</span>
 		</td>
 		<td>
-			{{ page.seo_entity.slug || 'No Slug' }}
+			{{ page.seo_entity.slug || 'Без Шляху' }}
 		</td>
 		<td>
-			{{ page.type || 'No Type' }}
+			{{ page.type || 'Без Типу' }}
 		</td>
 		<td class="text-right">
 			<div class="btn-group">
 				<Link
 					:href="route('admin.page.edit', page.id) || ''"
 					class="btn btn-primary border-dark"
-					>Page
+				>
+					Налаштування Контенту
 				</Link>
 				<Link
 					:href="
@@ -32,13 +33,14 @@
 						) || ''
 					"
 					class="btn btn-primary border-dark"
-					>SEO
+				>
+					Налаштування SEO
 				</Link>
 				<button
 					class="btn btn-danger border-dark"
 					@click="onPageDelete"
 				>
-					Delete
+					Видалити
 				</button>
 			</div>
 		</td>

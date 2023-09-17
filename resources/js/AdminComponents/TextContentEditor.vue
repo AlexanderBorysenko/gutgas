@@ -31,9 +31,6 @@
 <script setup lang="ts">
 import { Quill, QuillEditor } from '@vueup/vue-quill';
 
-import StarterKit from '@tiptap/starter-kit';
-import { watch } from 'vue';
-
 const Parchment = Quill.import('parchment');
 const MarginBottom = new Parchment.Attributor.Attribute('mbClass', 'class', {
 	scope: Parchment.Scope.BLOCK

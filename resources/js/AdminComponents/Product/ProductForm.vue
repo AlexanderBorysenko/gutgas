@@ -1,73 +1,73 @@
 <template>
 	<div class="row">
 		<div class="col-2">
-			<label class="form-label">Main Image</label>
+			<label class="form-label">Головне Зображення</label>
 			<MediaFileSelect v-model="form.media_file" />
 		</div>
 		<div class="col-10">
 			<div class="row mb-3">
 				<div class="col-8">
-					<label class="form-label">Name</label>
+					<label class="form-label">Назва</label>
 					<input
 						class="form-control fs-4"
 						v-model="form.name"
-						placeholder="Name"
+						placeholder="Назва"
 					/>
 					<FormError :error="form.errors.name" />
 				</div>
 				<div class="col-4">
-					<label class="form-label">SKU</label>
+					<label class="form-label">SKU(Артикул)</label>
 					<input
 						class="form-control fs-4"
 						v-model="form.sku"
-						placeholder="SKU"
+						placeholder="SKU(Артикул)"
 					/>
 					<FormError :error="form.errors.sku" />
 				</div>
 			</div>
 			<div class="row mb-3">
 				<div class="col-8">
-					<label class="form-label">Short Description</label>
+					<label class="form-label">Короткий Опис</label>
 					<textarea
 						class="form-control"
 						v-model="form.description"
-						placeholder="Description"
+						placeholder="Опис"
 					></textarea>
 				</div>
 				<div class="col-4">
-					<label class="form-label">Price</label>
+					<label class="form-label">Ціна</label>
 					<input
 						class="form-control"
 						v-model="form.price"
-						placeholder="Price"
+						placeholder="Ціна"
 					/>
 					<FormError :error="form.errors.price" />
-					<label class="form-label mt-3">Stock</label>
+					<label class="form-label mt-3">Кількість У Наявності</label>
 					<input
 						class="form-control"
 						v-model="form.stock"
-						placeholder="Stock"
+						placeholder="0"
 					/>
 					<FormError :error="form.errors.stock" />
 				</div>
 			</div>
 		</div>
 	</div>
-	<FormFieldWrapper label="Category" class="mb-3">
+	<!-- <FormFieldWrapper label="Категорія" class="mb-3">
 		<CategorySelect
 			class="mb-4"
 			:categories="categories"
 			v-model="form.category_id"
 		/>
-	</FormFieldWrapper>
-	<FormFieldWrapper label="Attributes" class="mb-3">
+	</FormFieldWrapper> -->
+	<FormFieldWrapper label="Атрибути" class="mb-3">
 		<AttributeMultiSelect
 			:attributes="attributes"
 			v-model="form.attributes"
 		/>
 	</FormFieldWrapper>
 	<FormFieldWrapper
-		label="Products Group"
+		label="Категорії"
 		class="mb-3"
 		v-if="productsGroups.length"
 	>
@@ -77,7 +77,7 @@
 		/>
 	</FormFieldWrapper>
 	<FormFieldWrapper
-		label="Required Products Group"
+		label="Рекомендовані Комплектації"
 		class="mb-3"
 		v-if="requiredProductsGroups.length"
 	>

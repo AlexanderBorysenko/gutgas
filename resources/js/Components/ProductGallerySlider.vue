@@ -87,8 +87,6 @@ const prevRef = ref<null | HTMLElement>(null);
 
 <style scoped lang="scss">
 @import '@/styles/variables.scss';
-.product-gallery-slider {
-}
 .main-slider-slider {
 	position: relative;
 }
@@ -96,7 +94,7 @@ const prevRef = ref<null | HTMLElement>(null);
 	display: flex;
 }
 .main-slider-slide {
-	height: 596px;
+	// height: 596px;
 	overflow: hidden;
 	img {
 		width: 100%;

@@ -10,14 +10,14 @@
 				v-if="selectMode"
 				@click="onSelectedMediaFilesSubmit"
 			>
-				Submit
+				Підтвердити
 			</button>
 			<button
 				v-if="selectedMediaFiles.length"
 				class="btn btn-dark"
 				@click="clearSelection"
 			>
-				Clear selection ({{ selectedMediaFiles.length }})
+				Очистити виділення ({{ selectedMediaFiles.length }})
 			</button>
 
 			<button
@@ -29,12 +29,12 @@
 				:disabled="selectedMediaFiles.length === 0"
 				@click="onSelectedMediaFilesDelete"
 			>
-				Delete
+				Видалити
 			</button>
 			<div class="d-flex gap-1 ms-auto">
 				<input
 					class="form-control"
-					placeholder="Search..."
+					placeholder="Пошук..."
 					v-model="search"
 				/>
 			</div>
@@ -49,7 +49,7 @@
 						selectedFile => selectedFile?.id === file.id
 					) !== undefined
 				"
-				:shouldBeDeleted="file.shouldBeDeleted"
+				:shouldBeDelete="file.shouldBeDeleted"
 				@delete="onDelete"
 				@select="onSelect"
 			/>

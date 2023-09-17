@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="mb-3">
-			<label class="form-label">Name</label>
+			<label class="form-label">Назва</label>
 			<input class="form-control" v-model="form.name" />
 			<FormError :error="form.errors.name" />
 		</div>
@@ -14,14 +14,11 @@
 					id="use_in_filters"
 				/>
 				<label class="form-check-label" for="use_in_filters">
-					Use in filters
+					Використовувати У Фільтрах
 				</label>
 			</div>
 			<FormError :error="form.errors.use_in_filters" />
 		</div>
-		<button type="submit" class="btn btn-success" @click="emit('submit')">
-			Save
-		</button>
 	</div>
 </template>
 

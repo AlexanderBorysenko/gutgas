@@ -3,7 +3,10 @@
 		<div class="admin-layout__inner row">
 			<AdminSidebar class="col-2" />
 			<!-- Main Content -->
-			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 p-2 px-4">
+			<main
+				role="main"
+				class="main col-md-9 ml-sm-auto col-lg-10 p-2 px-4"
+			>
 				<Breadcrumbs />
 				<MessagesFeed :messages="messages" />
 				<slot />
@@ -14,7 +17,7 @@
 			<Modal
 				v-if="mediaGalleryModalOpened"
 				@close="mediaGalleryModalOpened = false"
-				title="Select Image(s)"
+				title="Select Зображення(s)"
 			>
 				<MediaGallery
 					:select-mode="true"
@@ -53,9 +56,7 @@ const { messages } = useMessages();
 </script>
 
 <style scoped lang="scss">
-.admin-layout {
-	&__inner {
-		height: 100vh;
-	}
+.admin-layout__inner {
+	min-height: 100vh;
 }
 </style>

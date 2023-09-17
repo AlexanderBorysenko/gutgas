@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->json('title')->nullable()->setDefault('[]');
             $table->json('content')->nullable()->setDefault('[]');
-            $table->enum('type', [...array_keys(Page::PAGE_TYPES)]);
+            $table->string('type');
             $table->timestamps();
         });
     }

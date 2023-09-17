@@ -22,7 +22,7 @@ export default function useAdminSidebarNavigation() {
 
 	const items = computed(() => [
 		{
-			title: 'Home',
+			title: 'Головна',
 			icon: 'bi-house',
 			link: route('admin.home'),
 			permited: hasPermissions('admin.home'),
@@ -30,14 +30,14 @@ export default function useAdminSidebarNavigation() {
 		},
 		// Order
 		{
-			title: 'Orders',
+			title: 'Замовлення',
 			icon: 'bi-cart',
 			link: route('admin.order.index'),
 			permited: hasPermissions('admin.order.index'),
 			active: checkIsActive(route('admin.order.index'))
 		},
 		{
-			title: 'Media',
+			title: 'Галерея',
 			icon: 'bi-image',
 			link: route('admin.mediaFile.index'),
 			permited: hasPermissions('admin.mediaFile.index'),
@@ -45,54 +45,55 @@ export default function useAdminSidebarNavigation() {
 		},
 		// Page
 		{
-			title: 'Pages',
+			title: 'Сторінки',
 			icon: 'bi-file-earmark-text',
 			link: route('admin.page.indexAdmin'),
 			permited: hasPermissions('admin.page.adminIndex'),
 			active: checkIsActive(route('admin.page.indexAdmin'))
 		},
 		{
-			title: 'Products',
+			title: 'Товари',
 			icon: 'bi-cart',
 			link: route('admin.product.index'),
 			permited: hasPermissions('admin.product.index'),
 			active: checkIsActive(route('admin.product.index'))
 		},
 		// categories
-		{
-			title: 'Categories',
-			icon: 'bi-list-ul',
-			link: route('admin.category.index'),
-			permited: hasPermissions('admin.category.index'),
-			active: checkIsActive(route('admin.category.index'))
-		},
+		// {
+		// 	title: 'Категорії',
+		// 	icon: 'bi-list-ul',
+		// 	link: route('admin.category.index'),
+		// 	permited: hasPermissions('admin.category.index'),
+		// 	active: checkIsActive(route('admin.category.index'))
+		// },
 		// productsGroups
 		{
-			title: 'Products Groups',
-			icon: 'bi-list-ul',
+			// title: 'Products Groups',
+			title: 'Категорії',
+			icon: 'bi-folder',
 			link: route('admin.productsGroup.indexAdmin'),
 			permited: hasPermissions('admin.productsGroup.indexAdmin'),
 			active: checkIsActive(route('admin.productsGroup.indexAdmin'))
 		},
 		// attribute groups
 		{
-			title: 'Attribute Groups',
-			icon: 'bi-list-ul',
+			title: 'Групи Фільтрації',
+			icon: 'bi-funnel',
 			link: route('admin.attributeGroup.index'),
 			permited: hasPermissions('admin.attributeGroup.index'),
 			active: checkIsActive(route('admin.attributeGroup.index'))
 		},
 		// requiredProductsGroup
 		{
-			title: 'Required Products Groups',
-			icon: 'bi-list-ul',
+			title: 'Рекомендовані Комплектації',
+			icon: 'bi-bag-plus',
 			link: route('admin.requiredProductsGroup.index'),
 			permited: hasPermissions('admin.requiredProductsGroup.index'),
 			active: checkIsActive(route('admin.requiredProductsGroup.index'))
 		},
 		// global settings
 		{
-			title: 'Global Settings',
+			title: 'Глобальні Ініціативи',
 			icon: 'bi-gear',
 			link: route('admin.globalSettings.index'),
 			permited: hasPermissions('admin.globalSettings.index'),

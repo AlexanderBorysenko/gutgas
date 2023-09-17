@@ -90,7 +90,7 @@ import ProductCatalogCard from './ProductCatalogCard.vue';
 import ProductsCatalogFilters from './ProductsCatalogFilters.vue';
 import BasePagination from './BasePagination.vue';
 import ProductsCatalogPreviewSection from './ProductsCatalogPreviewSection.vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 import { TfilterForm } from '@/types/TfilterForm';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import { TProductsCatalogPreviewSectionStoreData } from '@/types/TProductsCatalogPreviewSectionProps';
@@ -135,17 +135,20 @@ watch(
 				behavior: 'smooth'
 			});
 		}
-		filterForm.get(route('seo-entity', props.catalogSlug), {
-			data: {
-				...filterForm.data,
-				page: 1
-			},
-			onSuccess: () => {
-				displayMode.value = 'catalogFull';
-				console.log(displayMode.value);
-			},
-			preserveScroll: true
-		});
+		filterForm.get(
+			route('seo-entity', [usePage().props.locale, props.catalogSlug]),
+			{
+				data: {
+					...filterForm.data,
+					page: 1
+				},
+				onSuccess: () => {
+					displayMode.value = 'catalogFull';
+					console.log(displayMode.value);
+				},
+				preserveScroll: true
+			}
+		);
 	}
 );
 </script>

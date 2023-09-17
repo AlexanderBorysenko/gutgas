@@ -22,7 +22,7 @@
                     "
 				/>
 				<label class="form-check-label" for="show_compleated">
-					Show Compleated
+					Показувати Завершені Замовлення
 				</label>
 			</div>
 		</div>
@@ -33,10 +33,10 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Client Name</th>
-						<th>Total</th>
-						<th>Status</th>
-						<th class="text-right">Actions</th>
+						<th>Імʼя Клієнта</th>
+						<th>Сумма</th>
+						<th>Статус</th>
+						<th class="text-right">Дії</th>
 					</tr>
 				</thead>
 				<tbody>

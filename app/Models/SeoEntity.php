@@ -36,15 +36,25 @@ class SeoEntity extends Model
         return $this->morphTo();
     }
 
-    public function ensureSlugIsUnique()
+    public function generateBreadcrumbs()
     {
-        // $slug = $this->slug;
-        // if ($slug === null || $slug === '') return;
-        // $slugCount = SeoEntity::where('slug', 'like', "{$slug}%")->count();
-        // if ($slugCount > 0) {
-        //     $this->slug = "{$slug}-{$slugCount}";
-        // }
+        $urlParts = explode('/', $this->slug);
+        $urlPathesArray = [];
+        for ($i = 0; $i < count($urlParts); $i++) {
+            $urlPathesArray[] = implode('/', array_slice($urlParts, 0, $i + 1));
+        }
+        $breadcrumbs = collect($urlPathesArray)->map(function ($item, $key) {
+            $seoEntity = SeoEntity::where('slug', 'LIKE', $item)->first();
+            if ($seoEntity) {
+                return [
+                    'title' => $seoEntity->title,
+                    'slug' => $seoEntity->slug,
+                ];
+            }
+        })->filter(function ($item) {
+            return $item !== null;
+        })->toArray();
 
-        // $this->save();
+        return $breadcrumbs;
     }
 }

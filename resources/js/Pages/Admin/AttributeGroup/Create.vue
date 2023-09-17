@@ -1,6 +1,9 @@
 <template>
 	<AdminLayout>
-		<AttributeGroupForm :form="form" :submitForm="submitForm" />
+		<AttributeGroupForm :form="form" />
+		<button type="submit" class="btn btn-success" @click="submitForm">
+			Створити
+		</button>
 	</AdminLayout>
 </template>
 
@@ -17,9 +20,9 @@ const form = useForm<TAttributeGroupForm>({
 
 const submitForm = () => {
 	form.clearErrors();
+	console.log(form);
 	form.post(route('admin.attributeGroup.store'));
 };
 </script>
 
 <style scoped></style>
-@/types/TAttributeGroup

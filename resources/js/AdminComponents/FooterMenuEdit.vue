@@ -11,7 +11,7 @@
 						<div class="flex-grow-1">
 							<input
 								type="text"
-								placeholder="Title"
+								placeholder="Заголовок"
 								class="form-control"
 								v-model="section.name"
 							/>
@@ -34,13 +34,13 @@
 						<div class="flex-grow-1">
 							<input
 								type="text"
-								placeholder="Title"
+								placeholder="Заголовок"
 								class="form-control"
 								v-model="item.title"
 							/>
 							<input
 								type="text"
-								placeholder="Link"
+								placeholder="Посилання"
 								class="form-control mt-1"
 								v-model="item.url"
 							/>
@@ -76,7 +76,7 @@
 							}
 						"
 					>
-						Add Item
+						Додати Елемент
 					</button>
 				</div>
 			</div>
@@ -96,7 +96,7 @@
 			})
 		"
 	>
-		Add
+		Додати Колонку
 	</button>
 </template>
 

@@ -7,7 +7,7 @@
 			@click="openFileSelect"
 		>
 			<i class="bi bi-cloud-arrow-up fs-2"></i>
-			<h4 class="mb-0 ms-2">Select Files</h4>
+			<h4 class="mb-0 ms-2">Вибрати Файли</h4>
 		</div>
 		<input
 			type="file"
@@ -35,7 +35,7 @@
 				@click="submitFiles"
 				:disabled="!files.length || uploading"
 			>
-				Upload
+				Завантажити
 			</button>
 		</div>
 	</div>

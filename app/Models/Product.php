@@ -108,4 +108,40 @@ class Product extends Model
 
         $this->save();
     }
+
+    public function generateStructuredData()
+    {
+        return [
+            "@context" => "https://schema.org/",
+            "@type" => "Product",
+            "name" => $this->name,
+            "image" => [
+                $this->mediaFile->thumbnail->url
+            ],
+            "description" => $this->description,
+            "sku" => $this->sku,
+            "mpn" => $this->sku,
+            "brand" => [
+                "@type" => "Brand",
+                "name" => "Gutgas"
+            ],
+            "offers" => [
+                "@type" => "Offer",
+                "url" => url(app()->currentLocale() . '/' . $this->seoEntity->slug),
+                "priceCurrency" => "UAH",
+                "price" => $this->price,
+                "availability" => $this->stock > 0 ?
+                    "https://schema.org/InStock" :
+                    "https://schema.org/OutOfStock",
+            ],
+            "additionalProperty" => array_map(function ($attribute) {
+                dd($this);
+                return [
+                    "@type" => "PropertyValue",
+                    "name" => $attribute->attributeGroup()->name,
+                    "value" => $attribute->name
+                ];
+            }, $this->attributes)
+        ];
+    }
 }

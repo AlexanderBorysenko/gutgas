@@ -11,7 +11,7 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Name</th>
+						<th>Назва</th>
 						<th>User Name</th>
 						<th>Roles</th>
 						<th class="text-end">Controls</th>
@@ -54,7 +54,7 @@
 									method="delete"
 									as="button"
 								>
-									Delete
+									Видалити
 								</Link>
 							</div>
 						</td>

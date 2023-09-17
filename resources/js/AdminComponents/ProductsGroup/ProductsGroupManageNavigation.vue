@@ -11,7 +11,7 @@
 				)
 			}"
 		>
-			General Data
+			Редагувати Основну Інформацію
 		</Link>
 		<Link
 			:href="
@@ -31,7 +31,7 @@
 				)
 			}"
 		>
-			SEO Data
+			Редагувати SEO
 		</Link>
 		<a
 			v-if="productsGroup.seo_entity?.slug"
@@ -39,7 +39,7 @@
 			target="_blank"
 			:href="`/` + productsGroup.seo_entity?.slug"
 		>
-			View Products Group
+			Переглянути
 		</a>
 		<!-- delete -->
 		<button
@@ -47,7 +47,7 @@
 			class="btn btn-danger w-100 mt-1"
 			@click="deleteProductsGroup"
 		>
-			Delete
+			Видалити
 		</button>
 	</div>
 </template>

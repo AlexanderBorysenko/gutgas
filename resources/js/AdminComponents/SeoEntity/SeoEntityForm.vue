@@ -2,16 +2,16 @@
 	<div>
 		<div class="row">
 			<div class="col-2">
-				<FormFieldWrapper label="OG Image" class="mb-3">
+				<FormFieldWrapper label="OG Зображення" class="mb-3">
 					<MediaFileUrlSelect class="mb-1" v-model="form.og_image" />
 				</FormFieldWrapper>
 			</div>
 			<div class="col-10">
-				<FormFieldWrapper label="Title" class="mb-3">
+				<FormFieldWrapper label="Заголовок" class="mb-3">
 					<input
 						class="form-control"
 						v-model="form.title"
-						placeholder="Title"
+						placeholder="Заголовок"
 					/>
 					<FormError
 						v-if="form.errors.title"
@@ -19,11 +19,11 @@
 						:error="form.errors.title"
 					/>
 				</FormFieldWrapper>
-				<FormFieldWrapper label="Description" class="mb-3">
+				<FormFieldWrapper label="Опис" class="mb-3">
 					<textarea
 						class="form-control"
 						v-model="form.description"
-						placeholder="Description"
+						placeholder="Опис"
 					/>
 					<FormError
 						v-if="form.errors.description"
@@ -33,7 +33,7 @@
 				</FormFieldWrapper>
 			</div>
 		</div>
-		<FormFieldWrapper label="Slug" class="mb-3">
+		<FormFieldWrapper label="Посилання (Slug)" class="mb-3">
 			<input
 				class="form-control"
 				v-model="form.slug"

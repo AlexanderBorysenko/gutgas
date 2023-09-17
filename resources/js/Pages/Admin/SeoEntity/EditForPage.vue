@@ -1,6 +1,6 @@
 <template>
 	<AdminLayout>
-		<h3 class="mb-3">Edit Seo Data</h3>
+		<h3 class="mb-3">Редагувати SEO Дані</h3>
 		<div class="row">
 			<div class="col-9">
 				<SeoEntityForm :form="productSeoEntityForm" />
@@ -14,7 +14,7 @@
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmitSeoEntityForm"
 					>
-						Save Seo Data
+						Зберегти SEO Дані
 					</button>
 				</div>
 			</div>

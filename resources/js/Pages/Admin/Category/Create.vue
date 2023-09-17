@@ -2,18 +2,18 @@
 	<AdminLayout>
 		<form @submit.prevent="submitEditForm">
 			<div class="mb-3">
-				<label class="form-label">Name</label>
+				<label class="form-label">Назва</label>
 				<input class="form-control fs-2" v-model="form.name" />
 				<FormError :error="form.errors.name" />
 			</div>
 			<div class="mb-3">
-				<p class="form-label">Parent Category</p>
+				<p class="form-label">Батьківська Категорія</p>
 				<CategorySelect
 					v-model="form.parent_id"
 					:categories="categories"
 				/>
 			</div>
-			<button type="submit" class="btn btn-success">Create</button>
+			<button type="submit" class="btn btn-success">Створити</button>
 		</form>
 	</AdminLayout>
 </template>

@@ -42,11 +42,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue';
 import BaseFormInput from './BaseFormInput.vue';
 import BaseFormTextarea from './BaseFormTextarea.vue';
 import BaseButton from './BaseButton.vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 import { isEmailValid } from '@/utils/IsEmailValid';
 
 const { __ } = useTranslations();
@@ -58,7 +57,7 @@ const form = useForm({
 	question: ''
 });
 const onSubmit = () => {
-	form.post(route('consultationMail'), {
+	form.post(route('consultationMail', usePage().props.locale), {
 		onSuccess: () => {},
 		preserveScroll: true
 	});

@@ -89,7 +89,10 @@ const onProductsGroupSelect = (e: Event, id: number | null) => {
 };
 
 onMounted(() => {
-	currentPath.value = window.location.pathname;
+	currentPath.value = window.location.pathname.replace(
+		usePage().props.locale + '/',
+		''
+	);
 });
 
 const emit = defineEmits({

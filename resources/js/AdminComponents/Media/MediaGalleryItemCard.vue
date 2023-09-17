@@ -15,7 +15,7 @@
 				]"
 				@click="onSelect"
 			>
-				{{ selected ? 'Deselect' : 'Select' }}
+				{{ selected ? 'Прибрати' : 'Вибрати' }}
 			</button>
 			<!-- <a :href="mediaFile.url" class="btn btn-primary">
 				<i class="bi bi-eye"></i>
@@ -52,7 +52,7 @@ const props = defineProps({
 		type: Boolean,
 		default: false
 	},
-	shouldBeDeleted: {
+	shouldBeDelete: {
 		type: Boolean,
 		default: false
 	}
@@ -68,8 +68,7 @@ const imageUrl = computed(() => {
 });
 
 const onDelete = async (force: boolean = false) => {
-	if (!force && !confirm('Are you sure you want to delete this file?'))
-		return;
+	if (!force && !confirm('Ви впевнені?')) return;
 
 	disabled.value = true;
 
@@ -77,13 +76,13 @@ const onDelete = async (force: boolean = false) => {
 		await deleteMediaFile(props.mediaFile.id);
 		addMessage({
 			type: 'success',
-			text: `${props.mediaFile.name} deleted successfully`
+			text: `${props.mediaFile.name} видалено успішно`
 		});
 		emit('delete', props.mediaFile);
 	} catch (e) {
 		addMessage({
 			type: 'error',
-			text: `Error deleting ${props.mediaFile.name}`
+			text: `Помилка при видаленні ${props.mediaFile.name}`
 		});
 		console.error(e);
 	}
@@ -91,7 +90,7 @@ const onDelete = async (force: boolean = false) => {
 };
 
 watchEffect(() => {
-	if (props.shouldBeDeleted) onDelete(true);
+	if (props.shouldBeDelete) onDelete(true);
 });
 
 const onSelect = () => {

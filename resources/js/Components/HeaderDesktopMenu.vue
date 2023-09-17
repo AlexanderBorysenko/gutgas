@@ -5,8 +5,9 @@
 			class="menu-item"
 			:class="{
 				active:
-					(activePath === '/' && item.url === '/') ||
-					(item.url !== '/' && activePath.includes(item.url))
+					(activePath === '/' + locale &&
+						item.url === '/' + locale) ||
+					(item.url !== '/' + locale && activePath.includes(item.url))
 			}"
 			v-for="item in items"
 		>
@@ -18,9 +19,10 @@
 <script setup lang="ts">
 import { THeaderMenuItem } from '@/types/THeaderMenu';
 import { getGlobalSetting } from '@/utils/getGlobalSetting';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
+const locale = usePage().props.locale;
 
 const { __ } = useTranslations();
 
@@ -28,6 +30,7 @@ const items = getGlobalSetting<THeaderMenuItem[]>('headerMenu') ?? [];
 const activePath = ref(hasWindow() ? location.pathname : '');
 onMounted(() => {
 	activePath.value = location.pathname;
+	console.log(location.pathname);
 });
 </script>
 

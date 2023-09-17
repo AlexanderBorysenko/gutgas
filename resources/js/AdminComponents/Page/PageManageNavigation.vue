@@ -9,7 +9,7 @@
 				'btn-outline-primary': !route().current('admin.page.edit')
 			}"
 		>
-			General Data
+			Редагувати Вміст
 		</Link>
 		<Link
 			:href="
@@ -24,14 +24,14 @@
 				)
 			}"
 		>
-			SEO Data
+			Редагувати SEO
 		</Link>
 		<a
 			class="btn btn-outline-primary w-100 mt-1"
 			target="_blank"
 			:href="`/` + page.seo_entity?.slug"
 		>
-			View Page
+			Показати Сторінку
 		</a>
 		<!-- delete -->
 		<button
@@ -39,7 +39,7 @@
 			class="btn btn-danger w-100 mt-1"
 			@click="deletePage"
 		>
-			Delete
+			Видалити
 		</button>
 	</div>
 </template>

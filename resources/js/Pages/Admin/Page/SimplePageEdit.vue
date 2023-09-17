@@ -1,22 +1,22 @@
 <template>
 	<AdminLayout>
 		<h3 class="mb-3">
-			Edit Page - {{ _t(page.title) || 'Untitled' }}
+			Edit Page - {{ _t(page.title) || 'Без Заголовка' }}
 			<em>({{ page.type }})</em>
 		</h3>
 		<div class="row">
 			<div class="col-9">
-				<FormFieldWrapper class="mb-3" label="Title">
+				<FormFieldWrapper class="mb-3" label="Заголовок">
 					<input
 						type="text"
-						placeholder="Title"
+						placeholder="Заголовок"
 						class="form-control"
 						v-model="pageForm.title"
 					/>
 					<FormError :error="pageForm.errors.title" />
 				</FormFieldWrapper>
 				<FormFieldWrapper
-					label="Content"
+					label="Контент"
 					class="mb-1"
 					:data-getter="() => pageForm.content"
 					:data-setter="value => (pageForm.content = value)"
@@ -33,7 +33,7 @@
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmitSeoEntityForm"
 					>
-						Save
+						Зберегти
 					</button>
 				</div>
 			</div>

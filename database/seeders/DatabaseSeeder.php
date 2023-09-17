@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleAndPermissionSeeder::class,
             UserSeeder::class,
-            MediaFilesSeeder::class,
-            CategoriesSeeder::class,
-            AttributesSeeder::class,
-            ProductsSeeder::class,
+            // MediaFilesSeeder::class,
+            // CategoriesSeeder::class,
+            // AttributesSeeder::class,
+            // ProductsSeeder::class,
             GlobalSettingsSeeder::class,
         ]);
     }

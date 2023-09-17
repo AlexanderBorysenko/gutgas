@@ -9,7 +9,7 @@
 				:href="route('admin.product.create') || ''"
 			>
 				<div class="bi-plus-circle"></div>
-				Create Product
+				Створити Товар
 			</Link>
 			<SearchForm
 				base-route="admin.product.index"
@@ -23,12 +23,12 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Image</th>
-						<th>Name</th>
+						<th>Зображення</th>
+						<th>Назва</th>
 						<th>SKU</th>
 						<th>Price</th>
 						<th>Stock</th>
-						<th class="text-right">Actions</th>
+						<th class="text-right">Дії</th>
 					</tr>
 				</thead>
 				<tbody>

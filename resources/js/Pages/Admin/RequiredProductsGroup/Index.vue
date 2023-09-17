@@ -6,15 +6,15 @@
 				class="btn btn-primary"
 				:href="route('admin.requiredProductsGroup.create') || ''"
 			>
-				Create Required Products Group
+				Створити Категорію
 			</Link>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th class="text-right">Actions</th>
+						<th>Назва</th>
+						<th class="text-right">Дії</th>
 					</tr>
 				</thead>
 				<tbody>

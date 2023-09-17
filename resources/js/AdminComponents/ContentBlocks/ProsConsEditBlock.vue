@@ -6,11 +6,11 @@
 					<div class="mb-1">
 						<div class="d-flex gap-1">
 							<div class="flex-grow-1">
-								<label for="">Image</label>
+								<label for="">Зображення</label>
 								<MediaFileUrlSelect v-model="item.image" />
 							</div>
 							<div class="flex-grow-1">
-								<label for="">Logo</label>
+								<label for="">Логотип</label>
 								<MediaFileUrlSelect
 									class="mb-1"
 									v-model="item.logo"
@@ -21,7 +21,7 @@
 						<input
 							type="text"
 							class="form-control mb-1"
-							placeholder="Title"
+							placeholder="Заголовок"
 							v-model="item.title"
 						/>
 						<!-- is recomended -->
@@ -32,7 +32,7 @@
 								v-model="item.recommended"
 							/>
 							<label class="form-check-label">
-								Recommended
+								Є Рекомендованим
 							</label>
 						</div>
 						<!-- is discouraged -->
@@ -42,11 +42,9 @@
 								type="checkbox"
 								v-model="item.discouraged"
 							/>
-							<label class="form-check-label">
-								Discouraged
-							</label>
+							<label class="form-check-label"> Небажаний </label>
 						</div>
-						<label for=""> Advantages (separate by ';') </label>
+						<label for=""> Переваги (розділяти з ';') </label>
 						<textarea
 							class="form-control mb-1"
 							rows="5"
@@ -54,7 +52,7 @@
 							@input="(event: Event) => {
                                 item.advantages = (event.target as HTMLTextAreaElement).value.split(';')}"
 						></textarea>
-						<label for=""> Disadvantages (separate by ';') </label>
+						<label for=""> Недоліки (розділяти з ';') </label>
 						<textarea
 							class="form-control mb-1"
 							:value="item.disadvantages.join(';')"
@@ -65,7 +63,7 @@
 							class="btn btn-danger"
 							@click="items.splice(index, 1)"
 						>
-							Remove
+							Видалити
 						</button>
 					</div>
 				</div>

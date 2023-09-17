@@ -2,7 +2,7 @@
 	<AdminLayout>
 		<AttributeGroupForm :form="form" @submit="onSubmitForm" class="mb-3" />
 		<div class="mb-3">
-			<h2>Attributes</h2>
+			<h2>Атрибути</h2>
 			<div class="row">
 				<div class="col-3">
 					<AttributeForm
@@ -15,8 +15,8 @@
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th class="text-right">Actions</th>
+									<th>Назва</th>
+									<th class="text-right">Дії</th>
 								</tr>
 							</thead>
 							<tbody>

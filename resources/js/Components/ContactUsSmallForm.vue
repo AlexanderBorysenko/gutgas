@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import BaseFormInput from './BaseFormInput.vue';
 import BaseButton from './BaseButton.vue';
-import { useForm } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
 
 const { __, _t } = useTranslations();
 
@@ -51,7 +51,7 @@ const form = useForm({
 	phone: ''
 });
 const onSubmit = () => {
-	form.post(route('consultationMail'), {
+	form.post(route('consultationMail', usePage().props.locale), {
 		onSuccess: () => {},
 		preserveScroll: true
 	});

@@ -21,9 +21,11 @@
 					:href="route('admin.order.edit', order.id) || ''"
 					class="btn btn-primary border-dark"
 				>
-					Manage
+					Керувати
 				</Link>
-				<button class="btn btn-danger" @click="onDelete">Delete</button>
+				<button class="btn btn-danger" @click="onDelete">
+					Видалити
+				</button>
 			</div>
 		</td>
 	</tr>

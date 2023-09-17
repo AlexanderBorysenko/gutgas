@@ -1,11 +1,11 @@
 <template>
 	<div class="mb-3">
-		<label class="form-label">Name</label>
-		<input class="form-control" v-model="form.name" placeholder="Name" />
+		<label class="form-label">Назва</label>
+		<input class="form-control" v-model="form.name" placeholder="Назва" />
 		<FormError :error="form.errors.name" />
 	</div>
 	<button type="submit" class="btn btn-primary" @click="emit('submit')">
-		Save
+		Зберегти
 	</button>
 </template>
 

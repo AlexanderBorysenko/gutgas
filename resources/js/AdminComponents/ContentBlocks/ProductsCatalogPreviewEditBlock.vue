@@ -10,14 +10,14 @@
 					<MediaFileUrlSelect
 						class="mb-1"
 						v-model="item.image"
-						placeholder="Image"
+						placeholder="Зображення"
 					/>
 				</div>
 				<div class="col-9">
 					<input
 						class="form-control mb-1"
 						v-model="item.title"
-						placeholder="Title"
+						placeholder="Заголовок"
 					/>
 					<QuillEditor
 						class="mb-1 h-auto"
@@ -28,15 +28,15 @@
 						:content="item.text"
 						@update:content="value => (item.text = value)"
 					/>
-					<label for="">Featured Product ID</label>
+					<label for="">ID Рекомендованого Продукту</label>
 					<input
 						class="form-control"
 						v-model="item.featuredProduct"
-						placeholder="Featured Product ID"
+						placeholder="ID Рекомендованого Продукту"
 					/>
 				</div>
 			</div>
-			<label for="">Product IDs separated with ";"</label>
+			<label for="">ID продуктів розділені з ";"</label>
 			<input
 				class="form-control mb-1"
 				:value="item.products.join('; ')"
@@ -47,11 +47,11 @@
 							.map((id: string) => parseInt(id))
 							.filter(id => !isNaN(id));
                     }"
-				placeholder="Product IDs"
+				placeholder="23; 54; 1; 2..."
 			/>
 
 			<button class="btn btn-danger mt-1" @click="items.splice(index, 1)">
-				Delete
+				Видалити
 			</button>
 		</FormFieldWrapper>
 	</div>
@@ -67,7 +67,7 @@
 			})
 		"
 	>
-		Add Section
+		Додати Секцію
 	</button>
 </template>
 

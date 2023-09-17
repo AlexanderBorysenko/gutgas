@@ -3,7 +3,7 @@
 		<RequiredProductsGroupForm :form="requiredProductsGroupForm" />
 
 		<button type="button" class="btn btn-primary" @click="onSubmitForm">
-			Save
+			Зберегти
 		</button>
 	</AdminLayout>
 </template>

@@ -10,21 +10,41 @@
 			<div
 				class="f- justify-between align-center price-quantity pv-12 pl-16 pr-40"
 			>
-				<BaseQuantityField
-					:disabled="isInCart(product)"
-					:max="999"
-					:min="1"
-					v-model="quantity"
-				/>
-				<div class="fw-800 text-right lh-100">
-					<p class="fs-semi-large">{{ product.price }}</p>
-					<p class="fs-semi-small color-secondary">{{ __('uah') }}</p>
-				</div>
+				<template v-if="productInCart">
+					<BaseQuantityField
+						:max="999"
+						:min="1"
+						:model-value="productInCart.quantity"
+						@update:model-value="
+							newQuantity =>
+								setProductQuantity(product, newQuantity)
+						"
+					/>
+					<div class="fw-800 text-right lh-100">
+						<p class="fs-semi-large">
+							{{ productInCart.price * productInCart.quantity }}
+						</p>
+						<p class="fs-semi-small color-secondary">
+							{{ __('uah') }}
+						</p>
+					</div>
+				</template>
+				<template v-else>
+					<BaseQuantityField :max="999" :min="1" v-model="quantity" />
+					<div class="fw-800 text-right lh-100">
+						<p class="fs-semi-large">
+							{{ quantity * props.product.price }}
+						</p>
+						<p class="fs-semi-small color-secondary">
+							{{ __('uah') }}
+						</p>
+					</div>
+				</template>
 			</div>
 		</div>
 		<div class="ph-40 pb-24">
 			<BaseButton
-				class="pv-24 ph-44 w-100 fs-medium mb-8"
+				class="pv-24 ph-44 w-100 fs-medium"
 				@click="
 					!isInCart(product)
 						? addProductToCart(product, quantity)
@@ -53,12 +73,12 @@
 					</svg>
 				</template>
 			</BaseButton>
-			<BaseButton
+			<!-- <BaseButton
 				variation="primary-bordered"
-				class="pv-12 w-100 fs-medium"
+				class="pv-12 mt-8 w-100 fs-medium"
 			>
 				{{ __('buyInOneClick') }}
-			</BaseButton>
+			</BaseButton> -->
 		</div>
 	</div>
 </template>
@@ -69,16 +89,27 @@ import BaseQuantityField from './BaseQuantityField.vue';
 import BaseButton from './BaseButton.vue';
 import { TProduct } from '@/types/TProduct';
 import useCart from '@/composables/cart';
+import { computed } from 'vue';
 
 const { __, _t } = useTranslations();
-
-const quantity = ref(1);
 
 const props = defineProps<{
 	product: TProduct;
 }>();
 
-const { addProductToCart, isInCart, removeProductFromCart } = useCart();
+const {
+	addProductToCart,
+	isInCart,
+	removeProductFromCart,
+	setProductQuantity,
+	findInCart
+} = useCart();
+
+const quantity = ref(1);
+
+const productInCart = computed(() => {
+	return findInCart(props.product);
+});
 </script>
 
 <style scoped lang="scss">

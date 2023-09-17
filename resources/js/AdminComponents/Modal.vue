@@ -8,7 +8,7 @@
 						class="btn btn-primary ms-auto"
 						@click="emit('close')"
 					>
-						Close
+						Закрити
 					</button>
 				</div>
 				<div class="modal-window__main">

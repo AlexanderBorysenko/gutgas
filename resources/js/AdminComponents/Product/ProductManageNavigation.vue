@@ -9,7 +9,7 @@
 				'btn-outline-primary': !route().current('admin.product.edit')
 			}"
 		>
-			General Data
+			Про Товар
 		</Link>
 		<Link
 			:href="route('admin.productPage.edit', product.id) || ''"
@@ -22,7 +22,7 @@
 				)
 			}"
 		>
-			Product Page Data
+			Сторінка Товару
 		</Link>
 		<Link
 			:href="
@@ -42,14 +42,14 @@
 				)
 			}"
 		>
-			SEO Data
+			SEO Налаштування
 		</Link>
 		<a
 			class="btn btn-outline-primary w-100 mt-1"
 			target="_blank"
 			:href="`/` + product.seo_entity?.slug"
 		>
-			View Product Page
+			Переглянути на сайті
 		</a>
 		<!-- delete -->
 		<button
@@ -57,7 +57,7 @@
 			class="btn btn-danger w-100 mt-1"
 			@click="deleteProduct"
 		>
-			Delete
+			Видалити
 		</button>
 	</div>
 </template>

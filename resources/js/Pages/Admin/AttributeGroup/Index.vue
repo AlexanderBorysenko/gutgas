@@ -12,9 +12,9 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Attribute Values</th>
-						<th>Actions</th>
+						<th>Назва</th>
+						<th>Кількість Атрибутів</th>
+						<th>Дії</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import AdminLayout from '@/Layouts/AdminLayout.vue';
-import { toRefs, ref } from 'vue';
+import { toRefs } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import { TAttributeGroup } from '@/types/TAttributeGroup';
 import AttributeGroupTableCard from '@/AdminComponents/AttributeGroup/AttributeGroupTableCard.vue';

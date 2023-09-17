@@ -1,36 +1,36 @@
 <template>
 	<AdminLayout>
 		<h3 class="mb-3">
-			Edit Page - {{ _t(page.title) || 'Untitled' }}
+			Edit Page - {{ _t(page.title) || 'Без Заголовка' }}
 			<em>({{ page.type }})</em>
 		</h3>
 		<div class="row">
 			<div class="col-9">
-				<FormFieldWrapper class="mb-3" label="Title">
+				<FormFieldWrapper class="mb-3" label="Заголовок">
 					<input
 						type="text"
-						placeholder="Title"
+						placeholder="Заголовок"
 						class="form-control"
 						v-model="pageForm.title"
 					/>
 					<FormError :error="pageForm.errors.title" />
 				</FormFieldWrapper>
 				<FormFieldWrapper
-					label="Content"
+					label="Контент"
 					class="mb-1"
 					:data-getter="() => pageForm.content"
 					:data-setter="value => (pageForm.content = value)"
 				>
 					<input
 						type="text"
-						placeholder="Content Title"
+						placeholder="Заголовок Контенту"
 						class="form-control mb-3"
 						v-model="pageForm.meta.contentTitle"
 					/>
 					<TextContentEditor v-model="pageForm.content" />
 				</FormFieldWrapper>
 				<FormFieldWrapper
-					label="Faq Items"
+					label="Питанняя Та Відповіді"
 					:dataGetter="() => pageForm.meta.faqItems"
 					:dataSetter="value => (pageForm.meta.faqItems = value)"
 					class="mb-3"

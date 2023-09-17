@@ -37,9 +37,12 @@
 					:key="locale[0]"
 					class="option"
 					@click="
-						form.get(route('set-locale', locale), {
-							preserveState: false
-						});
+						router.get(
+							currentUrl.replace(
+								usePage().props.locale,
+								locale[0]
+							)
+						);
 						toggle();
 					"
 				>
@@ -53,7 +56,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import BaseVerticalSlidable from '@/Components/BaseVerticalSlidable.vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { router, useForm, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
+import { onMounted } from 'vue';
 
 const {
 	props: { locales, locale: currentLocale }
@@ -72,6 +77,11 @@ const otherLocales = ref(
 	Object.entries(locales).filter(locale => locale[0] !== currentLocale)
 );
 const isActive = ref(false);
+
+const currentUrl = ref('');
+onMounted(() => {
+	currentUrl.value = window.location.href.replace(window.location.origin, '');
+});
 
 const toggle = () => {
 	isActive.value = !isActive.value;

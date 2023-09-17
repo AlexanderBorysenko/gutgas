@@ -88,8 +88,9 @@ return [
     'locale' => 'ua',
 
     'locales' => [
+        // 'en' => 'En',
         'ua' => 'Укр',
-        'en' => 'En',
+        'ru' => 'Рос',
     ],
 
     /*

@@ -20,7 +20,7 @@ Route::group([
     'prefix' => 'admin',
 ], function () {
     Route::group([
-        'middleware' => ['auth'],
+        'middleware' => ['auth', 'sessionLocaleHandler'],
         'as' => 'admin.'
     ], function () {
         Route::get('/', HomeController::class)->name('home')->middleware('permission:admin.home');

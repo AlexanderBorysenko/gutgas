@@ -16,7 +16,7 @@
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmitPageForm"
 					>
-						Save Product Page Data
+						Зберегти Сторінку Продукту
 					</button>
 				</div>
 			</div>

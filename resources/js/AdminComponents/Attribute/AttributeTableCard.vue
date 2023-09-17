@@ -27,7 +27,8 @@
 					:href="route('admin.attribute.destroy', attribute.id) || ''"
 					method="delete"
 					as="button"
-					>Delete
+				>
+					Видалити
 				</Link>
 			</div>
 		</td>

@@ -10,19 +10,19 @@
 					<input
 						class="form-control mb-1"
 						v-model="advantageItem.title"
-						placeholder="Title"
+						placeholder="Заголовок"
 					/>
 					<textarea
 						class="form-control"
 						v-model="advantageItem.description"
-						placeholder="Description"
+						placeholder="Опис"
 					/>
 				</div>
 				<button
 					class="btn btn-danger mt-1"
 					@click="items.splice(index, 1)"
 				>
-					Delete
+					Видалити
 				</button>
 			</div>
 		</div>
@@ -37,7 +37,7 @@
 			})
 		"
 	>
-		Add Advantage Item
+		Додати Елемент
 	</button>
 </template>
 

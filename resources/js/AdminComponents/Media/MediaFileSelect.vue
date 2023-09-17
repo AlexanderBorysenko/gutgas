@@ -12,7 +12,7 @@
 					class="btn btn-primary"
 					@click="setupMediaGalleryModal()"
 				>
-					Select Media File
+					Вибрати Медіа Файл
 				</button>
 			</template>
 		</MediaFileCard>

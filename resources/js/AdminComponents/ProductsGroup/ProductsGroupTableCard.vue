@@ -18,7 +18,7 @@
 						''
 					"
 				>
-					Edit
+					Редагувати
 				</Link>
 				<Link
 					class="btn btn-primary"
@@ -29,7 +29,7 @@
 						) || ''
 					"
 				>
-					Seo
+					SEO Налаштування
 				</Link>
 				<Link
 					class="btn btn-danger"
@@ -41,7 +41,8 @@
 					"
 					method="delete"
 					as="button"
-					>Delete
+				>
+					Видалити
 				</Link>
 			</div>
 		</td>

@@ -27,12 +27,14 @@
 				<Link
 					:href="route('admin.product.edit', product.id) || ''"
 					class="btn btn-primary border-dark"
-					>Product
+				>
+					Про товар
 				</Link>
 				<Link
 					:href="route('admin.productPage.edit', product.id) || ''"
 					class="btn btn-primary border-dark"
-					>Page
+				>
+					Сторінка Товару
 				</Link>
 				<Link
 					v-if="product.seo_entity"
@@ -43,13 +45,14 @@
 						) || ''
 					"
 					class="btn btn-primary border-dark"
-					>SEO
+				>
+					SEO Налаштування
 				</Link>
 				<button
 					class="btn btn-danger border-dark"
 					@click="onProductDelete"
 				>
-					Delete
+					Видалити
 				</button>
 			</div>
 		</td>

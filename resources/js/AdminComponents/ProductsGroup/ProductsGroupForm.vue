@@ -3,7 +3,7 @@
 		<div class="row mb-3">
 			<div class="col-3">
 				<div class="mb-3">
-					<label class="form-label">Name</label>
+					<label class="form-label">Назва</label>
 					<input class="form-control" v-model="form.name" />
 					<FormError :error="form.errors.name" />
 				</div>
@@ -16,7 +16,7 @@
 							id="use_in_filters"
 						/>
 						<label class="form-check-label" for="use_in_filters">
-							Is Active
+							Відображати посилання у Каталозі
 						</label>
 					</div>
 					<FormError :error="form.errors.is_active" />
@@ -25,43 +25,44 @@
 			<div class="col-9">
 				<div class="row mb-3">
 					<div class="col-4">
-						<label class="form-label">Icon</label>
+						<label class="form-label">Іконка</label>
 						<MediaFileUrlSelect v-model="form.icon" />
+						<FormError :error="form.errors.icon" />
 					</div>
 					<div class="col-4">
-						<label class="form-label">Icon Hover</label>
+						<label class="form-label">Іконка При Наведенні</label>
 						<MediaFileUrlSelect v-model="form.icon_hover" />
 					</div>
 					<div class="col-4">
-						<label class="form-label">Icon Active</label>
+						<label class="form-label">Іконка Активності</label>
 						<MediaFileUrlSelect v-model="form.icon_active" />
 					</div>
 				</div>
 			</div>
 		</div>
-		<h3 class="mb-3">Page Settings</h3>
-		<FormFieldWrapper class="mb-3" label="General Page Title">
+		<h3 class="mb-3">Налаштування Сторінки</h3>
+		<FormFieldWrapper class="mb-3" label="H1 заголовок">
 			<input
 				type="text"
-				placeholder="Title"
+				placeholder="Заголовок"
 				class="form-control"
 				v-model="form.meta.title"
 			/>
 		</FormFieldWrapper>
-		<FormFieldWrapper class="mb-3" label="Content Title">
+		<FormFieldWrapper class="mb-3" label="Заголовок текстового Контенту">
 			<input
 				type="text"
-				placeholder="Title"
+				placeholder="Заголовок"
 				class="form-control"
 				v-model="form.meta.contentTitle"
 			/>
 		</FormFieldWrapper>
-		<FormFieldWrapper class="mb-3" label="Content">
+		<FormFieldWrapper class="mb-3" label="Текст сторінки">
 			<TextContentEditor v-model="form.meta.content" />
 		</FormFieldWrapper>
 		<FormFieldWrapper
 			class="mb-3"
-			label="Faq Items"
+			label="Питання Та Відповіді"
 			:dataGetter="() => form.meta.faqItems"
 			:dataSetter="value => (form.meta.faqItems = value)"
 		>

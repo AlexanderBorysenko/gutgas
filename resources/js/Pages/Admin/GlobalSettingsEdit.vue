@@ -7,15 +7,15 @@
 						<FormFieldWrapper label="Phone" class="mb-1">
 							<input
 								type="text"
-								placeholder="Phone"
+								placeholder="Телефон"
 								class="form-control"
 								v-model="form.globalSettings.phone"
 							/>
 						</FormFieldWrapper>
-						<FormFieldWrapper label="Work Time" class="mb-1">
+						<FormFieldWrapper label="Робочий Час" class="mb-1">
 							<input
 								type="text"
-								placeholder="Phone"
+								placeholder="Робочий Час"
 								class="form-control"
 								v-model="form.globalSettings.workTime"
 							/>
@@ -64,7 +64,7 @@
 				</KeepAlive>
 				<KeepAlive>
 					<template v-if="currentTab === 'header'">
-						<FormFieldWrapper label="Header Menu" class="mb-1">
+						<FormFieldWrapper label="Меню В Хедері" class="mb-1">
 							<div
 								class="card mb-1"
 								v-for="item in form.globalSettings.headerMenu"
@@ -74,13 +74,13 @@
 										<div class="flex-grow-1">
 											<input
 												type="text"
-												placeholder="Title"
+												placeholder="Заголовок"
 												class="form-control"
 												v-model="item.title"
 											/>
 											<input
 												type="text"
-												placeholder="Link"
+												placeholder="Посилання"
 												class="form-control mt-1"
 												v-model="item.url"
 											/>
@@ -108,20 +108,20 @@
 									})
 								"
 							>
-								Add
+								Додати
 							</button>
 						</FormFieldWrapper>
 					</template>
 				</KeepAlive>
 				<KeepAlive>
 					<template v-if="currentTab === 'footer'">
-						<FormFieldWrapper label="Footer Text" class="mb-1">
+						<FormFieldWrapper label="Текст у Футері" class="mb-1">
 							<textarea
 								class="form-control"
 								v-model="form.globalSettings.footerText"
 							></textarea>
 						</FormFieldWrapper>
-						<FormFieldWrapper label="Footer Menu" class="mb-1">
+						<FormFieldWrapper label="Меню в Футері" class="mb-1">
 							<FooterMenuEdit
 								v-model="form.globalSettings.footerMenu"
 							/>
@@ -130,10 +130,10 @@
 				</KeepAlive>
 				<KeepAlive>
 					<template v-if="currentTab === 'pages'">
-						<FormFieldWrapper label="Products Catalog">
+						<FormFieldWrapper label="Каталог Товарів">
 							<input
 								type="text"
-								placeholder="Products Catalog Slug"
+								placeholder="Slug Каталогу Товарів"
 								class="form-control"
 								v-model="
 									form.globalSettings.productsCatalogSlug
@@ -155,7 +155,7 @@
 								'btn-primary': currentTab === 'contacts'
 							}"
 						>
-							Contacts
+							Контакти
 						</button>
 						<button
 							@click="currentTab = 'header'"
@@ -165,7 +165,7 @@
 								'btn-primary': currentTab === 'header'
 							}"
 						>
-							Header
+							Хедер
 						</button>
 						<button
 							@click="currentTab = 'footer'"
@@ -175,7 +175,7 @@
 								'btn-primary': currentTab === 'footer'
 							}"
 						>
-							Footer
+							Футер
 						</button>
 						<button
 							@click="currentTab = 'pages'"
@@ -185,14 +185,14 @@
 								'btn-primary': currentTab === 'pages'
 							}"
 						>
-							Pages
+							Сторінки
 						</button>
 					</div>
 					<button
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmit"
 					>
-						Save
+						Зберегти
 					</button>
 				</div>
 			</div>
@@ -202,7 +202,6 @@
 
 <script setup lang="ts">
 import FooterMenuEdit from '@/AdminComponents/FooterMenuEdit.vue';
-import FormError from '@/AdminComponents/FormError.vue';
 import FormFieldWrapper from '@/AdminComponents/FormFieldWrapper.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import useMessages from '@/modules/useMessages';

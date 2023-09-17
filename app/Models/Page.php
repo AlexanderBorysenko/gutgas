@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Controllers\Pages\HomePageController;
 use App\Http\Controllers\Pages\ProductsCatalogPageController;
 use App\Http\Controllers\Pages\SimplePageController;
+use App\Http\Controllers\Pages\PageWithSidebarSliderController;
 use App\Traits\MetableExtention;
 use App\Traits\Seoable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,7 @@ class Page extends Model
         'SimplePage' => SimplePageController::class,
         'HomePage' => HomePageController::class,
         'ProductsCatalogPage' => ProductsCatalogPageController::class,
+        'PageWithSidebarSlider' => PageWithSidebarSliderController::class,
     ];
 
     public $translatable = ['title', 'content'];

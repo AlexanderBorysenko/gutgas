@@ -18,9 +18,11 @@
 						''
 					"
 				>
-					Edit
+					Редагувати
 				</Link>
-				<button @click="onDelete" class="btn btn-danger">Delete</button>
+				<button @click="onDelete" class="btn btn-danger">
+					Видалити
+				</button>
 			</div>
 		</td>
 	</tr>

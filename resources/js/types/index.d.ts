@@ -18,5 +18,8 @@ export type PageProps<
 	locale: string;
 	locales: Record<string, string>;
 	translations: Record<string, string>;
-	breadcrumbs: any[];
+	breadcrumbs: {
+		title: string;
+		slug: string;
+	}[];
 };

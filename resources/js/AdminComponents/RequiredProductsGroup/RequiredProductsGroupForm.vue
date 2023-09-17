@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<FormFieldWrapper label="Name" class="mb-3">
-			<label class="form-label">Name</label>
+		<FormFieldWrapper label="Назва" class="mb-3">
+			<label class="form-label">Назва</label>
 			<input class="form-control" v-model="form.name" />
 		</FormFieldWrapper>
 		<FormFieldWrapper label="Products" class="mb-3">
-			<label class="form-label">Products separated by "; "</label>
+			<label class="form-label">ID товарів розділені через "; "</label>
 			<input class="form-control" v-model="products" />
 		</FormFieldWrapper>
 	</div>
@@ -15,7 +15,7 @@
 import { InertiaForm } from '@inertiajs/vue3';
 import FormError from '../FormError.vue';
 import { TRequiredProductsGroupForm } from '@/types/TRequiredProductsGroup';
-import { toRef, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import FormFieldWrapper from '../FormFieldWrapper.vue';
 
 const props = defineProps<{

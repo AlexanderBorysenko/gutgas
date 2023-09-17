@@ -19,7 +19,7 @@
 						class="btn btn-success w-100 mt-3"
 						@click="onSubmitGeneralForm"
 					>
-						Save Product General Data
+						Зберегти Загальні Дані про Продукт
 					</button>
 				</div>
 			</div>

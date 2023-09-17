@@ -25,8 +25,8 @@ class StoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'is_active' => ['required', 'boolean'],
             'icon' => ['required', 'string', 'max:255'],
-            'icon_active' => ['string', 'max:255'],
-            'icon_hover' => ['string', 'max:255'],
+            'icon_active' => ['nullable', 'string', 'max:255'],
+            'icon_hover' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

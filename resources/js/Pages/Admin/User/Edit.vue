@@ -62,7 +62,7 @@
 					class="btn btn-danger"
 					@click="deleteUser"
 				>
-					Delete
+					Видалити
 				</button>
 			</div>
 		</form>

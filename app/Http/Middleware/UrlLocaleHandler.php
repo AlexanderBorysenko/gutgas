@@ -5,10 +5,11 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\Response;
 
-class LocaleMiddleware
+class UrlLocaleHandler
 {
     /**
      * Handle an incoming request.
@@ -17,15 +18,22 @@ class LocaleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        app()->setLocale(config('app.locale'));
 
-        if (session()->has('locale')) {
-            app()->setLocale(session('locale'));
+        $locale = $request->segment(1);
+
+        // Примусова передача поточної мови в УРЛ
+        if (!array_key_exists($locale, config('app.locales'))) {
+            App::setLocale(config('app.fallback_locale'));
+            $defaultLocale = config('app.fallback_locale');
+
+            $newUrl = $defaultLocale . '/' . $request->path();
+            return Redirect::to($newUrl, 301);
+        } else {
+            App::setLocale($locale);
         }
 
         Inertia::share('locale', app()->getLocale());
         Inertia::share('locales', config('app.locales'));
-        // translations from lang/{currentLanguage}/app
         Inertia::share('translations', trans('app'));
 
         return $next($request);

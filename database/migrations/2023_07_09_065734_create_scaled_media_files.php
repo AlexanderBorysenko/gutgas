@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('path')->nullable();
             $table->string('url')->nullable();
             $table->string('size')->nullable();
-            $table->enum('scale',  [...array_keys(MediaFile::IMAGE_SCALES)]);
+            $table->string('scale');
         });
     }
 

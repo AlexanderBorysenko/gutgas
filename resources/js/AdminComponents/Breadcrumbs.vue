@@ -7,8 +7,8 @@
 		<ol class="breadcrumb m-0">
 			<li v-for="breadcrumb in breadcrumbs" class="breadcrumb-item">
 				<Link
-					v-if="currentUrl !== breadcrumb.url"
-					:href="breadcrumb.url || ''"
+					v-if="currentUrl !== breadcrumb.slug"
+					:href="breadcrumb.slug || ''"
 					>{{ breadcrumb.title }}</Link
 				>
 				<span v-else>{{ breadcrumb.title }}</span>

@@ -3,7 +3,7 @@
 		<FormFieldWrapper label="Status" class="mb-3">
 			<div class="row g-1">
 				<div class="col-4">
-					<label class="form-label">Status Name</label>
+					<label class="form-label">Назва Статусу</label>
 					<input
 						class="form-control"
 						v-model="form.status_name"
@@ -12,20 +12,19 @@
 					<FormError :error="form.errors.status_name" />
 				</div>
 				<div class="col-4">
-					<label class="form-label">Status Color</label>
+					<label class="form-label">Колір Статусу</label>
 					<select
 						v-model="form.status_color"
 						class="form-control"
-						placeholder="Status Color"
+						placeholder="Колір Статусу"
 					>
-						<option value="primary">primary</option>
-						<option value="secondary">secondary</option>
-						<option value="success">success</option>
-						<option value="danger">danger</option>
-						<option value="warning">warning</option>
-						<option value="info">info</option>
-						<option value="light">light</option>
-						<option value="dark">dark</option>
+						<option value="success">Зелений</option>
+						<option value="danger">Червоний</option>
+						<option value="warning">Жовтий</option>
+						<option value="secondary">Сірий</option>
+						<option value="primary">Синій</option>
+						<option value="info">Світло Синій</option>
+						<option value="dark">Чорний</option>
 					</select>
 					<FormError :error="form.errors.status_color" />
 				</div>
@@ -45,7 +44,7 @@
 								class="form-check-label"
 								for="flexCheckDefault"
 							>
-								Compleated
+								Замовлення Завершене
 							</label>
 						</div>
 					</div>
@@ -56,16 +55,16 @@
 			<div class="row g-1">
 				<div class="col-6">
 					<div class="mb-3">
-						<label class="form-label">Name</label>
+						<label class="form-label">Назва</label>
 						<input
 							class="form-control"
 							v-model="form.client_name"
-							placeholder="Name"
+							placeholder="Назва"
 						/>
 						<FormError :error="form.errors.client_name" />
 					</div>
 					<div class="mb-3">
-						<label class="form-label">Phone</label>
+						<label class="form-label">Телефон</label>
 						<input
 							class="form-control"
 							v-model="form.client_phone"
@@ -87,7 +86,7 @@
 						<textarea
 							class="form-control h-100"
 							v-model="form.client_message"
-							placeholder="Message"
+							placeholder="Повідомлення"
 						></textarea>
 					</div>
 				</div>
@@ -98,11 +97,11 @@
 				<thead>
 					<tr>
 						<th>id</th>
-						<th>Image</th>
-						<th>Name</th>
+						<th>Зображення</th>
+						<th>Назва</th>
 						<th>SKU</th>
-						<th>Quantity</th>
-						<th>Total</th>
+						<th>Кількість</th>
+						<th>Загалом</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -152,12 +151,12 @@
 				<textarea
 					class="form-control h-100"
 					v-model="form.shipping_message"
-					placeholder="Shipping"
+					placeholder="Доставка"
 				></textarea>
 			</div>
 		</FormFieldWrapper>
 		<button class="btn btn-primary" @click="onSubmitForm">
-			Save Changes
+			Зберегти Зміни
 		</button>
 	</AdminLayout>
 </template>
