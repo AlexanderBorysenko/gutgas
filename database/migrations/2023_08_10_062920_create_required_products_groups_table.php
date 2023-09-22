@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->json('name');
-            $table->json('product_ids')->nullable()->default('[]');
+            $table->json('product_ids')->nullable();
         });
     }
 
