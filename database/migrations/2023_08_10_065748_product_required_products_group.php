@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('required_products_group_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('required_products_group_id');
+            $table->foreign('required_products_group_id', 'fk_required_products_group_id')->references('id')->on('required_products_groups');
         });
     }
 
