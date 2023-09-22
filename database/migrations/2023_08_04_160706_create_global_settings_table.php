@@ -17,7 +17,7 @@ return new class extends Migration
             // key
             $table->string('key')->unique();
             // value
-            $table->json('value')->nullable();
+            $table->text('value')->nullable();
         });
     }
 
