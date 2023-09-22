@@ -7,16 +7,7 @@
 	</Head>
 	<WebsitePage>
 		<PageHeadSpacer class="mb-60" />
-		<!-- <BaseBreadcrumbs
-			class="mt-32 mb-40"
-			:items="[
-				{
-					text: 'Головна',
-					href: '/'
-				}
-			]"
-			lastItem="Кошик"
-		/> -->
+		<BaseBreadcrumbs class="mt-32 mb-40" />
 		<div class="container">
 			<h1 class="fs-h4 mb-60">{{ __('checkoutTitle') }}</h1>
 			<form class="g-layout mb-116" @submit.prevent="">
@@ -159,6 +150,7 @@ import { TProduct } from '@/types/TProduct';
 import { watch } from 'vue';
 import ICartProduct from '@/types/ICartProduct';
 import { TOrderForm } from '@/types/TOreder';
+import BaseBreadcrumbs from '@/Components/BaseBreadcrumbs.vue';
 
 const props = defineProps<{
 	checkoutTranslations: Record<string, string>;
@@ -224,7 +216,6 @@ watch(cartProducts, async () => {
 }
 .products-list {
 	flex: 1;
-	overflow: auto;
 }
 
 .totals {

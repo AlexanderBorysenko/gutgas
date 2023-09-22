@@ -20,7 +20,7 @@ return new class extends Migration
             $table->json('title')->nullable();
             $table->json('description')->nullable();
             $table->string('og_image')->nullable();
-
+            $table->json('is_active')->nullable();
             $table->timestamps();
         });
     }

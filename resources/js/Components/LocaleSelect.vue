@@ -108,8 +108,6 @@ const toggle = () => {
 .current-option {
 	margin-right: 8px;
 }
-.current-option.active {
-}
 .options {
 	position: absolute;
 	top: 100%;

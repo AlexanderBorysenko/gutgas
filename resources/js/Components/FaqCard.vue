@@ -4,18 +4,27 @@
 		:class="{
 			active: isActive
 		}"
+		itemprop="mainEntity"
+		itemscope
+		itemtype="https://schema.org/Question"
 	>
 		<div class="qustion-wrapper" @click="emit('click', true)">
-			<h4 class="lh-160 fs-semi-large">
+			<h4 class="lh-160 fs-semi-large" itemprop="name">
 				{{ question }}
 			</h4>
 			<button class="view-answer">
 				<span class="view-answer__text">Відповідь</span>
 			</button>
 		</div>
-		<div class="answer-wrapper">
+		<div
+			class="answer-wrapper"
+			itemprop="acceptedAnswer"
+			itemscope
+			itemtype="https://schema.org/Answer"
+		>
 			<div
 				class="answer-text color-typography-secondary typography-content"
+				itemprop="text"
 			>
 				<slot />
 			</div>

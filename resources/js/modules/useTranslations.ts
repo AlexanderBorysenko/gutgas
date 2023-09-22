@@ -22,12 +22,13 @@ export const useTranslations = (
 		return translation;
 	};
 
-	const _t = (value: any) => {
+	const _t = (value: any, strict: boolean = false) => {
 		if (!value) return '';
 		if (value[locale]) {
 			return value[locale];
 		}
-		return value[Object.keys(value)[0]] || '';
+		if (!strict) return value[Object.keys(value)[0]] || '';
+		return '';
 	};
 
 	return {

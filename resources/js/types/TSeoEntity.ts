@@ -6,6 +6,7 @@ export type TSeoEntity = {
 	og_image: string;
 	controller: string;
 	action: string;
+	is_active: 0 | 1;
 };
 
 export type TSeoEntityForm = {
@@ -15,4 +16,5 @@ export type TSeoEntityForm = {
 	og_image: string;
 	controller?: string;
 	action?: string;
+	is_active: boolean;
 };

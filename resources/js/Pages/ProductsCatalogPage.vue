@@ -1,13 +1,6 @@
 <template>
 	<Head>
-		<title>{{ _t(page.seo_entity.title) }}</title>
-		<meta name="description" :content="_t(page.seo_entity.description)" />
-		<meta
-			v-if="page.seo_entity.og_image"
-			property="og:image"
-			:content="page.seo_entity.og_image"
-		/>
-		<link rel="canonical" :href="baseUrl + '/' + page.seo_entity.slug" />
+		<SeoEntityMetaFields :seo-entity="page.seo_entity" />
 		<link
 			rel="prev"
 			:href="productsCatalogData.products.prev_page_url"
@@ -21,6 +14,7 @@
 	</Head>
 	<WebsitePage>
 		<PageHeadSpacer class="mb-60" />
+		<BaseBreadcrumbs class="mb-40" />
 		<section class="container mb-88">
 			<h2 class="fs-h2 mb-68">{{ _t(page.title) }}</h2>
 			<div ref="productsCatalogLayoutRef">
@@ -60,10 +54,10 @@ import { getMeta } from '@/utils/getMeta';
 import { TFaqItemProps } from '@/types/TFaqItemProps';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import ProductsCatalog from '@/Components/ProductsCatalog.vue';
+import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
+import BaseBreadcrumbs from '@/Components/BaseBreadcrumbs.vue';
 
-const { _t, __ } = useTranslations();
-
-const { baseUrl } = usePage().props;
+const { _t } = useTranslations();
 
 const props = defineProps<{
 	productsCatalogData: TproductsCatalogData;

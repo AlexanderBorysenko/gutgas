@@ -33,6 +33,7 @@ class UpdateRequest extends FormRequest
             'description' => ['nullable', 'string', 'max:255'],
             'og_image' => ['nullable', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:seo_entities,slug,' . $seoEntityId],
+            'is_active' => ['boolean'],
             'controller' => ['string', 'max:255'],
             'action' => ['string', 'max:255'],
         ];

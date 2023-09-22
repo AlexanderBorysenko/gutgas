@@ -117,10 +117,13 @@ const inCart = computed(() => isInCart(props.product));
 	height: 100%;
 	object-fit: contain;
 	opacity: 0.7;
-	transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 	position: relative;
 	z-index: 1;
 	border-bottom: 1px solid #000;
+}
+.product-catalog-card:hover .image {
+	transform: scale(1.03);
 }
 .body {
 	flex: 1;

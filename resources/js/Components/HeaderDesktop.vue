@@ -14,20 +14,23 @@
 				<div class="right">
 					<HeaderPhone class="right__phone" />
 					<CartToggleButton
-						:is-active="cartOpened"
-						@click="cartOpened = !cartOpened"
+						:is-active="isCartModalOpened"
+						@click="isCartModalOpened = !isCartModalOpened"
 					/>
 					<Transition name="fade">
 						<CartPopup
 							class="cart-popup"
-							v-if="cartOpened"
-							@close="cartOpened = false"
+							v-if="isCartModalOpened"
+							@close="isCartModalOpened = false"
 						/>
 					</Transition>
 					<LocaleSelect class="language-switch" />
 				</div>
 			</div>
 		</div>
+		<Transition name="fade">
+			<div class="cart-popup-background" v-if="isCartModalOpened"></div>
+		</Transition>
 	</header>
 </template>
 
@@ -41,6 +44,7 @@ import CartPopup from './CartPopup.vue';
 import { Link } from '@inertiajs/vue3';
 import Preheader from './Preheader.vue';
 import useHeaderElement from '@/composables/headerElement';
+import useCart from '@/composables/cart';
 
 const headerRef = ref<HTMLElement | null>(null);
 const isScrolled = ref(true);
@@ -53,9 +57,8 @@ onMounted(() => {
 	window.addEventListener('scroll', handleScroll);
 });
 
-const cartOpened = ref(false);
-
 const { headerElementRef } = useHeaderElement();
+const { isCartModalOpened } = useCart();
 </script>
 
 <style scoped lang="scss">
@@ -136,6 +139,29 @@ const { headerElementRef } = useHeaderElement();
 	&.fade-leave-from {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+.cart-popup-background {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	right: 0;
+	bottom: 0;
+	height: calc(100vh - 100%);
+	z-index: -1;
+	background: rgba($color: #000000, $alpha: 0.5);
+	transition: opacity 0.3s ease-in;
+	&.fade-enter-active,
+	&.fade-leave-active {
+		transition: opacity 0.3s ease-in-out;
+	}
+	&.fade-enter-from,
+	&.fade-leave-to {
+		opacity: 0;
+	}
+	&.fade-enter-to,
+	&.fade-leave-from {
+		opacity: 1;
 	}
 }
 </style>

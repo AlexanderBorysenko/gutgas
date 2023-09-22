@@ -6,7 +6,9 @@
 			</div>
 			<div class="container g-layout">
 				<div class="background-decoration-image">
-					<img src="@/assets/background-decoration-image.png" />
+					<img
+						src="@/assets/contact-us-background-decoration-image.png"
+					/>
 				</div>
 				<div class="g-col-6 g-tablet-col-12 pv-88">
 					<h2 class="fs-h2 mb-12" v-if="title" v-html="title" />
@@ -83,9 +85,9 @@ const props = defineProps<{
 }
 .background-decoration-image {
 	position: absolute;
-	right: -40px;
+	right: -370px;
 	bottom: 0;
-	max-height: 448px;
+	max-height: 480px;
 	@media (max-width: $small-desktop-width) {
 		max-height: 300px;
 	}

@@ -1,26 +1,6 @@
 <template>
 	<Head>
-		<title>{{ _t(seoEntity.title ?? product.name) }}</title>
-		<link
-			rel="canonical"
-			:href="route('seo-entity', [usePage().props.locale,seoEntity.slug])"
-		/>
-		<meta
-			name="description"
-			:content="_t(seoEntity.description ?? product.description)"
-		/>
-		<meta property="og:title" :content="_t(seoEntity.title ?? product.name)" />
-		<meta
-			property="og:description"
-			:content="_t(seoEntity.description ?? product.description)"
-		/>
-		<meta property="og:type" content="website" />
-		<meta property="og:url" :content="route('seo-entity', [usePage().props.locale,seoEntity.slug])" />
-		<meta
-			v-if="seoEntity.og_image"
-			property="og:image"
-			:content="seoEntity.og_image"
-		/>
+		<SeoEntityMetaFields :seo-entity="seoEntity"/>
 		<component :is="'script'" type="application/ld+json">
 			{{ JSON.stringify(productStructuredData) }}
     	</component>
@@ -155,6 +135,7 @@ import { TFaqItemProps } from '@/types/TFaqItemProps';
 import { TAdvantageCardProps } from '@/types/TAdvantageCardProps';
 import { Head, usePage } from '@inertiajs/vue3';
 import { TSeoEntity } from '@/types/TSeoEntity';
+import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 
 const { __, _t } = useTranslations();
 

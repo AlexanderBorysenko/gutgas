@@ -12,19 +12,11 @@ class SeoEntity extends Model
 
     protected $guarded = [];
 
-    public $translatable = ['title', 'description'];
+    public $translatable = ['title', 'description', 'is_active'];
 
     protected static function boot()
     {
         parent::boot();
-
-        self::created(function ($seoEntity) {
-            $seoEntity->ensureSlugIsUnique();
-        });
-
-        self::updated(function ($seoEntity) {
-            $seoEntity->ensureSlugIsUnique();
-        });
     }
     public function getRouteKeyName()
     {

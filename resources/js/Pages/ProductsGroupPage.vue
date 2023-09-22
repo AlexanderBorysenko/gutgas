@@ -1,15 +1,6 @@
 <template>
 	<Head>
-		<title>{{ _t(productsGroup.seo_entity.title) }}</title>
-		<meta
-			name="description"
-			:content="_t(productsGroup.seo_entity.description)"
-		/>
-		<meta
-			v-if="productsGroup.seo_entity.og_image"
-			property="og:image"
-			:content="productsGroup.seo_entity.og_image"
-		/>
+		<SeoEntityMetaFields :seo-entity="productsGroup.seo_entity" />
 		<link
 			rel="canonical"
 			:href="baseUrl + '/' + productsGroup.seo_entity.slug"
@@ -73,6 +64,7 @@ import { TFaqItemProps } from '@/types/TFaqItemProps';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import ProductsCatalog from '@/Components/ProductsCatalog.vue';
 import { TProductsGroup } from '@/types/TProductsGroup';
+import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 
 const { _t, __ } = useTranslations();
 

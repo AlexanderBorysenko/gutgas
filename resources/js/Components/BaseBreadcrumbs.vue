@@ -1,18 +1,35 @@
 <template>
-	<div class="container">
-		<nav class="base-breadcrumbs fw-600 lh-150">
-			<template v-for="breadcrumb in breadcrumbs">
+	<nav class="container">
+		<ul
+			class="base-breadcrumbs fw-600 lh-150"
+			itemscope
+			itemtype="https://schema.org/BreadcrumbList"
+		>
+			<li
+				class="item"
+				v-for="(breadcrumb, index) in breadcrumbs"
+				:key="breadcrumb.slug"
+				itemprop="itemListElement"
+				itemscope
+				itemtype="https://schema.org/ListItem"
+			>
 				<Link
 					v-if="currentUrl !== '/' + breadcrumb.slug"
 					:href="breadcrumb.slug || ''"
-					class="item"
+					itemscope
+					itemtype="http://schema.org/Thing"
+					itemprop="item"
+					:itemid="breadcrumb.slug"
+					class="link"
 				>
-					{{ breadcrumb.title }}
+					<span itemprop="name">
+						{{ breadcrumb.title }}
+					</span>
 				</Link>
-				<span class="item" v-else>{{ breadcrumb.title }}</span>
-			</template>
-		</nav>
-	</div>
+				<meta itemprop="position" :content="`${index + 1}`" />
+			</li>
+		</ul>
+	</nav>
 </template>
 
 <script setup lang="ts">
@@ -28,6 +45,8 @@ const currentUrl = ref('');
 onMounted(() => {
 	currentUrl.value = window.location.href.replace(window.location.origin, '');
 });
+
+const counter = ref(1);
 </script>
 
 <style scoped lang="scss">
@@ -41,11 +60,11 @@ onMounted(() => {
 	align-items: center;
 	position: relative;
 }
-a.item {
+.item {
 	&:hover {
 		text-decoration: underline;
 	}
-	&::after {
+	&:not(:last-child)::after {
 		content: '';
 		display: block;
 		position: relative;
@@ -54,8 +73,8 @@ a.item {
 		height: 16px;
 		margin: 0 6px 0 4px;
 	}
-}
-span.item {
-	opacity: 0.5;
+	&:last-child a {
+		opacity: 0.5;
+	}
 }
 </style>

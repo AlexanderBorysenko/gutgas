@@ -1,8 +1,12 @@
 <template>
 	<div class="product-picker">
-		<p class="color-secondary fs-medium p-16 mb-8">
-			{{ product.stock ? __(`inStock`) : __(`outOfStock`) }}
+		<p class="color-success fs-medium p-16 mb-8" v-if="product.stock">
+			{{ __(`inStock`) }}
 		</p>
+		<p
+			class="color-danger fs-medium p-16 mb-8"
+			v-else="__(`outOfStock`)"
+		></p>
 		<p class="fs-typography-content lh-160 pl-16 pr-40 mb-24">
 			{{ _t(product.description) }}
 		</p>
@@ -45,11 +49,7 @@
 		<div class="ph-40 pb-24">
 			<BaseButton
 				class="pv-24 ph-44 w-100 fs-medium"
-				@click="
-					!isInCart(product)
-						? addProductToCart(product, quantity)
-						: removeProductFromCart(product)
-				"
+				@click="onAddToCart"
 			>
 				<template v-if="!isInCart(product)">
 					{{ __('addToCart') }}
@@ -92,24 +92,27 @@ import useCart from '@/composables/cart';
 import { computed } from 'vue';
 
 const { __, _t } = useTranslations();
+const { isCartModalOpened } = useCart();
 
 const props = defineProps<{
 	product: TProduct;
 }>();
 
-const {
-	addProductToCart,
-	isInCart,
-	removeProductFromCart,
-	setProductQuantity,
-	findInCart
-} = useCart();
+const { addProductToCart, isInCart, setProductQuantity, findInCart } =
+	useCart();
 
 const quantity = ref(1);
 
 const productInCart = computed(() => {
 	return findInCart(props.product);
 });
+
+const onAddToCart = () => {
+	if (!isInCart(props.product)) {
+		addProductToCart(props.product, 1);
+		isCartModalOpened.value = true;
+	}
+};
 </script>
 
 <style scoped lang="scss">

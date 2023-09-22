@@ -17,7 +17,7 @@ class SeoEndpoint extends Controller
         } else {
             $seoEntity = SeoEntity::where('slug', 'LIKE', $route)->firstOrFail();
         }
-        if (!$seoEntity) {
+        if (!$seoEntity || !$seoEntity->is_active) {
             abort(404);
         }
 

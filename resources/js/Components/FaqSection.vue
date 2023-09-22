@@ -1,5 +1,9 @@
 <template>
-	<section class="faq-section">
+	<section
+		class="faq-section"
+		itemscope
+		itemtype="https://schema.org/FAQPage"
+	>
 		<div class="container">
 			<h2 class="fs-h3 mb-72">{{ __('questionsAndAnswers') }}</h2>
 			<div class="g-layout">

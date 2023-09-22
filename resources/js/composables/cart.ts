@@ -12,6 +12,12 @@ const cartTotal = computed(() => {
 		0
 	);
 });
+const cartTotalQuantity = computed(() => {
+	return cartProducts.value.reduce(
+		(acc, product) => acc + product.quantity,
+		0
+	);
+});
 
 const addProductToCart = (product: TProduct, quantity: number = 1) => {
 	const existingProduct = cartProducts.value.find(p => p.id === product.id);
@@ -80,16 +86,23 @@ const resetCart = () => {
 	localStorage.setItem('cartProducts', JSON.stringify([]));
 };
 
+const isCartModalOpened = ref(false);
+const toggleCartModal = () => {
+	isCartModalOpened.value = !isCartModalOpened;
+};
+
 export default function useCart() {
 	return {
 		cartProducts,
 		cartTotal,
+		cartTotalQuantity,
 		addProductToCart,
 		removeProductFromCart,
 		setProductQuantity,
 		setupCart,
 		resetCart,
 		findInCart,
+		isCartModalOpened,
 		isInCart
 	};
 }

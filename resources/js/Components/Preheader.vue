@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import useHeaderElement from '@/composables/headerElement';
 import { onMounted, ref } from 'vue';
 
 const { __ } = useTranslations();
@@ -26,25 +25,11 @@ const innerRef = ref<HTMLElement | null>(null);
 const visible = ref<boolean>(false);
 
 onMounted(() => {
-	// let previousScrollPosition: number =
-	// 	window.scrollY || document.documentElement.scrollTop;
-
-	// window.addEventListener('scroll', () => {
-	// 	const currentScrollPosition: number =
-	// 		window.scrollY || document.documentElement.scrollTop;
-
-	// 	if (currentScrollPosition > previousScrollPosition)
-	// 		visible.value = false;
-	// 	else visible.value = true;
-
-	// 	updateHeaderHeight();
-	// 	previousScrollPosition = currentScrollPosition;
-	// });
-	// visible if scroll height is 0
 	visible.value = window.scrollY === 0;
+	window.addEventListener('scroll', () => {
+		visible.value = window.scrollY === 0;
+	});
 });
-
-const { updateHeaderHeight } = useHeaderElement();
 
 defineExpose({ innerRef });
 </script>

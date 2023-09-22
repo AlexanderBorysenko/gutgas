@@ -94,7 +94,6 @@ const prevRef = ref<null | HTMLElement>(null);
 	display: flex;
 }
 .main-slider-slide {
-	// height: 596px;
 	overflow: hidden;
 	img {
 		width: 100%;

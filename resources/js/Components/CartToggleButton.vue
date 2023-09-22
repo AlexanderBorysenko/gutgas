@@ -1,15 +1,9 @@
 <template>
 	<button class="desktop-header-cart-button" :class="{ active: isActive }">
-		<svg viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<circle
-				cx="28"
-				cy="28"
-				r="28"
-				transform="matrix(-1 0 0 1 57 1)"
-				stroke="#FF5C55"
-				stroke-linejoin="round"
-				fill="transparent"
-			/>
+		<span class="fs-medium color-danger fw-500" v-if="isCartModalOpened">{{
+			cartTotalQuantity
+		}}</span>
+		<svg viewBox="0 0 58 58" fill="none" v-else>
 			<path
 				fill-rule="evenodd"
 				clip-rule="evenodd"
@@ -17,9 +11,31 @@
 				fill="#F24942"
 			/>
 		</svg>
-		<span class="products-count">
-			{{ cartProducts.length }}
+		<span class="products-count" v-if="!isCartModalOpened">
+			{{ cartTotalQuantity }}
 		</span>
+		<svg
+			width="28"
+			height="28"
+			viewBox="0 0 28 28"
+			v-if="isCartModalOpened"
+			class="tip-decoration"
+		>
+			<circle
+				cx="14"
+				cy="14"
+				r="14"
+				transform="matrix(-1 0 0 1 28 0)"
+				fill="#0F0F10"
+			/>
+			<path
+				d="M22 9L11 20L6 15"
+				stroke="#F24942"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+		</svg>
 	</button>
 </template>
 
@@ -30,7 +46,7 @@ const props = defineProps<{
 	isActive: boolean;
 }>();
 
-const { cartProducts } = useCart();
+const { isCartModalOpened, cartTotalQuantity } = useCart();
 </script>
 
 <style scoped lang="scss">
@@ -40,18 +56,10 @@ const { cartProducts } = useCart();
 	height: 56px;
 	line-height: 1;
 	position: relative;
+	border: 1px solid #ff5c55;
+	border-radius: 50%;
 	&:hover {
-		circle {
-			fill: rgba($color: #f24942, $alpha: 0.1) !important;
-		}
-	}
-	&.active {
-		circle {
-			fill: #f24942 !important;
-		}
-		path {
-			fill: #fff !important;
-		}
+		background: rgba($color: #f24942, $alpha: 0.1);
 	}
 	@media (max-width: $small-desktop-width) {
 		width: 44px;
@@ -74,14 +82,22 @@ svg {
 	height: 20px;
 	border-radius: 50%;
 	z-index: 1;
-	bottom: 0;
-	right: 0;
+	bottom: -3px;
+	right: -3px;
 	background: #f24942;
-	color: #fff;
+	color: #000;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	line-height: 0;
-	font-size: 12px;
+	font-size: 10px;
+}
+
+.tip-decoration {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	bottom: -6px;
+	right: -3px;
 }
 </style>

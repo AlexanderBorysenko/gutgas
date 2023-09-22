@@ -1,32 +1,5 @@
 <template>
-	<title>{{ _t(page.seo_entity.title ?? page.title) }}</title>
-	<link
-		rel="canonical"
-		:href="
-			route('seo-entity', [usePage().props.locale, page.seo_entity.slug])
-		"
-	/>
-	<meta name="description" :content="_t(page.seo_entity.description ?? '')" />
-	<meta
-		property="og:title"
-		:content="_t(page.seo_entity.title ?? page.title)"
-	/>
-	<meta
-		property="og:description"
-		:content="_t(page.seo_entity.description ?? '')"
-	/>
-	<meta property="og:type" content="website" />
-	<meta
-		property="og:url"
-		:content="
-			route('seo-entity', [usePage().props.locale, page.seo_entity.slug])
-		"
-	/>
-	<meta
-		v-if="page.seo_entity.og_image"
-		property="og:image"
-		:content="page.seo_entity.og_image"
-	/>
+	<SeoEntityMetaFields :seo-entity="page.seo_entity" />
 	<WebsitePage>
 		<HomeHero
 			:title="getMeta(page.meta, 'heroTitle')"
@@ -103,6 +76,7 @@ import AdvantagesSection from '@/Components/AdvantagesSection.vue';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import ProductsCatalog from '@/Components/ProductsCatalog.vue';
 import { usePage } from '@inertiajs/vue3';
+import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 
 const props = defineProps<{
 	page: TPage;

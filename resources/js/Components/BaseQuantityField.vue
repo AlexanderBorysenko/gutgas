@@ -87,8 +87,19 @@ const emit = defineEmits({
 	border: 1px solid rgba(149, 149, 150, 0.24);
 	line-height: 0;
 	transition: border 0.2s ease-in-out, opacity 0.2s ease-in-out;
+	path {
+		transition: 0.3s;
+	}
 	&:hover {
-		border: 1px solid rgba(149, 149, 150, 0.5);
+		border: 1px solid #f24942;
+		background: rgba($color: #f24942, $alpha: 0.14);
+		path {
+			fill: #f24942;
+			stroke: #f24942;
+		}
+	}
+	&:active {
+		border: 1px solid rgba($color: #f24942, $alpha: 0.32);
 	}
 	&:disabled {
 		border: 1px solid rgba(149, 149, 150, 0.24);

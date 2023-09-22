@@ -1,56 +1,60 @@
 <template>
 	<div class="cart-popup" :class="{ empty: !cartProducts.length }">
-		<template v-if="cartProducts.length">
-			<div class="f-row justify-between align-end mb-20">
-				<h5 class="fs-h5">{{ __('cart') }}</h5>
-				<span class="fs-small"
-					>{{ cartProducts.length }} {{ __('products') }}</span
-				>
-			</div>
-			<CartProductsList class="products-list">
-				<TransitionGroup name="card-fade">
-					<ProductCartCard
-						v-for="product in cartProducts"
-						:key="product.id"
-						:product="product"
-					/>
-				</TransitionGroup>
-			</CartProductsList>
-			<div class="footer mt-24">
-				<div class="">
-					<small class="total-title fs-small">{{
-						__('total')
-					}}</small>
-					<p class="fs-medium">
-						<span class="total-ammount"> {{ cartTotal }} </span>
-						<small class="total-currency">грн</small>
-					</p>
-					<button
-						class="lh-100 underline color-danger fs-small mt-12"
-						@click="emit('close')"
+		<div class="inner">
+			<template v-if="cartProducts.length">
+				<div class="f-row justify-between align-end mb-20">
+					<h5 class="fs-h5">{{ __('cart') }}</h5>
+					<span class="fs-small"
+						>{{ cartProducts.length }} {{ __('products') }}</span
 					>
-						{{ __('continueShopping') }}
-					</button>
 				</div>
-				<BaseButton
-					@click="
-						router.get(route('checkout', usePage().props.locale))
-					"
-					class="checkout-button"
+				<CartProductsList class="products-list">
+					<TransitionGroup name="card-fade">
+						<ProductCartCard
+							v-for="product in cartProducts"
+							:key="product.id"
+							:product="product"
+						/>
+					</TransitionGroup>
+				</CartProductsList>
+				<div class="footer mt-24">
+					<div class="">
+						<small class="total-title fs-small">{{
+							__('total')
+						}}</small>
+						<p class="fs-medium">
+							<span class="total-ammount"> {{ cartTotal }} </span>
+							<small class="total-currency">грн</small>
+						</p>
+						<button
+							class="lh-100 underline color-danger fs-small mt-12"
+							@click="emit('close')"
+						>
+							{{ __('continueShopping') }}
+						</button>
+					</div>
+					<BaseButton
+						@click="
+							router.get(
+								route('checkout', usePage().props.locale)
+							)
+						"
+						class="checkout-button"
+					>
+						{{ __('toCheckout') }}
+					</BaseButton>
+				</div>
+			</template>
+			<template v-else>
+				<h2 class="fs-h5">{{ __('yourCartIsEmpty') }}</h2>
+				<button
+					class="lh-100 underline color-danger fs-small mt-12"
+					@click="emit('close')"
 				>
-					{{ __('toCheckout') }}
-				</BaseButton>
-			</div>
-		</template>
-		<template v-else>
-			<h2 class="fs-h5">{{ __('yourCartIsEmpty') }}</h2>
-			<button
-				class="lh-100 underline color-danger fs-small mt-12"
-				@click="emit('close')"
-			>
-				{{ __('continueShopping') }}
-			</button>
-		</template>
+					{{ __('continueShopping') }}
+				</button>
+			</template>
+		</div>
 	</div>
 </template>
 
@@ -84,9 +88,14 @@ const emit = defineEmits({
 		border-radius: 8px;
 		text-align: center;
 	}
+	.inner {
+		position: relative;
+		z-index: 11;
+	}
+	z-index: 10;
 }
 .products-list {
-	max-height: 292px;
+	max-height: 295px;
 	overflow-y: auto;
 	padding-right: 4px;
 	position: relative;

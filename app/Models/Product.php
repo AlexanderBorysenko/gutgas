@@ -111,12 +111,21 @@ class Product extends Model
 
     public function generateStructuredData()
     {
+        $attributes = $this->attributes()->get();
+        $attributesForStructuredData = [];
+        foreach ($attributes as $attribute) {
+            $attributesForStructuredData[] = [
+                'name' => $attribute->attributeGroup->name,
+                'value' => $attribute->name
+            ];
+        }
+
         return [
             "@context" => "https://schema.org/",
             "@type" => "Product",
             "name" => $this->name,
             "image" => [
-                $this->mediaFile->thumbnail->url
+                url($this->mediaFile->thumbnail->url)
             ],
             "description" => $this->description,
             "sku" => $this->sku,
@@ -135,13 +144,12 @@ class Product extends Model
                     "https://schema.org/OutOfStock",
             ],
             "additionalProperty" => array_map(function ($attribute) {
-                dd($this);
                 return [
                     "@type" => "PropertyValue",
-                    "name" => $attribute->attributeGroup()->name,
-                    "value" => $attribute->name
+                    "name" => $attribute['name'],
+                    "value" => $attribute['value']
                 ];
-            }, $this->attributes)
+            }, $attributesForStructuredData)
         ];
     }
 }

@@ -1,37 +1,13 @@
 <template>
-	<title>{{ _t(page.seo_entity.title ?? page.title) }}</title>
-	<link
-		rel="canonical"
-		:href="
-			route('seo-entity', [usePage().props.locale, page.seo_entity.slug])
-		"
-	/>
-	<meta name="description" :content="_t(page.seo_entity.description ?? '')" />
-	<meta
-		property="og:title"
-		:content="_t(page.seo_entity.title ?? page.title)"
-	/>
-	<meta
-		property="og:description"
-		:content="_t(page.seo_entity.description ?? '')"
-	/>
-	<meta property="og:type" content="website" />
-	<meta
-		property="og:url"
-		:content="
-			route('seo-entity', [usePage().props.locale, page.seo_entity.slug])
-		"
-	/>
-	<meta
-		v-if="page.seo_entity.og_image"
-		property="og:image"
-		:content="page.seo_entity.og_image"
-	/>
+	<Head>
+		<SeoEntityMetaFields :seo-entity="page.seo_entity" />
+	</Head>
 	<WebsitePage>
 		<PageHeadSpacer class="mb-60" />
+		<BaseBreadcrumbs class="mb-48" />
 		<div class="container mb-72">
-			<div class="g-layout content-layout">
-				<div class="g-col-6 g-large-mobile-col-12">
+			<div class="g-layout-12 content-layout">
+				<div class="g-col-6 g-tablet-col-12 gap-0">
 					<div
 						class="typography-content fs-typography-content lh-210 color-typography-secondary"
 						ref="contentRef"
@@ -39,7 +15,7 @@
 						<div v-html="_t(page.content)" />
 					</div>
 				</div>
-				<div class="g-col-6">
+				<div class="g-col-6 g-tablet-col-12">
 					<ProductGallerySlider :images="images" class="mb-48" />
 				</div>
 			</div>
@@ -67,7 +43,9 @@ import { ref } from 'vue';
 import ContactUsSection from '@/Components/ContactUsSection.vue';
 import AdvantagesSection from '@/Components/AdvantagesSection.vue';
 import { IMediaFile } from '@/types/IMediaFile';
-import { usePage } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
+import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
+import BaseBreadcrumbs from '@/Components/BaseBreadcrumbs.vue';
 
 const props = defineProps<{
 	page: TPage;
@@ -87,5 +65,8 @@ const { _t } = useTranslations();
 <style scoped lang="scss">
 .content-layout {
 	gap: 4rem;
+	@media (max-width: 1200px) {
+		gap: 0;
+	}
 }
 </style>
