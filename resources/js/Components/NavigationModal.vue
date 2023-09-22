@@ -17,7 +17,6 @@ import useNavigationModal from '@/composables/navigationModal';
 import BaseModal from '@/Components/BaseModal.vue';
 import NavigationModalFooter from '@/Components/NavigationModalFooter.vue';
 import NavigationModalHead from '@/Components/NavigationModalHead.vue';
-import NavigationModalMenu from '@/Components/NavigationModalMenu.vue';
 
 const { isNavigationModalOpened, toggleNavigationModal } = useNavigationModal();
 </script>
