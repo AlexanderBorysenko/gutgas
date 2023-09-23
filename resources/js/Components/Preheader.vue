@@ -29,6 +29,12 @@ onMounted(() => {
 	window.addEventListener('scroll', () => {
 		visible.value = window.scrollY === 0;
 	});
+
+	setTimeout(() => {
+		if (topRef.value) {
+			topRef.value.style.transition = 'height 0.2s ease-in-out';
+		}
+	}, 500);
 });
 
 defineExpose({ innerRef });
@@ -37,7 +43,6 @@ defineExpose({ innerRef });
 <style scoped lang="scss">
 @import '@/styles/variables.scss';
 .preheader {
-	transition: height 0.2s ease-in-out;
 	overflow: hidden;
 	@media (max-width: $tablet-width) {
 		display: none;

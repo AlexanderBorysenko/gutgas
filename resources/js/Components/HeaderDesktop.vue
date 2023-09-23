@@ -72,11 +72,9 @@ const { isCartModalOpened } = useCart();
 }
 .desktop-header {
 	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-	&.scrolled {
-		background-color: rgba(15, 15, 16, 0.8);
-		backdrop-filter: blur(5px);
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-	}
+	background-color: rgba(15, 15, 16, 0.8);
+	backdrop-filter: blur(5px);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 	@media (max-width: $tablet-width) {
 		display: none;
 	}
