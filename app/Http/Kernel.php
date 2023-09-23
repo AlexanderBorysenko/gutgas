@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\LocaleMiddleware;
 use App\Http\Middleware\SessionLocaleHandler;
 use App\Http\Middleware\SetLocaleMiddleware;
+use App\Http\Middleware\ShareSeoEntityBreadcrumbs;
 use App\Http\Middleware\UrlLocaleHandler;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Spatie\Permission\Middlewares\PermissionMiddleware;
@@ -80,6 +81,7 @@ class Kernel extends HttpKernel
         'role_or_permission' => RoleOrPermissionMiddleware::class,
 
         'urlLocaleHandler' => UrlLocaleHandler::class,
-        'sessionLocaleHandler' => SessionLocaleHandler::class
+        'sessionLocaleHandler' => SessionLocaleHandler::class,
+        'shareSeoEntityBreadcrumbs' => ShareSeoEntityBreadcrumbs::class
     ];
 }

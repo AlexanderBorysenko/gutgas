@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="google-site-verification" content="Ul9Uz2ZUtv3wLZlr4YFWO_jKwt8MtdyluHt1vQimpqI">
 
     @if (Request::is('admin*'))
         @php($__inertiaSsrDispatched = true)

@@ -22,7 +22,7 @@ require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/ajax.php';
 
-Route::prefix('{locale?}')->middleware(['urlLocaleHandler'])->group(function () {
+Route::prefix('{locale?}')->middleware(['urlLocaleHandler', 'shareSeoEntityBreadcrumbs'])->group(function () {
     Route::get('/checkout', CheckoutController::class)->name('checkout');
 
     Route::post('/mail/consultation', [MailController::class, 'consultationMail'])->name('consultationMail');
