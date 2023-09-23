@@ -24,7 +24,7 @@ class OrderController extends Controller
         $orders = Order::orderBy('created_at', 'desc')
             ->orderBy('id', 'desc')
             ->where('compleated', $show_compleated)
-            ->where('name', 'LIKE', "%{$search}%")
+            ->where('client_name', 'LIKE', "%{$search}%")
             ->orWhere('id', $search);
 
         return Inertia::render('Admin/Order/Index', [

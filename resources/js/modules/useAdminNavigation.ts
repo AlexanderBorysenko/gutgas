@@ -93,7 +93,7 @@ export default function useAdminSidebarNavigation() {
 		},
 		// global settings
 		{
-			title: 'Глобальні Ініціативи',
+			title: 'Глобальні Налаштування',
 			icon: 'bi-gear',
 			link: route('admin.globalSettings.index'),
 			permited: hasPermissions('admin.globalSettings.index'),
