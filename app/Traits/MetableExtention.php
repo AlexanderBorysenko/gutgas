@@ -16,8 +16,8 @@ trait MetableExtention
     public function setMetaFromRequest(Request $request)
     {
         $request->validate([
-            'meta' => 'array|required',
-            'translatableMetaKeys' => 'array|required',
+            'meta' => 'array',
+            'translatableMetaKeys' => 'array',
         ]);
         $locale = app()->getLocale();
 

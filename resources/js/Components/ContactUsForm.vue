@@ -1,6 +1,6 @@
 <template>
 	<form class="contact-us-form" @submit.prevent="onSubmit">
-		<div class="pv-48">
+		<div class="">
 			<BaseFormInput
 				v-model="form.name"
 				:placeholder="__('formName')"
@@ -32,9 +32,11 @@
 				:placeholder="__('formQuestion')"
 			/>
 		</div>
-		<BaseButton :disabled="form.processing" class="submit fs-medium">{{
-			__('formSend')
-		}}</BaseButton>
+		<BaseButton
+			:disabled="form.processing"
+			class="submit fs-medium mt-16"
+			>{{ __('formSend') }}</BaseButton
+		>
 		<small class="policy-message fs-semi-small mt-12">
 			{{ __('formAgree') }} <a href="#">{{ __('formAgreeLink') }}</a>
 		</small>

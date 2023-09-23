@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Pages\ContactsPageController;
 use App\Http\Controllers\Pages\HomePageController;
 use App\Http\Controllers\Pages\ProductsCatalogPageController;
 use App\Http\Controllers\Pages\SimplePageController;
@@ -26,6 +27,7 @@ class Page extends Model
         'HomePage' => HomePageController::class,
         'ProductsCatalogPage' => ProductsCatalogPageController::class,
         'PageWithSidebarSlider' => PageWithSidebarSliderController::class,
+        'ContactsPage' => ContactsPageController::class,
     ];
 
     public $translatable = ['title', 'content'];

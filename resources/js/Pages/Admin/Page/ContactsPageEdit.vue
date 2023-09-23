@@ -49,7 +49,6 @@ import { TPage, TPageForm } from '@/types/TPage';
 import { useForm } from '@inertiajs/vue3';
 import FormFieldWrapper from '@/AdminComponents/FormFieldWrapper.vue';
 import FormError from '@/AdminComponents/FormError.vue';
-
 import TextContentEditor from '@/AdminComponents/TextContentEditor.vue';
 import { useSaveShortcut } from '@/modules/useSaveShortcut';
 
@@ -69,6 +68,7 @@ const pageForm = useForm<TPageForm>({
 });
 
 const onFormSubmit = () => {
+	console.log(pageForm);
 	pageForm.clearErrors();
 	pageForm.put(route('admin.page.update', props.page.id), {
 		preserveScroll: true,

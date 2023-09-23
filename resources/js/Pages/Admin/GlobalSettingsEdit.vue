@@ -60,6 +60,14 @@
 								v-model="form.globalSettings.telegram"
 							/>
 						</FormFieldWrapper>
+						<FormFieldWrapper
+							class="mb-3"
+							label="Контактна Інформація"
+						>
+							<ContactsEditBlock
+								v-model="form.globalSettings.contactItems"
+							/>
+						</FormFieldWrapper>
 					</template>
 				</KeepAlive>
 				<KeepAlive>
@@ -201,10 +209,12 @@
 </template>
 
 <script setup lang="ts">
+import ContactsEditBlock from '@/AdminComponents/ContentBlocks/ContactsEditBlock.vue';
 import FooterMenuEdit from '@/AdminComponents/FooterMenuEdit.vue';
 import FormFieldWrapper from '@/AdminComponents/FormFieldWrapper.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import useMessages from '@/modules/useMessages';
+import { TContactItemProps } from '@/types/TContactItemProps';
 import { TFooterMenuSection } from '@/types/TFooterMenu';
 import { TGlobalSetting } from '@/types/TGlobalSetting';
 import { THeaderMenuItem } from '@/types/THeaderMenu';
@@ -241,6 +251,8 @@ const form = useForm({
 		facebook: getGlobalSetting('facebook') ?? '',
 		instagram: getGlobalSetting('instagram') ?? '',
 		telegram: getGlobalSetting('telegram') ?? '',
+		contactItems:
+			getGlobalSetting<TContactItemProps[]>('contactItems') ?? [],
 
 		headerMenu: getGlobalSetting<THeaderMenuItem[]>('headerMenu') ?? [],
 		footerMenu: getGlobalSetting<TFooterMenuSection[]>('footerMenu') ?? [],
@@ -253,7 +265,8 @@ const form = useForm({
 		'headerMenu',
 		'workTime',
 		'footerMenu',
-		'footerText'
+		'footerText',
+		'contactItems'
 	]
 });
 

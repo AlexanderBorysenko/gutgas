@@ -85,4 +85,7 @@ return [
 
     'shipping' => 'Shipping',
     'free' => 'Free',
+
+    'contactInfo' => 'Contact info',
+    'askAQuestion' => 'Ask a question'
 ];

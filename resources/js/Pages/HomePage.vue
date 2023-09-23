@@ -75,7 +75,6 @@ import { TProduct } from '@/types/TProduct';
 import AdvantagesSection from '@/Components/AdvantagesSection.vue';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import ProductsCatalog from '@/Components/ProductsCatalog.vue';
-import { usePage } from '@inertiajs/vue3';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 
 const props = defineProps<{

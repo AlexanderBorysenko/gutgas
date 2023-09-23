@@ -17,7 +17,7 @@
 						v-if="subtitle"
 						v-html="subtitle"
 					/>
-					<ContactUsForm />
+					<ContactUsForm class="pv-48" />
 				</div>
 				<div
 					class="g-col-4 g-tablet-col-12 g-col-end-12 g-tablet-col-end-13 socials-wrapper"
