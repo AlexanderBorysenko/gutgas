@@ -16,6 +16,18 @@ class AttributeGroup extends Model
 
     public function attributes()
     {
-        return $this->hasMany(Attribute::class)->orderByRaw('CAST(REGEXP_REPLACE(name, \'\D\', \'\', \'g\') AS DECIMAL(10,2)) DESC');
+        return $this->hasMany(Attribute::class)->orderByRaw('CAST(REPLACE(name, ",", ".") AS DECIMAL(10,2))');
+    }
+
+    public function orderedAttributes()
+    {
+        $attributes = $this->hasMany(Attribute::class)->get();
+
+        $sortedAttributes = $attributes->sortBy(function ($attribute, $key) {
+            $number = preg_replace('/\D/', '', $attribute->name);
+            return floatval($number);
+        });
+
+        return $sortedAttributes;
     }
 }
