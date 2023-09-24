@@ -30,6 +30,7 @@ const form = useForm({
 const isSubmiting = ref(false);
 const onSubmit = () => {
 	isSubmiting.value = true;
+	console.log(form);
 	form.post(route('requestCallMail'), {
 		onSuccess: () => {},
 		onError: () => {

@@ -29,7 +29,7 @@ class MailController extends Controller
     public function requestCallMail(Request $request)
     {
         $data = request()->validate([
-            'phone' => 'required|regex:/^\+38 \(0\d{2}\) \d{3}-\d{2}-\d{2}$/',
+            'phone' => 'required|min:9|max:9',
         ]);
 
         Mail::send('emails.consultation', $data, function ($message) {
