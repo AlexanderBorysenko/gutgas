@@ -2,7 +2,7 @@
 	<div class="phone-form" :class="{ disabled: isSubmiting }">
 		<p class="fs-medium mb-16">{{ __('balonInOneClick') }}</p>
 		<div class="phone-field-wrapper">
-			<PhoneField class="phone-field" v-model="value" />
+			<PhoneField class="phone-field" v-model="form.phone" />
 			<BaseButton @click="onSubmit" class="button">
 				{{ __('order') }}
 			</BaseButton>
@@ -23,26 +23,21 @@ import { useForm, usePage } from '@inertiajs/vue3';
 
 const { __ } = useTranslations();
 
-const value = ref('');
 const form = useForm({
 	phone: ''
 });
 
 const isSubmiting = ref(false);
-const errorMessage = ref('');
 const onSubmit = () => {
 	isSubmiting.value = true;
 	form.post(route('requestCallMail'), {
 		onSuccess: () => {},
 		onError: () => {
-			isSubmiting.value = true;
+			isSubmiting.value = false;
 		},
 		preserveScroll: true
 	});
 };
-watch(value, () => {
-	if (value.value.length === 9) errorMessage.value = '';
-});
 
 // const emit = defineEmits({
 // 	submit: (value: string) => true
