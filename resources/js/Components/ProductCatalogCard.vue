@@ -22,21 +22,32 @@
 			<img class="image" :src="imageUrl" :alt="_t(product.name)" />
 		</Link>
 		<div class="body">
-			<div class="default-content">
-				<h3 class="name fs-medium mb-8">{{ _t(product.name) }}</h3>
-				<p class="price">₴{{ product.price }}</p>
-			</div>
-			<div class="hover-content">
-				<p class="price mb-8">₴{{ product.price }}</p>
-				<ProductCatalogCardCartButton
-					:active="inCart"
-					@click="
-						inCart
-							? removeProductFromCart(product)
-							: addProductToCart(product)
-					"
-				/>
-			</div>
+			<template v-if="+product.stock">
+				<div class="default-content">
+					<h3 class="name fs-medium mb-8">{{ _t(product.name) }}</h3>
+					<p class="price">₴{{ product.price }}</p>
+				</div>
+				<div class="hover-content">
+					<p class="price mb-8">₴{{ product.price }}</p>
+					<ProductCatalogCardCartButton
+						:active="inCart"
+						@click="
+							inCart
+								? removeProductFromCart(product)
+								: addProductToCart(product)
+						"
+					/>
+				</div>
+			</template>
+			<template v-else>
+				<div class="ph-20 pv-20">
+					<h3 class="name fs-medium mb-8">{{ _t(product.name) }}</h3>
+					<p class="price">₴{{ product.price }}</p>
+					<p class="color-danger fs-semi-small mt-12">
+						{{ __(`outOfStock`) }}
+					</p>
+				</div>
+			</template>
 		</div>
 	</div>
 </template>
@@ -49,7 +60,7 @@ import { computed } from 'vue';
 import getMediaFileUrl from '@/modules/helpers/getMediaFileUrl';
 import { Link, usePage } from '@inertiajs/vue3';
 
-const { _t } = useTranslations();
+const { _t, __ } = useTranslations();
 
 const props = defineProps<{
 	product: TProduct;

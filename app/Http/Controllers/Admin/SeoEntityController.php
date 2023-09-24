@@ -95,6 +95,7 @@ class SeoEntityController extends Controller
     {
         $data = $request->validated();
         $seoEntity = SeoEntity::findOrFail($id);
+
         $seoEntity->update($data);
 
         return redirect()->back()->with('message', [

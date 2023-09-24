@@ -40,7 +40,7 @@ return [
     'toTop' => 'Наверх',
 
     'inStock' => 'В наявності',
-    'outOfStock' => 'Немає в наявності',
+    'outOfStock' => 'Немає у наявності',
 
     'buyInOneClick' => 'Купити в один клік',
 

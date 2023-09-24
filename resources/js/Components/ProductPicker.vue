@@ -1,16 +1,15 @@
 <template>
 	<div class="product-picker">
-		<p class="color-success fs-medium p-16 mb-8" v-if="product.stock">
+		<p class="color-success fs-medium p-16 mb-8" v-if="+product.stock">
 			{{ __(`inStock`) }}
 		</p>
-		<p
-			class="color-danger fs-medium p-16 mb-8"
-			v-else="__(`outOfStock`)"
-		></p>
-		<p class="fs-typography-content lh-160 pl-16 pr-40 mb-24">
+		<p class="color-danger fs-medium p-16 mb-8" v-else>
+			{{ __(`outOfStock`) }}
+		</p>
+		<p class="fs-typography-content lh-160 pl-16 pr-40 pb-24">
 			{{ _t(product.description) }}
 		</p>
-		<div class="ph-16 mb-16">
+		<div class="ph-16 mb-16" v-if="+product.stock">
 			<div
 				class="f- justify-between align-center price-quantity pv-12 pl-16 pr-40"
 			>
@@ -46,7 +45,7 @@
 				</template>
 			</div>
 		</div>
-		<div class="ph-40 pb-24">
+		<div class="ph-40 pb-24" v-if="+product.stock">
 			<BaseButton
 				class="pv-24 ph-44 w-100 fs-medium"
 				@click="onAddToCart"

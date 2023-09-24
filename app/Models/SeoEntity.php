@@ -14,10 +14,6 @@ class SeoEntity extends Model
 
     public $translatable = ['title', 'description', 'is_active'];
 
-    protected static function boot()
-    {
-        parent::boot();
-    }
     public function getRouteKeyName()
     {
         return 'slug';
