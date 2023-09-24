@@ -80,8 +80,8 @@ class ProductController extends Controller
 
             $product->productPage->seoEntity()->update([
                 'slug' => 'catalog/product-' . $product->id,
-                'title' => $product->name,
-                'description' => $product->description,
+                'title' => json_encode([app()->getLocale() => $product->name]),
+                'description' => json_encode([app()->getLocale() => $product->description]),
                 'og_image' => $product->mediaFile->url ?? null,
             ]);
 
