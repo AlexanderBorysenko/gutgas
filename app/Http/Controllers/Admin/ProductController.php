@@ -53,7 +53,7 @@ class ProductController extends Controller
     public function create()
     {
         return inertia('Admin/Product/Create')->with([
-            'attributes' => Attribute::all(),
+            'attributes' => Attribute::all()->orderby('sequence'),
             'categories' => Category::tree()->get(),
             'productsGroups' => ProductsGroup::all(),
             'requiredProductsGroups' => RequiredProductsGroup::all(),
@@ -114,7 +114,7 @@ class ProductController extends Controller
             'product' => $product->load('mediaFile')->load('seoEntity')->load('productsGroups')->load('requiredProductsGroups'),
             'productPage' => $product->productPage,
             'productAttributes' => $product->attributes,
-            'attributes' => Attribute::all(),
+            'attributes' => Attribute::all()->orderby('sequence'),
             'categories' => Category::tree()->get(),
             'productsGroups' => ProductsGroup::all(),
             'requiredProductsGroups' => RequiredProductsGroup::all(),
