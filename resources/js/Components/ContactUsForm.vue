@@ -59,7 +59,7 @@ const form = useForm({
 	question: ''
 });
 const onSubmit = () => {
-	form.post(route('consultationMail', usePage().props.locale), {
+	form.post(route('consultationMail'), {
 		onSuccess: () => {},
 		preserveScroll: true
 	});

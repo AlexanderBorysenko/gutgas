@@ -19,10 +19,14 @@
 import { ref, watch } from 'vue';
 import BaseButton from '@/Components/BaseButton.vue';
 import PhoneField from '@/Components/PhoneField.vue';
+import { useForm, usePage } from '@inertiajs/vue3';
 
 const { __ } = useTranslations();
 
 const value = ref('');
+const form = useForm({
+	phone: ''
+});
 
 const isSubmiting = ref(false);
 const errorMessage = ref('');
@@ -32,10 +36,10 @@ const onSubmit = () => {
 		return;
 	}
 	isSubmiting.value = true;
-	setTimeout(() => {
-		isSubmiting.value = false;
-		value.value = '';
-	}, 1000);
+	form.post(route('consultationMail'), {
+		onSuccess: () => {},
+		preserveScroll: true
+	});
 };
 watch(value, () => {
 	if (value.value.length === 9) errorMessage.value = '';
