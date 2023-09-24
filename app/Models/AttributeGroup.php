@@ -23,11 +23,16 @@ class AttributeGroup extends Model
     {
         $attributes = $this->hasMany(Attribute::class)->get();
 
-        $sortedAttributes = $attributes->sortBy(function ($attribute, $key) {
-            $number = preg_replace('/\D/', '', $attribute->name);
-            return floatval($number);
+        $sortedAttributes = $attributes->sort(function ($a, $b) {
+            $nameFromA = str_replace(',', '.', $a->name);
+            $nameFromB = str_replace(',', '.', $b->name);
+
+            $numberFromA = floatval(preg_replace('/[^0-9\.]/', '', $nameFromA));
+            $numberFromB = floatval(preg_replace('/[^0-9\.]/', '', $nameFromB));
+
+            return $numberFromA <=> $numberFromB;
         });
 
-        return $sortedAttributes;
+        return $sortedAttributes->values();
     }
 }
