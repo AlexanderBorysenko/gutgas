@@ -18,6 +18,7 @@
 	</Head>
 	<WebsitePage>
 		<PageHeadSpacer class="mb-60" />
+		<BaseBreadcrumbs class="mb-40" />
 		<section class="container mb-88">
 			<h2 class="fs-h2 mb-68">
 				{{
@@ -65,6 +66,7 @@ import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import ProductsCatalog from '@/Components/ProductsCatalog.vue';
 import { TProductsGroup } from '@/types/TProductsGroup';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
+import BaseBreadcrumbs from '@/Components/BaseBreadcrumbs.vue';
 
 const { _t, __ } = useTranslations();
 
