@@ -83,6 +83,7 @@ onMounted(() => {
 	border-radius: 32px;
 	border: 1px solid #242424;
 	box-shadow: 0px -51px 44px -26px #000;
+	backdrop-filter: blur(4px);
 	background: rgba(19, 19, 19, 0.86);
 
 	@media (max-width: $tablet-width) {

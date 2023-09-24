@@ -53,6 +53,7 @@ const counter = ref(1);
 .base-breadcrumbs {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 }
 .item {
 	color: #b73e38;

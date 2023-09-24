@@ -61,7 +61,7 @@ const isActive = ref(false);
 	border: 1px solid #242424;
 	background: rgba(19, 19, 19, 0.86);
 	box-shadow: 0px -51px 44px -26px #000;
-
+	backdrop-filter: blur(4px);
 	position: fixed;
 	z-index: 100;
 	left: 16px;
