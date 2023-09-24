@@ -107,8 +107,8 @@
 			<!-- END LAYOUT -->
 		</div>
 		<PageSeparator class="mt-72 mb-116" color="#26282B" />
-		<FaqSection v-if="faqItems" :faq-items="faqItems" class="mb-116" />
-		<AdvantagesSection v-if="advantageItems" :items="advantageItems" class="mb-116" />
+		<FaqSection v-if="faqItems?.length" :faq-items="faqItems" class="mb-116" />
+		<AdvantagesSection v-if="advantageItems?.length" :items="advantageItems" class="mb-116" />
 	</WebsitePage>
 </template>
 
