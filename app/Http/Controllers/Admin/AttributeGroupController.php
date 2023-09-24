@@ -53,7 +53,7 @@ class AttributeGroupController extends Controller
     {
         return Inertia::render('Admin/AttributeGroup/Edit', [
             'attributeGroup' => $attributeGroup->load('attributes'),
-            'attributes' => $attributeGroup->orderedAttributes,
+            'attributes' => $attributeGroup->orderedAttributes(),
         ]);
     }
 
