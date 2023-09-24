@@ -1,6 +1,6 @@
 <template>
+	<SeoEntityMetaFields :seo-entity="page.seo_entity" />
 	<Head>
-		<SeoEntityMetaFields :seo-entity="page.seo_entity" />
 		<link
 			rel="prev"
 			:href="productsCatalogData.products.prev_page_url"

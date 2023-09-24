@@ -1,6 +1,6 @@
 <template>
+	<SeoEntityMetaFields :seo-entity="productsGroup.seo_entity" />
 	<Head>
-		<SeoEntityMetaFields :seo-entity="productsGroup.seo_entity" />
 		<link
 			rel="canonical"
 			:href="baseUrl + '/' + productsGroup.seo_entity.slug"

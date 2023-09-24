@@ -1,7 +1,5 @@
 <template>
-	<Head>
-		<SeoEntityMetaFields :seo-entity="page.seo_entity" />
-	</Head>
+	<SeoEntityMetaFields :seo-entity="page.seo_entity" />
 	<WebsitePage>
 		<PageHeadSpacer class="mb-60" />
 		<BaseBreadcrumbs class="mb-40" />

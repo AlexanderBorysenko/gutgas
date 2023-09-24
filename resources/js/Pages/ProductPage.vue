@@ -1,6 +1,6 @@
 <template>
+	<SeoEntityMetaFields :seo-entity="seoEntity"/>
 	<Head>
-		<SeoEntityMetaFields :seo-entity="seoEntity"/>
 		<component :is="'script'" type="application/ld+json">
 			{{ JSON.stringify(productStructuredData) }}
     	</component>
@@ -133,7 +133,7 @@ import { getMeta } from '@/utils/getMeta';
 import { ref } from 'vue';
 import { TFaqItemProps } from '@/types/TFaqItemProps';
 import { TAdvantageCardProps } from '@/types/TAdvantageCardProps';
-import { Head, usePage } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import { TSeoEntity } from '@/types/TSeoEntity';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 
