@@ -23,6 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'sequence' => 'numeric|min:0',
             'attribute_group_id' => 'required|integer|exists:attribute_groups,id',
         ];
     }

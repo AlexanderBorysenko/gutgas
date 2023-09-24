@@ -22,6 +22,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'sequence' => 'numeric|min:0',
             'name' => ['required', 'string', 'max:255'],
         ];
     }

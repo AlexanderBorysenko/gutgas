@@ -7,6 +7,18 @@
 			</div>
 			<span v-else>{{ _t(attribute.name) }}</span>
 		</td>
+		<td>
+			<div v-if="isEdit">
+				<input
+					v-model="form.sequence"
+					class="form-control"
+					type="text"
+					placeholder="Послідовність"
+				/>
+				<FormError class="mb-0" :error="form.errors.sequence" />
+			</div>
+			<span v-else>{{ attribute.sequence }}</span>
+		</td>
 		<td class="text-right">
 			<div
 				class="btn-group"
@@ -51,7 +63,8 @@ const props = defineProps<{
 const isEdit = ref(false);
 
 const form = useForm<TAttributeForm>({
-	name: _t(props.attribute.name)
+	name: _t(props.attribute.name),
+	sequence: props.attribute.sequence
 });
 
 const submitForm = () => {

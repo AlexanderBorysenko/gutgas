@@ -85,10 +85,6 @@ const { isCartModalOpened } = useCart();
 	padding-top: 1rem;
 	padding-bottom: 1.25rem;
 	transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
-	&.scrolled {
-		// padding-top: 0.5rem;
-		// padding-bottom: calc(0.5rem + 4px);
-	}
 }
 .logo {
 	width: 200px;

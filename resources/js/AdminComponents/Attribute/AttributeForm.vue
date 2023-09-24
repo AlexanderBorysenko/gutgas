@@ -2,9 +2,15 @@
 	<div class="mb-3">
 		<label class="form-label">Значення</label>
 		<input
-			class="form-control"
+			class="form-control mb-1"
 			v-model="form.name"
 			placeholder="Значення"
+		/>
+		<FormError :error="form.errors.name" />
+		<input
+			class="form-control"
+			v-model="form.sequence"
+			placeholder="Індекс Сортування"
 		/>
 		<FormError :error="form.errors.name" />
 	</div>

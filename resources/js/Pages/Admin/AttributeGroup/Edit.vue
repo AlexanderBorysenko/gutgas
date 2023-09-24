@@ -27,7 +27,8 @@
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Назва</th>
+									<th>Значення</th>
+									<th>Послідовність</th>
 									<th class="text-right">Дії</th>
 								</tr>
 							</thead>
@@ -74,6 +75,7 @@ const onSubmitForm = () => {
 
 const attributeForm = useForm<TAttributeForm>({
 	name: '',
+	sequence: 0,
 	attribute_group_id: props.attributeGroup.id
 });
 
