@@ -1,9 +1,15 @@
 <template>
 	<AdminLayout>
-		<AttributeGroupForm :form="form" @submit="onSubmitForm" class="mb-3" />
-		<button @click="onSubmitForm" class="btn btn-success mb-1">
-			Зберегти Групу атрибутів
-		</button>
+		<div class="mb-3">
+			<AttributeGroupForm
+				:form="form"
+				@submit="onSubmitForm"
+				class="mb-3 pb-3 border-bottom"
+			/>
+			<button @click="onSubmitForm" class="btn btn-success mb-1">
+				Зберегти налаштування групи атрибутів
+			</button>
+		</div>
 		<div class="mb-3">
 			<h2>Атрибути</h2>
 			<div class="row">
