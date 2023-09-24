@@ -1,15 +1,43 @@
-@isset($name)
-    Name: {{ $name }} <br>
-@endisset
+<!DOCTYPE html>
+<html lang="en">
 
-@isset($email)
-    Email: {{ $email }} <br>
-@endisset
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
 
-@isset($phone)
-    Phone: {{ $phone }} <br>
-@endisset
+<body>
+    <table style="width:100%; border:1px solid black; border-collapse:collapse;">
+        @isset($name)
+            <tr>
+                <td style="border:1px solid black; padding:10px;">Name</td>
+                <td style="border:1px solid black; padding:10px;">{{ $name }}</td>
+            </tr>
+        @endisset
 
-@isset($question)
-    Message: {{ $question }} <br>
-@endisset
+        @isset($email)
+            <tr>
+                <td style="border:1px solid black; padding:10px;">Email</td>
+                <td style="border:1px solid black; padding:10px;">{{ $email }}</td>
+            </tr>
+        @endisset
+
+        @isset($phone)
+            <tr>
+                <td style="border:1px solid black; padding:10px;">Phone</td>
+                <td style="border:1px solid black; padding:10px;">{{ $phone }}</td>
+            </tr>
+        @endisset
+
+        @isset($question)
+            <tr>
+                <td style="border:1px solid black; padding:10px;">Message</td>
+                <td style="border:1px solid black; padding:10px;">{{ $question }}</td>
+            </tr>
+        @endisset
+    </table>
+</body>
+
+</html>

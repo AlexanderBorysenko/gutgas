@@ -8,8 +8,8 @@
 			</BaseButton>
 		</div>
 		<Transition name="appeare">
-			<p class="error-message fs-small" v-if="errorMessage">
-				{{ errorMessage }}
+			<p class="error-message fs-small" v-if="form.errors.phone">
+				{{ form.errors.phone }}
 			</p>
 		</Transition>
 	</div>
@@ -31,13 +31,12 @@ const form = useForm({
 const isSubmiting = ref(false);
 const errorMessage = ref('');
 const onSubmit = () => {
-	if (value.value.length < 9) {
-		errorMessage.value = 'Будь Ласка Заповніть Поле Повністю';
-		return;
-	}
 	isSubmiting.value = true;
-	form.post(route('consultationMail'), {
+	form.post(route('requestCallMail'), {
 		onSuccess: () => {},
+		onError: () => {
+			isSubmiting.value = true;
+		},
 		preserveScroll: true
 	});
 };

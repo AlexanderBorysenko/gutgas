@@ -25,4 +25,19 @@ class MailController extends Controller
 
         return redirect()->route('thankYou');
     }
+
+    public function requestCallMail(Request $request)
+    {
+        $data = request()->validate([
+            'phone' => 'required|regex:/^\+38 \(0\d{2}\) \d{3}-\d{2}-\d{2}$/',
+        ]);
+
+        Mail::send('emails.consultation', $data, function ($message) {
+            $message->from('sale@gutgas.eu', 'Gutgas Sale manager');
+            $message->to('cto.hacon@gmail.com');
+            $message->subject('Заявка на дзвінок');
+        });
+
+        return redirect()->route('thankYou');
+    }
 }
