@@ -4,9 +4,6 @@
 		<input class="form-control" v-model="form.name" placeholder="Назва" />
 		<FormError :error="form.errors.name" />
 	</div>
-	<button type="submit" class="btn btn-primary" @click="emit('submit')">
-		Зберегти
-	</button>
 </template>
 
 <script setup lang="ts">
@@ -17,10 +14,6 @@ import { TAttributeForm } from '@/types/TAttribute';
 const props = defineProps<{
 	form: InertiaForm<TAttributeForm>;
 }>();
-
-const emit = defineEmits({
-	submit: () => true
-});
 </script>
 
 <style scoped></style>

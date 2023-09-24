@@ -30,10 +30,6 @@ import FormError from '../FormError.vue';
 const props = defineProps<{
 	form: InertiaForm<TAttributeGroupForm>;
 }>();
-
-const emit = defineEmits({
-	submit: () => true
-});
 </script>
 
 <style scoped></style>

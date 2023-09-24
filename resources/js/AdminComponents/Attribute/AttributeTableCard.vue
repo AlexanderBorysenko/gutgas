@@ -17,7 +17,7 @@
 					@click="submitForm"
 					class="btn btn-success"
 				>
-					Save
+					Зберегти
 				</button>
 				<button class="btn btn-primary" @click="isEdit = !isEdit">
 					{{ isEdit ? 'Discard Changes' : 'Edit' }}
