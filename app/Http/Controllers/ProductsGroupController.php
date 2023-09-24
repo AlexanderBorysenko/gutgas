@@ -43,6 +43,7 @@ class ProductsGroupController extends Controller
     {
         $productsGroup = ProductsGroup::create($request->validated());
 
+        $productsGroup->setMetaFromRequest($request);
         return redirect()->route('admin.productsGroup.edit', $productsGroup->id);
     }
 
