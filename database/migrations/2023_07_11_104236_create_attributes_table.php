@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('attribute_group_id')->constrained('attribute_groups')->onDelete('cascade');
             $table->json('name');
+            $table->decimal('sequence', 8, 2)->nullable();
         });
     }
 
