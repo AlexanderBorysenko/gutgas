@@ -17,11 +17,11 @@ class MailController extends Controller
             'question' => 'nullable|string'
         ]);
 
-        // Mail::send('emails.consultation', $data, function ($message) {
-        //     $message->from('no-ryply@gutgas.com', 'Gutgas Mail Manager');
-        //     $message->to('gutgas-orders@gutgas.com');
-        //     $message->subject('Заявка на консультацію');
-        // });
+        Mail::send('emails.consultation', $data, function ($message) {
+            $message->from('sale@gutgas.eu', 'Gutgas Sale manager');
+            $message->to('cto.hacon@gmail.com');
+            $message->subject('Заявка на консультацію');
+        });
 
         return redirect()->route('thankYou');
     }
