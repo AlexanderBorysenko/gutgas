@@ -28,7 +28,7 @@
 							<thead>
 								<tr>
 									<th>Значення</th>
-									<th>Послідовність</th>
+									<th>Значення Для Сортування</th>
 									<th class="text-right">Дії</th>
 								</tr>
 							</thead>

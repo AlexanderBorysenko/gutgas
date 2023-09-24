@@ -13,7 +13,7 @@
 					v-model="form.sequence"
 					class="form-control"
 					type="text"
-					placeholder="Послідовність"
+					placeholder="Значення Для Сортування"
 				/>
 				<FormError class="mb-0" :error="form.errors.sequence" />
 			</div>
@@ -32,7 +32,7 @@
 					Зберегти
 				</button>
 				<button class="btn btn-primary" @click="isEdit = !isEdit">
-					{{ isEdit ? 'Discard Changes' : 'Edit' }}
+					{{ isEdit ? 'Скасувати Редагування' : 'Редагувати' }}
 				</button>
 				<Link
 					class="btn btn-danger"

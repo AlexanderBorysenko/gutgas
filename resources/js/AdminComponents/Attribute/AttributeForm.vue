@@ -7,6 +7,7 @@
 			placeholder="Значення"
 		/>
 		<FormError :error="form.errors.name" />
+		<label class="form-label">Значення для сортування</label>
 		<input
 			class="form-control"
 			v-model="form.sequence"
