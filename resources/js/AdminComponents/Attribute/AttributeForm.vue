@@ -1,7 +1,11 @@
 <template>
 	<div class="mb-3">
-		<label class="form-label">Назва</label>
-		<input class="form-control" v-model="form.name" placeholder="Назва" />
+		<label class="form-label">Значення</label>
+		<input
+			class="form-control"
+			v-model="form.name"
+			placeholder="Значення"
+		/>
 		<FormError :error="form.errors.name" />
 	</div>
 </template>

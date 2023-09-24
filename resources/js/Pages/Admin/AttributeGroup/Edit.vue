@@ -1,10 +1,10 @@
 <template>
 	<AdminLayout>
-		<div class="mb-3">
+		<div class="mb-3 pb-3 border-bottom">
 			<AttributeGroupForm
 				:form="form"
 				@submit="onSubmitForm"
-				class="mb-3 pb-3 border-bottom"
+				class="mb-3"
 			/>
 			<button @click="onSubmitForm" class="btn btn-success mb-1">
 				Зберегти налаштування групи атрибутів
