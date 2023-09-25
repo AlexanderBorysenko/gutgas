@@ -68,21 +68,22 @@
 								</p>
 							</div>
 						</BaseTab>
-						<BaseTab
-							name="docs"
-							label="Документація"
-							class="pt-40"
-							v-if="productPage.documentations.length"
-							:active="true"
-						>
-							<div class="documentation">
-								<AttachedFileCard
-									v-for="documentation in productPage.documentations"
-									:key="documentation.id"
-									:file="documentation"
-								/>
-							</div>
-						</BaseTab>
+						<template v-if="productPage.documentations.length">
+							<BaseTab
+								name="docs"
+								label="Документація"
+								class="pt-40"
+								:active="true"
+							>
+								<div class="documentation">
+									<AttachedFileCard
+										v-for="documentation in productPage.documentations"
+										:key="documentation.id"
+										:file="documentation"
+									/>
+								</div>
+							</BaseTab>
+						</template>
 					</BaseTabs>
 				</main>
 				<!-- END MAIN -->
