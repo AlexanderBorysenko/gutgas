@@ -34,13 +34,16 @@ const props = defineProps<{
 }>();
 
 const tabs =
-	slots.default?.().map((slot, index) => {
-		return {
-			name: slot.props?.name || index,
-			label: slot.props?.label || index,
-			icon: slot.props?.icon ? getImageUrl(slot.props.icon) : null
-		};
-	}) || [];
+	slots
+		.default?.()
+		.filter(slot => slot.props?.name)
+		.map((slot, index) => {
+			return {
+				name: slot.props?.name,
+				label: slot.props?.label || index,
+				icon: slot.props?.icon ? getImageUrl(slot.props.icon) : null
+			};
+		}) || [];
 
 const activeTabName = ref(tabs[0].name);
 provide('activeTabName', activeTabName);
