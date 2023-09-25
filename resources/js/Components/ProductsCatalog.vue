@@ -130,10 +130,10 @@ watch(
 			productsCatalogLayoutRef.value &&
 			window.matchMedia('(min-width: 1024px)').matches
 		) {
-			window.scrollTo({
-				top: productsCatalogLayoutRef.value.offsetTop - 130,
-				behavior: 'smooth'
-			});
+			// window.scrollTo({
+			// 	top: productsCatalogLayoutRef.value.offsetTop - 130,
+			// 	behavior: 'smooth'
+			// });
 		}
 		filterForm.get(
 			route('seo-entity', [usePage().props.locale, props.catalogSlug]),
@@ -144,7 +144,6 @@ watch(
 				},
 				onSuccess: () => {
 					displayMode.value = 'catalogFull';
-					console.log(displayMode.value);
 				},
 				preserveScroll: true
 			}
