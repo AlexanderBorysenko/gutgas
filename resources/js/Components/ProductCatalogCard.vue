@@ -123,10 +123,9 @@ const inCart = computed(() => isInCart(props.product));
 	}
 }
 .image {
-	width: 100%;
-	max-width: 215px;
-	height: 100%;
-	object-fit: contain;
+	max-height: 100%;
+	height: min-content;
+	width: auto;
 	opacity: 0.7;
 	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 	position: relative;
