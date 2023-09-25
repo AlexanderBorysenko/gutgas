@@ -66,9 +66,7 @@
 					:max="priceMax"
 					:step="1"
 					:modelValue="priceRange"
-					@update:modelValue="
-						newRange => emit('price-range-change', newRange)
-					"
+					@update:modelValue="onPriceRangeChange"
 				/>
 			</div>
 			<div class="section" v-for="attrbiuteGroup in attrbiuteGroups">
@@ -162,6 +160,11 @@ const onOptionCheck = (option: TAttribute) => {
 		newModelValue.splice(index, 1);
 		emit('attributes-select', newModelValue);
 	}
+};
+
+const onPriceRangeChange = (newRange: { from: number; to: number }) => {
+	emit('price-range-change', newRange);
+	saveScroll();
 };
 
 const isMobileOpened = ref(
