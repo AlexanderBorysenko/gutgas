@@ -49,7 +49,7 @@
 				{{ __('filters') }}
 			</button>
 		</div>
-		<div class="body">
+		<div class="body" ref="scrollContainer">
 			<div class="section" v-if="priceRange && priceMin && priceMax">
 				<div class="f- mb-20 justify-between align-center">
 					<p class="fs-semi-large">{{ __('price') }}</p>
@@ -107,8 +107,30 @@ import { TAttributeGroup } from '@/types/TAttributeGroup';
 import { TAttribute } from '@/types/TAttribute';
 import { ref } from 'vue';
 import { watch } from 'vue';
+import { onMounted } from 'vue';
 
 const { __, _t } = useTranslations();
+
+const scrollContainer = ref<null | HTMLElement>(null);
+const saveScroll = () => {
+	if (scrollContainer.value)
+		localStorage.setItem(
+			'scrollPosition',
+			`${scrollContainer.value.scrollTop}`
+		);
+};
+
+const restoreScroll = () => {
+	const restoredValue = hasWindow()
+		? localStorage.getItem('scrollPosition')
+		: 0;
+	if (scrollContainer.value && restoredValue !== null)
+		scrollContainer.value.scrollTop = hasWindow() ? +restoredValue : 0;
+};
+
+onMounted(() => {
+	restoreScroll();
+});
 
 const props = defineProps<{
 	attrbiuteGroups: TAttributeGroup[];
@@ -129,6 +151,10 @@ const resetFilters = () => {
 const onOptionCheck = (option: TAttribute) => {
 	const modelValue = props.selectedAttributes;
 	const index = modelValue.findIndex(item => item === option.id);
+
+	// save scroll on component update
+	saveScroll();
+
 	if (index === -1) {
 		emit('attributes-select', [...modelValue, option.id]);
 	} else {
