@@ -72,6 +72,7 @@
 							name="docs"
 							label="Документація"
 							class="pt-40"
+							v-if="productPage.documentations.length"
 							:active="true"
 						>
 							<div class="documentation">
