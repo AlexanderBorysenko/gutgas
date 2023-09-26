@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\AttributeGroup;
 use App\Models\Product;
+use App\Models\ProductFilter;
 use App\Models\ProductsGroup;
 use Illuminate\Http\Request;
 
@@ -18,13 +19,11 @@ class ProductService
             $products->whereBetween('price', [$priceRange['from'], $priceRange['to']]);
         }
 
-        $attributes = $request->query('attributes');
-        if (!empty($attributes)) {
-            foreach ($attributes as $key => $attribute) {
-                $products->whereHas('attributes', function ($query) use ($attribute) {
-                    $query->where('attributes.id', $attribute);
-                });
-            }
+        $productFilterValues = $request->query('selectedProductFilterValues');
+        if (!empty($productFilterValues)) {
+            $products->whereHas('productFilterValues', function ($query) use ($productFilterValues) {
+                $query->whereIn('product_filter_value_id', $productFilterValues);
+            })->get();
         }
 
         $productsGroup = $request->query('productsGroup');
@@ -42,8 +41,6 @@ class ProductService
         if (!$productsQuery) $productsQuery = $this->productsCatalogQuery($request);
 
 
-        $availableAttributes = AttributeGroup::with('attributes')->where('use_in_filters', '=', true)->get();
-
         $priceMin = Product::min('price');
         $priceMax = Product::max('price');
 
@@ -55,15 +52,17 @@ class ProductService
                 'to' => +$priceMax,
             ],
             'products' => $productsQuery->paginate(9),
+
+            'productFilters' => ProductFilter::orderBy('sequence')->get(),
+            'selectedProductFilterValues' => $request->query('selectedProductFilterValues') ?? [],
+
             'productsGroup' => $request->query('productsGroup') ?? null,
-            'attributeGroups' => $availableAttributes,
             'productsGroups' => ProductsGroup::all()->where('is_active', '=', 1),
-            'appliedAttributes' => $request->query('attributes') ?? [],
             'totalProductsCount' => Product::count(),
         ];
     }
 
-    public function extractProductRequiredData(Request $request)
+    public function extractProductFieldsData(Request $request)
     {
         $productData = $request->only([
             'category_id',

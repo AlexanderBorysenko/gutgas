@@ -58,7 +58,6 @@ const props = defineProps<{
 	products: IPaginated<TProduct>;
 }>();
 const { products } = toRefs(props);
-const { hasPermissions } = useAuth();
 
 const selectedProducts = ref<TProduct[]>([]);
 const clearSelection = () => {

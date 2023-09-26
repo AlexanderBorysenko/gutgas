@@ -77,11 +77,18 @@ export default function useAdminSidebarNavigation() {
 		},
 		// attribute groups
 		{
-			title: 'Групи Фільтрації',
+			title: 'Групи Атрибутів',
 			icon: 'bi-funnel',
 			link: route('admin.attributeGroup.index'),
 			permited: hasPermissions('admin.attributeGroup.index'),
 			active: checkIsActive(route('admin.attributeGroup.index'))
+		},
+		{
+			title: 'Фільтри',
+			icon: 'bi-funnel',
+			link: route('admin.productFilter.index'),
+			permited: hasPermissions('admin.productFilter.index'),
+			active: checkIsActive(route('admin.productFilter.index'))
 		},
 		// requiredProductsGroup
 		{

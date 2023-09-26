@@ -64,6 +64,14 @@ class StoreRequest extends FormRequest
                 'integer',
                 'exists:attributes,id',
             ],
+            'product_filter_values' => [
+                'nullable',
+                'array',
+            ],
+            'product_filter_values.*' => [
+                'integer',
+                'exists:product_filter_values,id',
+            ],
             'media_file' => [
                 'nullable',
                 'array',

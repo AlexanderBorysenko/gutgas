@@ -69,19 +69,19 @@
 					@update:modelValue="onPriceRangeChange"
 				/>
 			</div>
-			<div class="section" v-for="attrbiuteGroup in attrbiuteGroups">
-				<p class="fs-semi-large mb-16">{{ _t(attrbiuteGroup.name) }}</p>
+			<div class="section" v-for="productFitler in productFilters">
+				<p class="fs-semi-large mb-16">{{ _t(productFitler.name) }}</p>
 				<BaseCheckboxField
-					v-for="option in attrbiuteGroup.attributes"
-					:key="option.id"
-					:label="_t(option.name)"
-					:name="`${option.id}`"
+					v-for="value in productFitler.product_filter_values"
+					:key="value.id"
+					:label="_t(value.value)"
+					:name="`${value.id}`"
 					:checked="
-						selectedAttributes.findIndex(
-							item => item === option.id
+						selectedProductFilterValues.findIndex(
+							item => item === value.id
 						) !== -1
 					"
-					@check="onOptionCheck(option)"
+					@check="onOptionCheck(value)"
 					class="checkbox-field"
 				/>
 			</div>
@@ -106,8 +106,21 @@ import { TAttribute } from '@/types/TAttribute';
 import { ref } from 'vue';
 import { watch } from 'vue';
 import { onMounted } from 'vue';
+import { TProductFilter } from '@/types/TProductFilter';
+import { TProductFilterValue } from '@/types/TProductFilterValue';
 
 const { __, _t } = useTranslations();
+
+const props = defineProps<{
+	productFilters: TProductFilter[];
+	selectedProductFilterValues: number[];
+	priceMin: number;
+	priceMax: number;
+	priceRange?: {
+		from: number;
+		to: number;
+	};
+}>();
 
 const scrollContainer = ref<null | HTMLElement>(null);
 const saveScroll = () => {
@@ -130,24 +143,13 @@ onMounted(() => {
 	restoreScroll();
 });
 
-const props = defineProps<{
-	attrbiuteGroups: TAttributeGroup[];
-	selectedAttributes: number[];
-	priceMin: number;
-	priceMax: number;
-	priceRange?: {
-		from: number;
-		to: number;
-	};
-}>();
-
 const resetFilters = () => {
 	emit('attributes-select', []);
 	emit('price-range-change', { from: props.priceMin, to: props.priceMax });
 };
 
-const onOptionCheck = (option: TAttribute) => {
-	const modelValue = props.selectedAttributes;
+const onOptionCheck = (option: TProductFilterValue) => {
+	const modelValue = props.selectedProductFilterValues;
 	const index = modelValue.findIndex(item => item === option.id);
 
 	// save scroll on component update

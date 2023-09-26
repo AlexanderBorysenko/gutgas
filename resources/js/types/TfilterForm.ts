@@ -1,5 +1,5 @@
-export type TfilterForm = {
-	attributes: number[];
+export type TFilterForm = {
+	selectedProductFilterValues: number[];
 	productsGroup: number | null;
 	priceRange: {
 		from: number;

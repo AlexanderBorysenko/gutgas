@@ -3,11 +3,14 @@
 		<ProductsCatalogLayout>
 			<template #filters>
 				<ProductsCatalogFilters
-					:attrbiute-groups="productsCatalogData.attributeGroups"
-					:selected-attributes="filterForm.attributes"
+					:product-filters="productsCatalogData.productFilters"
+					:selected-product-filter-values="
+						filterForm.selectedProductFilterValues
+					"
 					@attributes-select="
-						newAttributes => {
-							filterForm.attributes = newAttributes;
+						newSelectedProductFiters => {
+							filterForm.selectedProductFilterValues =
+								newSelectedProductFiters;
 						}
 					"
 					:price-min="productsCatalogData.priceMin"
@@ -91,7 +94,7 @@ import ProductsCatalogFilters from './ProductsCatalogFilters.vue';
 import BasePagination from './BasePagination.vue';
 import ProductsCatalogPreviewSection from './ProductsCatalogPreviewSection.vue';
 import { useForm, usePage } from '@inertiajs/vue3';
-import { TfilterForm } from '@/types/TfilterForm';
+import { TFilterForm } from '@/types/TFilterForm';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import { TProductsCatalogPreviewSectionStoreData } from '@/types/TProductsCatalogPreviewSectionProps';
 import ProductsCatalogLayout from '@/Layouts/ProductsCatalogLayout.vue';
@@ -111,17 +114,19 @@ const props = defineProps<{
 
 const displayMode = ref(props.mode);
 
-const filterForm = useForm<TfilterForm>({
+const filterForm = useForm<TFilterForm>({
 	priceRange: props.productsCatalogData.priceRange,
 	productsGroup: props.productsCatalogData.productsGroup,
-	attributes:
-		props.productsCatalogData.appliedAttributes?.map(attr => +attr) ?? []
+	selectedProductFilterValues:
+		props.productsCatalogData.selectedProductFilterValues?.map(
+			val => +val
+		) ?? []
 });
 
 const productsCatalogLayoutRef = ref<HTMLElement>();
 watch(
 	[
-		() => filterForm.attributes,
+		() => filterForm.selectedProductFilterValues,
 		() => filterForm.priceRange,
 		() => filterForm.productsGroup
 	],
@@ -164,3 +169,4 @@ watch(
 	border: 1px solid #000;
 }
 </style>
+@/types/TFilterForm

@@ -29,6 +29,7 @@ export type TProductForm = {
 	description: string;
 	media_file: IMediaFile | null;
 	attributes: number[];
+	product_filter_values: number[];
 	products_groups: number[];
 	required_products_groups: number[];
 };

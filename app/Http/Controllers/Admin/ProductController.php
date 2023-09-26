@@ -8,6 +8,7 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductFilter;
 use App\Models\ProductsGroup;
 use App\Models\RequiredProductsGroup;
 use App\Services\ProductService;
@@ -55,6 +56,7 @@ class ProductController extends Controller
         return inertia('Admin/Product/Create')->with([
             'attributes' => Attribute::orderBy('sequence')->get(),
             'categories' => Category::tree()->get(),
+            'productFilters' => ProductFilter::orderBy('sequence')->get(),
             'productsGroups' => ProductsGroup::all(),
             'requiredProductsGroups' => RequiredProductsGroup::all(),
         ]);
@@ -69,7 +71,7 @@ class ProductController extends Controller
         $data = $request->validated();
 
         try {
-            $product = Product::create($this->productService->extractProductRequiredData($request));
+            $product = Product::create($this->productService->extractProductFieldsData($request));
 
             $product->syncProductRelationsData($data);
 
@@ -114,6 +116,8 @@ class ProductController extends Controller
             'product' => $product->load('mediaFile')->load('seoEntity')->load('productsGroups')->load('requiredProductsGroups'),
             'productPage' => $product->productPage,
             'productAttributes' => $product->attributes,
+            'productFilters' => ProductFilter::orderBy('sequence')->get(),
+            'selectedProductFilterValues' => $product->productFilterValues,
             'attributes' => Attribute::orderBy('sequence')->get(),
             'categories' => Category::tree()->get(),
             'productsGroups' => ProductsGroup::all(),
@@ -131,7 +135,7 @@ class ProductController extends Controller
         $data = $request->validated();
 
         try {
-            $product->update($this->productService->extractProductRequiredData($request));
+            $product->update($this->productService->extractProductFieldsData($request));
 
             $product->syncProductRelationsData($data);
 

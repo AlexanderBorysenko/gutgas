@@ -8,7 +8,7 @@
 					:categories="categories"
 					:productsGroups="productsGroups"
 					:requiredProductsGroups="requiredProductsGroups"
-					@submit="onSubmitForm"
+					:productFilters="productFilters"
 				/>
 			</div>
 			<div class="col-3">
@@ -36,13 +36,13 @@ import { useForm } from '@inertiajs/vue3';
 import { TProductsGroup } from '@/types/TProductsGroup';
 import { useSaveShortcut } from '@/modules/useSaveShortcut';
 import { TRequiredProductsGroup } from '@/types/TRequiredProductsGroup';
+import { TProductFilter } from '@/types/TProductFilter';
 
 const props = defineProps<{
-	product: TProduct;
-	productAttributes: TAttribute[];
 	attributes: TAttribute[];
 	categories: ICategoryTree[];
 	productsGroups: TProductsGroup[];
+	productFilters: TProductFilter[];
 	requiredProductsGroups: TRequiredProductsGroup[];
 }>();
 
@@ -55,6 +55,7 @@ const form = useForm<TProductForm>({
 	media_file: null,
 	category_id: null,
 	attributes: [],
+	product_filter_values: [],
 	products_groups: [],
 	required_products_groups: []
 });

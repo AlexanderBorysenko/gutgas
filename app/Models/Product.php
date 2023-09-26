@@ -45,6 +45,11 @@ class Product extends Model
         return $this->belongsToMany(Attribute::class);
     }
 
+    public function productFilterValues()
+    {
+        return $this->belongsToMany(ProductFilterValue::class);
+    }
+
     public function attributeGroups()
     {
         // get AttributeGroups with attributes that are attached to this product
@@ -99,6 +104,8 @@ class Product extends Model
     public function syncProductRelationsData($data)
     {
         $this->attributes()->sync($data['attributes']);
+
+        $this->productFilterValues()->sync($data['product_filter_values']);
 
         $this->productsGroups()->sync($data['products_groups']);
 

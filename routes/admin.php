@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\GlobalSettingsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MediaFileController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductFilterController;
+use App\Http\Controllers\Admin\ProductFilterValueController;
 use App\Http\Controllers\Admin\ProductPageController;
 use App\Http\Controllers\Admin\SeoEntityController;
 use App\Http\Controllers\Admin\UserController;
@@ -98,6 +100,25 @@ Route::group([
 
                     Route::get('{attribute}', 'edit')->name('edit')->middleware('permission:admin.attribute.manage');
                     Route::put('{attribute}', 'update')->name('update')->middleware('permission:admin.attribute.manage');
+                }
+            );
+
+        Route::controller(ProductFilterController::class)->prefix('productFilter')->as('productFilter.')
+            ->group(
+                function () {
+                    Route::get('', 'index')->name('index')->middleware('permission:admin.productFilter.index');
+                    Route::post('/store', 'store')->name('store')->middleware('permission:admin.productFilter.manage');
+                    Route::delete('/delete/{productFilter}', 'destroy')->name('destroy')->middleware('permission:admin.productFilter.manage');
+                    Route::put('{productFilter}', 'update')->name('update')->middleware('permission:admin.productFilter.manage');
+                }
+            );
+
+        Route::controller(ProductFilterValueController::class)->prefix('productFilterValue')->as('productFilterValue.')
+            ->group(
+                function () {
+                    Route::post('/store', 'store')->name('store')->middleware('permission:admin.productFilterValue.manage');
+                    Route::delete('/delete/{productFilterValue}', 'destroy')->name('destroy')->middleware('permission:admin.productFilterValue.manage');
+                    Route::put('{productFilterValue}', 'update')->name('update')->middleware('permission:admin.productFilterValue.manage');
                 }
             );
 

@@ -66,6 +66,13 @@
 			v-model="form.attributes"
 		/>
 	</FormFieldWrapper>
+	<FormFieldWrapper label="Фільтри" class="mb-3">
+		<ProductFiltersSelect
+			:productFilters="productFilters"
+			v-model="form.product_filter_values"
+		/>
+		<FormError :error="form.errors.product_filter_values" />
+	</FormFieldWrapper>
 	<FormFieldWrapper
 		label="Категорії"
 		class="mb-3"
@@ -93,7 +100,6 @@ import { TAttribute } from '@/types/TAttribute';
 import { ICategoryTree } from '@/types/ICategoryTree';
 import { InertiaForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import CategorySelect from '../Category/CategorySelect.vue';
 import AttributeMultiSelect from '../Attribute/AttributeMultiSelect.vue';
 import MediaFileSelect from '../Media/MediaFileSelect.vue';
 import FormError from '../FormError.vue';
@@ -103,12 +109,15 @@ import { TProductsGroup } from '@/types/TProductsGroup';
 import ProductsGroupMultiSelect from '../ProductsGroup/ProductsGroupMultiSelect.vue';
 import { TRequiredProductsGroup } from '@/types/TRequiredProductsGroup';
 import RequiredProductsGroupMultiSelect from '../RequiredProductsGroup/RequiredProductsGroupMultiSelect.vue';
+import { TProductFilter } from '@/types/TProductFilter';
+import ProductFiltersSelect from '../ProductFilter/ProductFiltersSelect.vue';
 
 const editMode = ref<'general' | 'page' | 'seo'>('general');
 const props = defineProps<{
 	form: InertiaForm<TProductForm>;
 	attributes: TAttribute[];
 	categories: ICategoryTree[];
+	productFilters: TProductFilter[];
 	productsGroups: TProductsGroup[];
 	requiredProductsGroups: TRequiredProductsGroup[];
 }>();

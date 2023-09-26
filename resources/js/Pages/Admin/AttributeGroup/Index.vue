@@ -5,7 +5,7 @@
 				class="btn btn-primary"
 				:href="route('admin.attributeGroup.create') || ''"
 			>
-				Create Attribute Group
+				Створити Групу Атрибутів
 			</Link>
 		</div>
 		<div class="table-responsive">

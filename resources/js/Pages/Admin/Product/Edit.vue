@@ -8,6 +8,7 @@
 					:categories="categories"
 					:productsGroups="productsGroups"
 					:requiredProductsGroups="requiredProductsGroups"
+					:productFilters="productFilters"
 				/>
 			</div>
 			<div class="col-3">
@@ -39,12 +40,16 @@ import ProductManageNavigation from '@/AdminComponents/Product/ProductManageNavi
 import { TProductsGroup } from '@/types/TProductsGroup';
 import { useSaveShortcut } from '@/modules/useSaveShortcut';
 import { TRequiredProductsGroup } from '@/types/TRequiredProductsGroup';
+import { TProductFilter } from '@/types/TProductFilter';
+import { TProductFilterValue } from '@/types/TProductFilterValue';
 
 const props = defineProps<{
 	product: TProduct;
 	productAttributes: TAttribute[];
 	attributes: TAttribute[];
 	categories: ICategoryTree[];
+	productFilters: TProductFilter[];
+	selectedProductFilterValues: TProductFilterValue[];
 	productsGroups: TProductsGroup[];
 	requiredProductsGroups: TRequiredProductsGroup[];
 }>();
@@ -62,6 +67,9 @@ const generalForm = useForm<TProductForm>({
 	media_file: props.product.media_file,
 	category_id: props.product.category_id,
 	attributes: props.productAttributes.map(attribute => attribute.id),
+	product_filter_values: props.selectedProductFilterValues.map(
+		productFilterValue => productFilterValue.id
+	),
 	products_groups: props.product.products_groups
 		? props.product.products_groups.map(productsGroup => productsGroup.id)
 		: [],

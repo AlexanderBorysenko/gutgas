@@ -24,7 +24,7 @@
 				"
 				:preview-products="previewProducts"
 				:mode="
-					!productsCatalogData.appliedAttributes.length &&
+					!productsCatalogData.selectedProductFilterValues.length &&
 					+productsCatalogData.priceRange.from ===
 						+productsCatalogData.priceMin &&
 					+productsCatalogData.priceRange.to ==

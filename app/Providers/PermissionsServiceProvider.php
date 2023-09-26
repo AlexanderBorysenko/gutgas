@@ -36,6 +36,12 @@ class PermissionsServiceProvider extends ServiceProvider
         'admin.productpage.indexAdmin',
         'admin.productPage.manage',
 
+        'admin.productFilter.index',
+        'admin.productFilter.manage',
+
+        'admin.productFilterValue.index',
+        'admin.productFilterValue.manage',
+
         'admin.attribute.index',
         'admin.attribute.manage',
 

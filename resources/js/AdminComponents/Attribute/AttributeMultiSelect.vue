@@ -1,5 +1,5 @@
 <template>
-	<table class="table table table-bordered">
+	<table class="table table table-bordered mb-0">
 		<tbody>
 			<tr v-for="group in attributeGroups" :key="group.id">
 				<td>{{ _t(group.name) }}</td>
