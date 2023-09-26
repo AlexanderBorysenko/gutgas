@@ -6,6 +6,7 @@ use App\Http\Requests\Order\StoreRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class OrderController extends Controller
@@ -46,11 +47,18 @@ class OrderController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        $data = $request->validated();
         DB::beginTransaction();
         try {
-            $order = Order::create($request->validated());
+            $order = Order::create($data);
 
             DB::commit();
+            $data['order_id'] = $order->id;
+            Mail::send('emails.newOrder', $data, function ($message) {
+                $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+                $message->to('cto.hacon@gmail.com');
+                $message->subject('$$$ Нове Замовлення $$$');
+            });
             return Inertia::render('ThankYou')->with('order', $order)->with('thankYouTranslations', trans('thank-you'));
         } catch (\Exception $e) {
             DB::rollBack();

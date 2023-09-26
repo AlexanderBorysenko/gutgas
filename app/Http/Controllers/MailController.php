@@ -18,8 +18,8 @@ class MailController extends Controller
         ]);
 
         Mail::send('emails.consultation', $data, function ($message) {
-            $message->from('sale@gutgas.eu', 'Gutgas Sale manager');
-            $message->to('cto.hacon@gmail.com');
+            $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+            $message->to('sale@gutgas.eu');
             $message->subject('Заявка на консультацію');
         });
 
@@ -33,8 +33,8 @@ class MailController extends Controller
         ]);
 
         Mail::send('emails.consultation', $data, function ($message) {
-            $message->from('sale@gutgas.eu', 'Gutgas Sale manager');
-            $message->to('cto.hacon@gmail.com');
+            $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+            $message->to('sale@gutgas.eu');
             $message->subject('Заявка на дзвінок');
         });
 
