@@ -18,7 +18,9 @@
 				v-for="(image, index) in images"
 				:key="index"
 			>
-				<img :src="image" />
+				<div class="main-slider-slide__image-container">
+					<img :src="image" />
+				</div>
 			</swiper-slide>
 			<button class="navigation-button prev" ref="prevRef">
 				<svg width="9" height="16" viewBox="0 0 9 16" fill="none">
@@ -94,13 +96,21 @@ const prevRef = ref<null | HTMLElement>(null);
 	display: flex;
 }
 .main-slider-slide {
+	position: relative;
+}
+.main-slider-slide__image-container {
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 490px;
+	margin: 0 auto;
+	border-radius: 24px;
 	img {
 		height: 100%;
+		width: 100%;
+		object-fit: contain;
+		object-position: bottom;
 	}
 	@media (max-width: $tablet-width) {
 		height: 400px;
@@ -132,6 +142,7 @@ const prevRef = ref<null | HTMLElement>(null);
 	border: 1px solid #b73e38;
 	border-radius: 50%;
 	transition: border-color 0.3s;
+	background: #0f0f10;
 	&.prev {
 		left: 0;
 	}
@@ -156,6 +167,8 @@ const prevRef = ref<null | HTMLElement>(null);
 	justify-content: center;
 	img {
 		height: 100%;
+		width: 100%;
+		object-fit: cover;
 	}
 }
 </style>

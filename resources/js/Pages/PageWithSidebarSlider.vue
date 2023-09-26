@@ -14,7 +14,10 @@
 					</div>
 				</div>
 				<div class="g-col-6 g-tablet-col-12">
-					<ProductGallerySlider :images="images" class="mb-48" />
+					<ProductGallerySlider
+						:images="images"
+						class="mb-48 images-slider"
+					/>
 				</div>
 			</div>
 		</div>
@@ -66,5 +69,12 @@ const { _t } = useTranslations();
 	@media (max-width: 1200px) {
 		gap: 0;
 	}
+}
+:deep(.main-slider-slide__image-container) {
+	padding-bottom: 32px;
+	max-width: 387px;
+}
+:deep(.main-slider-slide__image-container img) {
+	object-fit: cover !important;
 }
 </style>
