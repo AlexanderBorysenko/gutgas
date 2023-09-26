@@ -22,15 +22,15 @@ class UrlLocaleHandler
         $locale = $request->segment(1);
 
         // Примусова передача поточної мови в УРЛ
-        // if (!array_key_exists($locale, config('app.locales'))) {
-        //     App::setLocale(config('app.fallback_locale'));
-        //     $defaultLocale = config('app.fallback_locale');
+        if (!array_key_exists($locale, config('app.locales'))) {
+            App::setLocale(config('app.fallback_locale'));
+            $defaultLocale = config('app.fallback_locale');
 
-        //     $newUrl = $defaultLocale . '/' . $request->path();
-        //     return Redirect::to($newUrl, 301);
-        // } else {
-        //     App::setLocale($locale);
-        // }
+            $newUrl = $defaultLocale . '/' . $request->path();
+            return Redirect::to($newUrl, 301);
+        } else {
+            App::setLocale($locale);
+        }
 
         Inertia::share('locale', app()->getLocale());
         Inertia::share('locales', config('app.locales'));
