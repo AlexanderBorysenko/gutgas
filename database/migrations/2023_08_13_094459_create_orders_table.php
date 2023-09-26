@@ -19,7 +19,7 @@ return new class extends Migration
             // client_email
             $table->string('client_email');
             // client_message
-            $table->string('client_message');
+            $table->string('client_message')->nullable();
             // cart_content
             $table->json('cart_content');
             // shipping_message

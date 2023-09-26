@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
             'client_name' => 'required|string|max:255',
             'client_phone' => 'required|string|max:255',
             'client_email' => 'required|string|max:255',
-            'client_message' => 'string|max:255',
+            'client_message' => 'nullable|string|max:255',
             'cart_content' => 'required|array',
             'shipping_message' => 'nullable|string|max:255',
             'status_name' => 'nullable|string|max:255',
