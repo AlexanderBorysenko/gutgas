@@ -52,7 +52,6 @@ class OrderController extends Controller
         try {
             $order = Order::create($data);
 
-            DB::commit();
 
             $data['order_id'] = $order->id;
             Mail::send('emails.newOrder', $data, function ($message) {
@@ -60,6 +59,8 @@ class OrderController extends Controller
                 $message->to('cto.hacon@gmail.com');
                 $message->subject('$$$ Нове Замовлення $$$');
             });
+
+            DB::commit();
 
             return redirect()->route('thankYou')
                 ->with('order', $order)->with('thankYouTranslations', trans('thank-you'));

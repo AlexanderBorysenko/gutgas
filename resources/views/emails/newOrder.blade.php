@@ -60,19 +60,19 @@
         <tbody>
             @foreach ($cart_content as $cart_item)
                 <tr>
-                    <td>{{ $cart_item->id }}</td>
+                    <td>{{ $cart_item['id'] }}</td>
                     <td>
-                        <img src="{{ $cart_item->media_file->thumbnail->url }}"
+                        <img src="{{ url('/') . $cart_item['media_file']['thumbnail']['url'] }}"
                             style="
                             width: 50px;
                             height: 50px;
                             object-fit: cover;
                         " />
                     </td>
-                    <td>{{ $cart_item->name['ua'] }}</td>
-                    <td>{{ $cart_item->sku }}</td>
-                    <td>{{ $cart_item->quantity }}</td>
-                    <td>{{ $cart_item->price * $cart_item->quantity }} ₴</td>
+                    <td>{{ $cart_item['name']['ua'] }}</td>
+                    <td>{{ $cart_item['sku'] }}</td>
+                    <td>{{ $cart_item['quantity'] }}</td>
+                    <td>{{ $cart_item['price'] * $cart_item['quantity'] }} ₴</td>
                 </tr>
         </tbody>
         @endforeach
