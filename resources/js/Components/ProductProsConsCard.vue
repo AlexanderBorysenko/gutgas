@@ -97,13 +97,8 @@ const props = defineProps<TProductProsConsCardProps>();
 	max-height: 100%;
 	width: auto;
 	height: auto;
-	opacity: 0.7;
 	transition: opacity 0.3s ease-in-out;
 	position: relative;
-}
-
-.product-pros-cons-card:hover .image {
-	opacity: 1;
 }
 .logo {
 	position: absolute;

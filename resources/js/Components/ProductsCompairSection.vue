@@ -13,6 +13,8 @@
 					:logo="item.logo"
 					:advantages="item.advantages"
 					:disadvantages="item.disadvantages"
+					:recommended="item.recommended"
+					:discouraged="item.discouraged"
 				/>
 			</div>
 		</div>
