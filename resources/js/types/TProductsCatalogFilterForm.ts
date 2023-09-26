@@ -1,4 +1,4 @@
-export type TFilterForm = {
+export type TProductsCatalogFilterForm = {
 	selectedProductFilterValues: number[];
 	productsGroup: number | null;
 	priceRange: {

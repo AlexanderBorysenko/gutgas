@@ -94,7 +94,7 @@ import ProductsCatalogFilters from './ProductsCatalogFilters.vue';
 import BasePagination from './BasePagination.vue';
 import ProductsCatalogPreviewSection from './ProductsCatalogPreviewSection.vue';
 import { useForm, usePage } from '@inertiajs/vue3';
-import { TFilterForm } from '@/types/TFilterForm';
+import { TProductsCatalogFilterForm } from '@/types/TProductsCatalogFilterForm';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import { TProductsCatalogPreviewSectionStoreData } from '@/types/TProductsCatalogPreviewSectionProps';
 import ProductsCatalogLayout from '@/Layouts/ProductsCatalogLayout.vue';
@@ -114,7 +114,7 @@ const props = defineProps<{
 
 const displayMode = ref(props.mode);
 
-const filterForm = useForm<TFilterForm>({
+const filterForm = useForm<TProductsCatalogFilterForm>({
 	priceRange: props.productsCatalogData.priceRange,
 	productsGroup: props.productsCatalogData.productsGroup,
 	selectedProductFilterValues:
