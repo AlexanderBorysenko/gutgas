@@ -1,4 +1,7 @@
 <template>
+	<p class="color-danger">
+		Знаю знаю, атрибути вийшли через сраку. Буду змінювати їх систему
+	</p>
 	<table class="table table table-bordered mb-0">
 		<tbody>
 			<tr v-for="group in attributeGroups" :key="group.id">
