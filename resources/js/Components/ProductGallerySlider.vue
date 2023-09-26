@@ -95,10 +95,12 @@ const prevRef = ref<null | HTMLElement>(null);
 }
 .main-slider-slide {
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 490px;
 	img {
-		width: 100%;
 		height: 100%;
-		object-fit: contain;
 	}
 	@media (max-width: $tablet-width) {
 		height: 400px;
@@ -148,5 +150,12 @@ const prevRef = ref<null | HTMLElement>(null);
 		#000 0%,
 		rgba(0, 0, 0, 0) 64.14%
 	);
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	img {
+		height: 100%;
+	}
 }
 </style>
