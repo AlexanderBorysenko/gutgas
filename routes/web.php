@@ -25,11 +25,12 @@ require __DIR__ . '/ajax.php';
 Route::post('/mail/consultation', [MailController::class, 'consultationMail'])->name('consultationMail');
 Route::post('/mail/requestCall', [MailController::class, 'requestCallMail'])->name('requestCallMail');
 
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+
 Route::prefix('{locale?}')->middleware(['urlLocaleHandler', 'shareSeoEntityBreadcrumbs'])->group(function () {
     Route::get('/checkout', CheckoutController::class)->name('checkout');
 
 
-    Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 
     Route::get('/thank-you', function () {
         return Inertia::render('ThankYou')->with('thankYouTranslations', trans('thank-you'));

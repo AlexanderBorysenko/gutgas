@@ -53,13 +53,16 @@ class OrderController extends Controller
             $order = Order::create($data);
 
             DB::commit();
+
             $data['order_id'] = $order->id;
             Mail::send('emails.newOrder', $data, function ($message) {
                 $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
                 $message->to('cto.hacon@gmail.com');
                 $message->subject('$$$ Нове Замовлення $$$');
             });
-            return Inertia::render('ThankYou')->with('order', $order)->with('thankYouTranslations', trans('thank-you'));
+
+            return redirect()->route('thankYou')
+                ->with('order', $order)->with('thankYouTranslations', trans('thank-you'));
         } catch (\Exception $e) {
             DB::rollBack();
             throw $e;
