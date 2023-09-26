@@ -35,9 +35,12 @@
 					</div>
 					<BaseButton
 						@click="
-							router.get(
-								route('checkout', usePage().props.locale)
-							)
+							() => {
+								emit('close');
+								router.get(
+									route('checkout', usePage().props.locale)
+								);
+							}
 						"
 						class="checkout-button"
 					>

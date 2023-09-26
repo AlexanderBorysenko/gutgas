@@ -23,7 +23,12 @@
 		</div>
 		<div class="footer">
 			<BaseButton
-				@click="router.get(route('checkout', usePage().props.locale))"
+				@click="
+					() => {
+						isActive = false;
+						router.get(route('checkout', usePage().props.locale));
+					}
+				"
 				class="block p-16 w-100"
 			>
 				{{ __('toCheckout') }}
