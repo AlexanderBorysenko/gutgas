@@ -107,7 +107,7 @@ const productInCart = computed(() => {
 const quantity = ref(1);
 const onAddToCart = () => {
 	if (!isInCart(props.product)) {
-		addProductToCart(props.product, quantity);
+		addProductToCart(props.product, quantity.value);
 		isCartModalOpened.value = true;
 	}
 };
