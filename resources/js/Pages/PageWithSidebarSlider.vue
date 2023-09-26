@@ -71,7 +71,7 @@ const { _t } = useTranslations();
 	}
 }
 :deep(.main-slider-slide__image-container) {
-	padding-bottom: 32px;
+	margin-bottom: 32px;
 	max-width: 387px;
 }
 :deep(.main-slider-slide__image-container img) {
