@@ -100,15 +100,14 @@ const props = defineProps<{
 const { addProductToCart, isInCart, setProductQuantity, findInCart } =
 	useCart();
 
-const quantity = ref(1);
-
 const productInCart = computed(() => {
 	return findInCart(props.product);
 });
 
+const quantity = ref(1);
 const onAddToCart = () => {
 	if (!isInCart(props.product)) {
-		addProductToCart(props.product, 1);
+		addProductToCart(props.product, quantity);
 		isCartModalOpened.value = true;
 	}
 };
