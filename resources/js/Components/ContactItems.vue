@@ -30,7 +30,7 @@
 						:class="{
 							'mb-12': index + 1 !== contactItem.values.length
 						}"
-						class="hover-underline"
+						class="hover-underline block"
 						:href="contactItemValue.link"
 						><strong class="fs-medium fw-700 block">
 							{{ contactItemValue.value }}
