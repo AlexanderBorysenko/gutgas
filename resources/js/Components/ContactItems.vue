@@ -7,19 +7,41 @@
 				</p>
 			</div>
 			<div class="g-col-6">
-				<div
+				<template
 					v-for="(contactItemValue, index) in contactItem.values"
-					:class="{
-						'mb-12': index + 1 !== contactItem.values.length
-					}"
 				>
-					<p class="fs-medium fw-700">
-						{{ contactItemValue.value }}
+					<p
+						v-if="!contactItemValue.link"
+						:class="{
+							'mb-12': index + 1 !== contactItem.values.length
+						}"
+					>
+						<strong class="fs-medium fw-700 block">
+							{{ contactItemValue.value }}
+						</strong>
+						<small
+							class="fs-semi-small ls--1 color-secondary block"
+						>
+							{{ contactItemValue.comment }}
+						</small>
 					</p>
-					<p class="fs-semi-small ls--1 color-secondary">
-						{{ contactItemValue.comment }}
-					</p>
-				</div>
+					<a
+						v-else
+						:class="{
+							'mb-12': index + 1 !== contactItem.values.length
+						}"
+						class="hover-underline"
+						:href="contactItemValue.link"
+						><strong class="fs-medium fw-700 block">
+							{{ contactItemValue.value }}
+						</strong>
+						<small
+							class="fs-semi-small ls--1 color-secondary block"
+						>
+							{{ contactItemValue.comment }}
+						</small>
+					</a>
+				</template>
 			</div>
 		</template>
 	</div>

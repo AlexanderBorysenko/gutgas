@@ -3,5 +3,6 @@ export type TContactItemProps = {
 	values: {
 		value: string;
 		comment: string;
+		link?: string;
 	}[];
 };

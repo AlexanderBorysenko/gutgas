@@ -35,6 +35,11 @@
 										v-model="contactItemValue.comment"
 										placeholder="Примітка"
 									/>
+									<input
+										class="form-control mb-1"
+										v-model="contactItemValue.link"
+										placeholder="Посилання"
+									/>
 									<button
 										class="btn btn-danger"
 										@click="
@@ -50,7 +55,8 @@
 								@click="
 									contactItem.values.push({
 										value: '',
-										comment: ''
+										comment: '',
+										link: ''
 									})
 								"
 							>
