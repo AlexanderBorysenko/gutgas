@@ -44,7 +44,6 @@ import { ref } from 'vue';
 import ContactUsSection from '@/Components/ContactUsSection.vue';
 import AdvantagesSection from '@/Components/AdvantagesSection.vue';
 import { IMediaFile } from '@/types/IMediaFile';
-import { Head, usePage } from '@inertiajs/vue3';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 import BaseBreadcrumbs from '@/Components/BaseBreadcrumbs.vue';
 

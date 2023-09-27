@@ -129,7 +129,15 @@
 								v-model="form.globalSettings.footerText"
 							></textarea>
 						</FormFieldWrapper>
-						<FormFieldWrapper label="Меню в Футері" class="mb-1">
+						<FormFieldWrapper
+							label="Меню в Футері"
+							class="mb-1"
+							:data-getter="() => form.globalSettings.footerMenu"
+							:data-setter="
+								value =>
+									(form.globalSettings.footerMenu = value)
+							"
+						>
 							<FooterMenuEdit
 								v-model="form.globalSettings.footerMenu"
 							/>
