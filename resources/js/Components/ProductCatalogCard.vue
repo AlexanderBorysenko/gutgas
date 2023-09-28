@@ -126,7 +126,7 @@ const inCart = computed(() => isInCart(props.product));
 	max-height: 100%;
 	height: min-content;
 	width: auto;
-	opacity: 0.7;
+	opacity: 0.9;
 	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 	position: relative;
 	z-index: 1;
