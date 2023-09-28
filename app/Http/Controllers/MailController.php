@@ -11,8 +11,8 @@ class MailController extends Controller
     {
         $data = request()->validate([
             'name' => 'required|string|max:255|min:3',
-            // phone should be +38 (0##) ###-##-## where # is a digit
-            'phone' => 'required|regex:/^\+38 \(0\d{2}\) \d{3}-\d{2}-\d{2}$/',
+            // phone should be +38 (###) ###-##-## where # is a digit
+            'phone' => 'required|regex:/^\+38 \(\d{3}\) \d{3}-\d{2}-\d{2}$/',
             'email' => 'nullable|email',
             'question' => 'nullable|string'
         ]);

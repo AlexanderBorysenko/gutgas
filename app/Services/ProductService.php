@@ -51,7 +51,7 @@ class ProductService
                 'from' => +$priceMin,
                 'to' => +$priceMax,
             ],
-            'products' => $productsQuery->paginate(9),
+            'products' => $productsQuery->paginate(12),
 
             'productFilters' => ProductFilter::orderBy('sequence')->get(),
             'selectedProductFilterValues' => $request->query('selectedProductFilterValues') ?? [],

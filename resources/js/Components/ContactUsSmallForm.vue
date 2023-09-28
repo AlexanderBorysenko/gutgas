@@ -20,7 +20,7 @@
 			:error-message="form.errors.phone"
 			:is-valid="form.phone.length === 19"
 			type="tel"
-			mask="+38 (0##) ###-##-##"
+			mask="+38 (###) ###-##-##"
 			class="mt-20"
 		/>
 		<BaseButton class="submit mt-24" :class="submitButtonClasses">
