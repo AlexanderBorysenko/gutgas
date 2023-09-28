@@ -11,7 +11,7 @@
 			<BaseFormInput
 				v-model="form.phone"
 				:placeholder="__('formPhone')"
-				mask="+38 (0##) ###-##-##"
+				mask="+38 (###) ###-##-##"
 				type="tel"
 				:error-message="form.errors.phone"
 				:is-valid="form.phone.length === 19"
