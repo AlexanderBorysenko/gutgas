@@ -114,9 +114,12 @@ watchEffect(() => {
 	font-size: 12px;
 	line-height: 100%;
 	text-align: right;
+
+	pointer-events: none;
 }
 .error-icon {
 	margin-left: 4px;
+	pointer-events: none;
 }
 .is-valid-icon {
 	position: absolute;
