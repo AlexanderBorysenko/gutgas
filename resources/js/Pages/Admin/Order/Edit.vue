@@ -3,15 +3,32 @@
 		<FormFieldWrapper label="Status" class="mb-3">
 			<div class="row g-1">
 				<div class="col-4">
-					<label class="form-label">Назва Статусу</label>
-					<input
+					<label class="form-label">Статус Замовлення</label>
+					<select
 						class="form-control"
-						v-model="form.status_name"
-						placeholder="Status"
-					/>
-					<FormError :error="form.errors.status_name" />
+						:value="form.status_name + '|' + form.status_color"
+						@input="onStatusSelectInput"
+					>
+						<option value="Заявка|warning">Заявка</option>
+						<option value="В обробці|dark">В обробці</option>
+						<option value="Підтверджено|primary">
+							Підтверджено
+						</option>
+						<option value="Підтверджено сплачено|primary">
+							Підтверджено сплачено
+						</option>
+						<option
+							value="Підтверджено оплата при отриманні|primary"
+						>
+							Підтверджено оплата при отриманні
+						</option>
+						<option value="Відправлено|info">Відправлено</option>
+						<option value="Отримано|success">Отримано</option>
+						<option value="Wasted|danger">Wasted</option>
+					</select>
+					<label class="form-label">Назва Статусу</label>
 				</div>
-				<div class="col-4">
+				<!-- <div class="col-4">
 					<label class="form-label">Колір Статусу</label>
 					<select
 						v-model="form.status_color"
@@ -27,7 +44,7 @@
 						<option value="dark">Чорний</option>
 					</select>
 					<FormError :error="form.errors.status_color" />
-				</div>
+				</div> -->
 				<!-- compleated checkbox -->
 				<div class="col-4">
 					<div
@@ -200,6 +217,16 @@ const onSubmitForm = () => {
 			});
 		}
 	});
+};
+
+const onStatusSelectInput = (event: Event) => {
+	const input = event.target as HTMLSelectElement;
+
+	let value = input.value.split('|');
+	if (value.length === 2) {
+		form.status_name = value[0];
+		form.status_color = value[1];
+	}
 };
 </script>
 
