@@ -10,8 +10,6 @@ class SeoEndpoint extends Controller
 {
     public function __invoke(Request $request, $locale, $route = '')
     {
-        $route = ltrim(str_replace($locale, '', $route), '/');
-
         if ($route === '') {
             $seoEntity = SeoEntity::where('slug', 'LIKE', '/')->firstOrFail();
         } else {
