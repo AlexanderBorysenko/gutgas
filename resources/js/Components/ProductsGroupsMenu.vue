@@ -81,19 +81,16 @@ const props = defineProps<{
 const currentProductsGroup = (usePage().props as any).productsCatalogData
 	.productsGroup;
 
-const currentPath = ref<string>(hasWindow() ? window.location.pathname : '');
+const currentPath = ref<string>(
+	hasWindow()
+		? window.location.pathname.replace(usePage().props.locale + '/', '')
+		: ''
+);
 
 const onProductsGroupSelect = (e: Event, id: number | null) => {
 	if (!props.reactiveFilterMode) return;
 	emit('productsGroupSelect', id);
 };
-
-onMounted(() => {
-	currentPath.value = window.location.pathname.replace(
-		usePage().props.locale + '/',
-		''
-	);
-});
 
 const emit = defineEmits({
 	productsGroupSelect: (id: number | null) => true

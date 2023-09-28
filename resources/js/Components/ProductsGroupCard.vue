@@ -88,9 +88,9 @@ onMounted(() => {
 	}
 }
 .active .icon {
-	opacity: 0;
+	opacity: 0 !important;
 	&-active {
-		opacity: 1;
+		opacity: 1 !important;
 	}
 }
 .name {
