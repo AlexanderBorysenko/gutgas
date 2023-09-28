@@ -26,7 +26,7 @@
 						<option value="Отримано|success">Отримано</option>
 						<option value="Wasted|danger">Wasted</option>
 					</select>
-					<label class="form-label">Назва Статусу</label>
+					<!-- <label class="form-label">Назва Статусу</label> -->
 				</div>
 				<!-- <div class="col-4">
 					<label class="form-label">Колір Статусу</label>
