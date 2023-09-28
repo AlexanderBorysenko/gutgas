@@ -23,6 +23,7 @@
 		</div>
 		<div class="footer">
 			<BaseButton
+				v-if="cartProducts.length"
 				@click="
 					() => {
 						isActive = false;
@@ -34,7 +35,7 @@
 				{{ __('toCheckout') }}
 			</BaseButton>
 			<button
-				class="lh-100 underline color-danger fs-small mt-8 text-center w-100"
+				class="lh-100 pv-24 underline color-danger fs-large mt-8 text-center w-100"
 				@click="isActive = false"
 			>
 				{{ __('continueShopping') }}
@@ -53,7 +54,7 @@ import { Link, router, usePage } from '@inertiajs/vue3';
 
 const { __ } = useTranslations();
 
-const { cartTotal } = useCart();
+const { cartTotal, cartProducts } = useCart();
 
 const isActive = ref(false);
 </script>
@@ -71,7 +72,7 @@ const isActive = ref(false);
 	z-index: 100;
 	left: 16px;
 	right: 16px;
-	transform: translateY(89%);
+	transform: translateY(calc(100% - 75px));
 	transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
 
 	display: flex;
