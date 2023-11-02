@@ -56,7 +56,6 @@
 
 <script setup lang="ts">
 import { IPaginated } from '@/types/IPaginated';
-import { IPaginationLink } from '@/types/IPaginationLink';
 import { Link } from '@inertiajs/vue3';
 import { ref, onMounted } from 'vue';
 const props = defineProps<{
@@ -83,10 +82,9 @@ const scrollTo = () => {
 };
 
 onMounted(() => {
-	// const query = window.location.search;
-	// if (query.includes('page')) {
-	// 	scrollTo();
-	// }
+	if (window.location.pathname.includes('page')) {
+		scrollTo();
+	}
 });
 </script>
 

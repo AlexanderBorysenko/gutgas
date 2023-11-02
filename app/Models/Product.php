@@ -129,7 +129,6 @@ class Product extends Model
                 'value' => $attribute->name
             ];
         }
-
         return [
             "@context" => "https://schema.org/",
             "@type" => "Product",
@@ -154,6 +153,7 @@ class Product extends Model
                     "https://schema.org/OutOfStock",
             ],
             "additionalProperty" => array_map(function ($attribute) {
+                dd($attribute);
                 return [
                     "@type" => "PropertyValue",
                     "name" => $attribute['name'],
