@@ -91,7 +91,6 @@ const isLastPage = ref(false);
 const search = ref('');
 
 const searchMediaFiles = debounce(async () => {
-	console.log('searching');
 	mediaFiles.value = [];
 	await fetchMediaFiles();
 }, 500);

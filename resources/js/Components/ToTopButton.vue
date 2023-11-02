@@ -3,7 +3,7 @@
 		class="f- justify-center align-center to-top-button fs-large ls--1"
 		@click="onClick"
 	>
-		Нагору
+		{{ __('toTop') }}
 		<svg
 			width="19"
 			height="12"
@@ -30,6 +30,8 @@ const onClick = () => {
 		behavior: 'smooth'
 	});
 };
+
+const { __ } = useTranslations();
 </script>
 
 <style scoped lang="scss">

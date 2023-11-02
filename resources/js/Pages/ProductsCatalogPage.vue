@@ -1,6 +1,10 @@
 <template>
 	<SeoEntityMetaFields :seo-entity="page.seo_entity" />
 	<Head>
+		<title v-if="productsCatalogData.products.current_page !== 1">
+			{{ _t(page.seo_entity.title) }} - {{ __('page') }}
+			{{ productsCatalogData.products.current_page }}
+		</title>
 		<link
 			rel="prev"
 			:href="productsCatalogData.products.prev_page_url"
@@ -57,7 +61,7 @@ import ProductsCatalog from '@/Components/ProductsCatalog.vue';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 import BaseBreadcrumbs from '@/Components/BaseBreadcrumbs.vue';
 
-const { _t } = useTranslations();
+const { _t, __ } = useTranslations();
 
 const props = defineProps<{
 	productsCatalogData: TproductsCatalogData;

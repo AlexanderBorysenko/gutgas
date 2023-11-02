@@ -62,7 +62,6 @@ const headerHeight = ref(48);
 watch(
 	() => opened.value,
 	value => {
-		console.log(value);
 		if (value) {
 			headerHeight.value = window.innerHeight - 110;
 		} else {

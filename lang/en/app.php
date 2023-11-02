@@ -87,5 +87,7 @@ return [
     'free' => 'Free',
 
     'contactInfo' => 'Contact info',
-    'askAQuestion' => 'Ask a question'
+    'askAQuestion' => 'Ask a question',
+
+    'page' => 'Page'
 ];

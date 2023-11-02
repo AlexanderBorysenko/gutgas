@@ -17,17 +17,23 @@
 						<div class="g-col-6 g-large-mobile-col-12">
 							<BaseFormInput
 								:placeholder="__('formName')"
-								class="mb-8"
+								class="mb-12"
 								v-model="checkoutData.client_name"
-								:error-message="checkoutData.errors.client_name"
+								:error-message="
+									!checkoutData.client_name
+										? checkoutData.errors.client_name
+										: undefined
+								"
 							/>
 							<BaseFormInput
 								:placeholder="__('formPhone')"
 								mask="+38 (###) ###-##-##"
-								class="mb-8"
+								class="mb-12"
 								v-model="checkoutData.client_phone"
 								:error-message="
-									checkoutData.errors.client_phone
+									!checkoutData.client_phone
+										? checkoutData.errors.client_phone
+										: undefined
 								"
 								type="tel"
 							/>
@@ -35,7 +41,9 @@
 								:placeholder="__('formEmail')"
 								v-model="checkoutData.client_email"
 								:error-message="
-									checkoutData.errors.client_email
+									!emailRegexp.test(checkoutData.client_email)
+										? checkoutData.errors.client_email
+										: undefined
 								"
 								type="mail"
 							/>
@@ -71,6 +79,11 @@
 						:placeholder="__('shippingExample')"
 						class="mb-8"
 						v-model="checkoutData.shipping_message"
+						:error-message="
+							!checkoutData.shipping_message
+								? checkoutData.errors.shipping_message
+								: undefined
+						"
 					/>
 					<!-- <BaseTabs :controls-bordered="true">
 						<BaseTab label="Самовивіз" name="self-pickup">
@@ -188,6 +201,8 @@ const submitCheckout = () => {
 		}
 	});
 };
+
+const emailRegexp = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
 onMounted(async () => {
 	const responce = await geRequiredProducts(cartProducts.value);

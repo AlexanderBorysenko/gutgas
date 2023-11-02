@@ -24,7 +24,6 @@ class ProductsCatalogPageController extends Controller
 
     public function show(Request $request, Page $page)
     {
-
         return Inertia::render('ProductsCatalogPage', [
             'page' => $page,
             'productsCatalogData' => $this->productService->productsCatalogData($request)

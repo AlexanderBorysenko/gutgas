@@ -20,7 +20,6 @@ const form = useForm<TAttributeGroupForm>({
 
 const submitForm = () => {
 	form.clearErrors();
-	console.log(form);
 	form.post(route('admin.attributeGroup.store'));
 };
 </script>

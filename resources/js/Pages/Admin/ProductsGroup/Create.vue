@@ -31,9 +31,7 @@ const form = useForm<TProductsGroupForm>({
 });
 
 const submitEditForm = () => {
-	console.log(form.icon);
 	form.clearErrors();
-	console.log(route('admin.productsGroup.store'));
 	form.post(route('admin.productsGroup.store'), {
 		preserveScroll: true,
 		onSuccess: () => {

@@ -14,7 +14,8 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 128px;
-	background: #1a1a1a;
+	background: #fff;
+	opacity: 0.15;
 	@media (max-width: $tablet-width) {
 		margin-top: 80px;
 	}

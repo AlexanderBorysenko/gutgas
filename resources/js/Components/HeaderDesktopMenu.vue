@@ -30,7 +30,6 @@ const items = getGlobalSetting<THeaderMenuItem[]>('headerMenu') ?? [];
 const activePath = ref(hasWindow() ? location.pathname : '');
 onMounted(() => {
 	activePath.value = location.pathname;
-	console.log(location.pathname);
 });
 </script>
 

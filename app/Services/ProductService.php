@@ -38,8 +38,8 @@ class ProductService
 
     public function productsCatalogData(Request $request, $productsQuery = null)
     {
-        if (!$productsQuery) $productsQuery = $this->productsCatalogQuery($request);
-
+        if (!$productsQuery)
+            $productsQuery = $this->productsCatalogQuery($request);
 
         $priceMin = Product::min('price');
         $priceMax = Product::max('price');
@@ -51,7 +51,7 @@ class ProductService
                 'from' => +$priceMin,
                 'to' => +$priceMax,
             ],
-            'products' => $productsQuery->paginate(12),
+            'products' => $productsQuery->frontendPaginate(12),
 
             'productFilters' => ProductFilter::orderBy('sequence')->get(),
             'selectedProductFilterValues' => $request->query('selectedProductFilterValues') ?? [],

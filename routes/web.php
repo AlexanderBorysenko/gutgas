@@ -30,11 +30,13 @@ Route::post('/order/store', [OrderController::class, 'store'])->name('order.stor
 Route::prefix('{locale?}')->middleware(['urlLocaleHandler', 'shareSeoEntityBreadcrumbs'])->group(function () {
     Route::get('/checkout', CheckoutController::class)->name('checkout');
 
-
-
     Route::get('/thank-you', function () {
         return Inertia::render('ThankYou')->with('thankYouTranslations', trans('thank-you'));
     })->name('thankYou');
 
+    // Route::get('/{route?}', SeoEndpoint::class)->where('route', '.*')->name('seo-entity');
+    Route::get('/{route?}/page-{pageNumber?}', SeoEndpoint::class)
+        ->where(['route' => '.*', 'pageNumber' => '[0-9]+'])
+        ->name('seo-entity-paged');
     Route::get('/{route?}', SeoEndpoint::class)->where('route', '.*')->name('seo-entity');
 });

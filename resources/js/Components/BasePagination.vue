@@ -83,17 +83,10 @@ const scrollTo = () => {
 };
 
 onMounted(() => {
-	const query = window.location.search;
-	if (query.includes('page')) {
-		scrollTo();
-	}
-
-	links.value.forEach((link: IPaginationLink) => {
-		const params = new URLSearchParams(query);
-		params.delete('page');
-		let paramsString = '&' + params.toString();
-		link.url = link.url + paramsString;
-	});
+	// const query = window.location.search;
+	// if (query.includes('page')) {
+	// 	scrollTo();
+	// }
 });
 </script>
 

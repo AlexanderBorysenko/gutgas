@@ -68,7 +68,6 @@ const pageForm = useForm<TPageForm>({
 });
 
 const onFormSubmit = () => {
-	console.log(pageForm);
 	pageForm.clearErrors();
 	pageForm.put(route('admin.page.update', props.page.id), {
 		preserveScroll: true,

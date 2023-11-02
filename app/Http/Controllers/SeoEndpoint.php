@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\App;
 
 class SeoEndpoint extends Controller
 {
-    public function __invoke(Request $request, $locale, $route = '')
+    public function __invoke(Request $request, $locale, $route = '', $pageNumber = null)
     {
         if ($route === '') {
             $seoEntity = SeoEntity::where('slug', 'LIKE', '/')->firstOrFail();
@@ -23,6 +23,10 @@ class SeoEndpoint extends Controller
 
         if (!$seoEntiteable) {
             abort(404);
+        }
+
+        if ($pageNumber) {
+            $request->merge(['pageNumber' => $pageNumber]);
         }
 
         return App::make($seoEntity->controller)->callAction($seoEntity->action, [

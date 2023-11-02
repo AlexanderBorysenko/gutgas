@@ -44,6 +44,8 @@ defineExpose({ innerRef });
 @import '@/styles/variables.scss';
 .preheader {
 	overflow: hidden;
+	position: relative;
+	z-index: 1;
 	@media (max-width: $tablet-width) {
 		display: none;
 	}

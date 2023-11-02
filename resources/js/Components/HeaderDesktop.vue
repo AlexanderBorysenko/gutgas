@@ -74,7 +74,12 @@ const { isCartModalOpened } = useCart();
 	transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 	background-color: rgba(15, 15, 16, 0.8);
 	backdrop-filter: blur(5px);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+	// background: radial-gradient(
+	// 	49.34% 105.48% at 50% 100%,
+	// 	#000 0%,
+	// 	rgba(0, 0, 0, 0.63) 58.85%,
+	// 	rgba(0, 0, 0, 0) 100%
+	// );
 	@media (max-width: $tablet-width) {
 		display: none;
 	}

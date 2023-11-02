@@ -110,7 +110,7 @@ watchEffect(() => {
 	position: absolute;
 	z-index: 2;
 	right: 0;
-	top: 0;
+	top: -6px;
 	font-size: 12px;
 	line-height: 100%;
 	text-align: right;

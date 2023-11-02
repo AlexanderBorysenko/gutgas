@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasFrontendPaginator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class Product extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations, HasFrontendPaginator;
 
     protected $guarded = [];
 
@@ -55,11 +56,13 @@ class Product extends Model
         // get AttributeGroups with attributes that are attached to this product
         return AttributeGroup::whereHas('attributes.products', function ($query) {
             $query->where('products.id', $this->id);
-        })->with(['attributes' => function ($query) {
-            $query->whereHas('products', function ($query) {
-                $query->where('products.id', $this->id);
-            });
-        }])->get();
+        })->with([
+                    'attributes' => function ($query) {
+                        $query->whereHas('products', function ($query) {
+                            $query->where('products.id', $this->id);
+                        });
+                    }
+                ])->get();
     }
 
 
