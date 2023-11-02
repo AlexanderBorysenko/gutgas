@@ -122,7 +122,6 @@ class Product extends Model
     public function generateStructuredData()
     {
         $attributes = $this->attributes()->get();
-        dd($attributes);
         $attributesForStructuredData = [];
         foreach ($attributes as $attribute) {
             $attributesForStructuredData[] = [
