@@ -3,14 +3,14 @@
 namespace App\Traits;
 
 use App\Pagination\FrontendPaginator;
+use App\Services\PageNumberService;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
 
 trait HasFrontendPaginator
 {
     public function scopeFrontendPaginate(Builder $query, $perPage = 12, $columns = ['*'], $pageName = 'pageNumber', $page = null)
     {
-        $page = $page ?: request()->get($pageName, 1);
+        $page = $page ?: PageNumberService::getPageNumber();
 
         $total = $query->count();
 

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\GlobalSettings;
 use App\Models\SeoEntity;
+use App\Services\PageNumberService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,7 @@ class HandleInertiaRequests extends Middleware
 
         if ($request->routeIs('logout'))
             $user = null;
+
         return array_merge(parent::share($request), [
             // message
             'message' => $request->session()->get('message'),
@@ -59,9 +61,7 @@ class HandleInertiaRequests extends Middleware
                 return GlobalSettings::all();
             },
 
-            'pageNumber' => function () use ($request) {
-                return $request->route('pageNumber') ?? 1;
-            },
+            'pageNumber' => PageNumberService::getPageNumber(),
         ]);
     }
 }

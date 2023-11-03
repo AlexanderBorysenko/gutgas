@@ -11,7 +11,6 @@ class FrontendPaginator extends LengthAwarePaginator
             $page = 1;
         }
 
-        // remove ?page={number} from url and add 'page-{number}' if not added
         $url = preg_replace('/\?page=\d+/', '', $this->path());
         $url = preg_replace('/\/page-\d+/', '', $url);
         $url = rtrim($url, '/');

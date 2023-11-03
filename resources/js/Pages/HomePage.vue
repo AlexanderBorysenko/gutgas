@@ -1,5 +1,12 @@
 <template>
 	<SeoEntityMetaFields :seo-entity="page.seo_entity" />
+	<Head>
+		<meta
+			name="robots"
+			content="noindex, nofollow"
+			v-if="usePage().props.pageNumber > 1"
+		/>
+	</Head>
 	<WebsitePage>
 		<HomeHero
 			:title="getMeta(page.meta, 'heroTitle')"
@@ -76,6 +83,7 @@ import AdvantagesSection from '@/Components/AdvantagesSection.vue';
 import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import ProductsCatalog from '@/Components/ProductsCatalog.vue';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
+import { Head, usePage } from '@inertiajs/vue3';
 
 const props = defineProps<{
 	page: TPage;

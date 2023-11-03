@@ -8,12 +8,9 @@ use Illuminate\Support\Facades\App;
 
 class SeoEndpoint extends Controller
 {
-    public function __invoke(Request $request, $locale, $route = '', $pageNumber = null)
+    public function __invoke(Request $request, $locale, $route = '')
     {
         $isHomePage = $route === '' || preg_match('/^page-[0-9]+$/', $route);
-        $pageNumber = $isHomePage ?
-            (int) preg_replace('/^page-/', '', $route)
-            : $pageNumber;
 
         if (
             $isHomePage
@@ -30,10 +27,6 @@ class SeoEndpoint extends Controller
 
         if (!$seoEntiteable) {
             abort(404);
-        }
-
-        if ($pageNumber) {
-            $request->merge(['pageNumber' => $pageNumber]);
         }
 
         return App::make($seoEntity->controller)->callAction($seoEntity->action, [
