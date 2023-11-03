@@ -146,7 +146,7 @@
 				</KeepAlive>
 				<KeepAlive>
 					<template v-if="currentTab === 'pages'">
-						<FormFieldWrapper label="Каталог Товарів">
+						<FormFieldWrapper label="Slug Каталогу Товарів">
 							<input
 								type="text"
 								placeholder="Slug Каталогу Товарів"

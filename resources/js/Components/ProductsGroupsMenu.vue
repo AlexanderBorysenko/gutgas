@@ -12,14 +12,18 @@
 						reactiveFilterMode
 							? !currentProductsGroup
 							: currentPath ===
-							  getGlobalSetting('productsCatalogSlug')
+							  ('/' + getGlobalSetting('productsCatalogSlug') ||
+									'catalog')
 					"
 					@click="e => onProductsGroupSelect(e, null)"
 				/>
 				<Link
 					v-if="!reactiveFilterMode"
 					:href="
-						getGlobalSetting('productsCatalogSlug') || '/catalog'
+						route('seo-entity', [
+							usePage().props.locale,
+							getGlobalSetting('productsCatalogSlug') || 'catalog'
+						])
 					"
 					class="card-link"
 				>
@@ -38,17 +42,20 @@
 					:name="_t(productsGroup.name)"
 					:disableLink="reactiveFilterMode"
 					:active="
-						reactiveFilterMode
-							? +currentProductsGroup === productsGroup.id
-							: currentPath ===
-							  '/' + productsGroup.seo_entity.slug
+						+currentProductsGroup === productsGroup.id ||
+						currentPath.includes(productsGroup.seo_entity.slug)
 					"
 					@click="e => onProductsGroupSelect(e, productsGroup.id)"
 					class="products-group-card"
 				/>
 				<Link
 					v-if="!reactiveFilterMode"
-					:href="'/' + productsGroup.seo_entity.slug"
+					:href="
+						route('seo-entity', [
+							usePage().props.locale,
+							productsGroup.seo_entity.slug
+						])
+					"
 					class="card-link"
 				>
 					{{ _t(productsGroup.name) }}
