@@ -17,7 +17,7 @@ class ProductService
         $priceRange = $request->query('priceRange');
 
         $products->whereHas('seoEntity', function ($query) {
-            $query->where('is_active->' . app()->getLocale(), '=', 1);
+            $query->where('is_active->' . app()->getLocale(), '=', true);
         });
 
         // price range filter
