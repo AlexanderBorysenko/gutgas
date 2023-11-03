@@ -10,7 +10,14 @@ class SeoEndpoint extends Controller
 {
     public function __invoke(Request $request, $locale, $route = '', $pageNumber = null)
     {
-        if ($route === '') {
+        $isHomePage = $route === '' || preg_match('/^page-[0-9]+$/', $route);
+        $pageNumber = $isHomePage ?
+            (int) preg_replace('/^page-/', '', $route)
+            : $pageNumber;
+
+        if (
+            $isHomePage
+        ) {
             $seoEntity = SeoEntity::where('slug', 'LIKE', '/')->firstOrFail();
         } else {
             $seoEntity = SeoEntity::where('slug', 'LIKE', $route)->firstOrFail();

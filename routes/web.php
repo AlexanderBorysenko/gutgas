@@ -34,7 +34,6 @@ Route::prefix('{locale?}')->middleware(['urlLocaleHandler', 'shareSeoEntityBread
         return Inertia::render('ThankYou')->with('thankYouTranslations', trans('thank-you'));
     })->name('thankYou');
 
-    // Route::get('/{route?}', SeoEndpoint::class)->where('route', '.*')->name('seo-entity');
     Route::get('/{route?}/page-{pageNumber?}', SeoEndpoint::class)
         ->where(['route' => '.*', 'pageNumber' => '[0-9]+'])
         ->name('seo-entity-paged');

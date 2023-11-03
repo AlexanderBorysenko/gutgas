@@ -36,7 +36,8 @@ class HandleInertiaRequests extends Middleware
     {
         $user = Auth::user();
 
-        if ($request->routeIs('logout')) $user = null;
+        if ($request->routeIs('logout'))
+            $user = null;
         return array_merge(parent::share($request), [
             // message
             'message' => $request->session()->get('message'),
@@ -56,6 +57,10 @@ class HandleInertiaRequests extends Middleware
 
             'globalSettings' => function () {
                 return GlobalSettings::all();
+            },
+
+            'pageNumber' => function () use ($request) {
+                return $request->route('pageNumber') ?? 1;
             },
         ]);
     }

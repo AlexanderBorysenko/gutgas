@@ -82,7 +82,7 @@ const scrollTo = () => {
 };
 
 onMounted(() => {
-	if (window.location.pathname.includes('page')) {
+	if (window.location.pathname.includes('page-')) {
 		scrollTo();
 	}
 });
