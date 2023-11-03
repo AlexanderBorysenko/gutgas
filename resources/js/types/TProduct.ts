@@ -14,6 +14,7 @@ export interface TProduct {
 	category_id: number | null;
 	description: ITranslate<string>;
 	media_file: IMediaFile | null;
+	sorting_index: number;
 	productPage?: TProductPage | null;
 	products_groups?: TProductsGroup[];
 	required_products_groups?: TRequiredProductsGroup[];
@@ -28,6 +29,7 @@ export type TProductForm = {
 	category_id: number | null;
 	description: string;
 	media_file: IMediaFile | null;
+	sorting_index: number;
 	attributes: number[];
 	product_filter_values: number[];
 	products_groups: number[];

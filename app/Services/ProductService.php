@@ -12,13 +12,21 @@ class ProductService
 {
     public function productsCatalogQuery(Request $request)
     {
-        $products = Product::query()->orderBy('created_at', 'desc');
+        $products = Product::query()->orderBy('sorting_index', 'desc');
 
         $priceRange = $request->query('priceRange');
+
+        // exclude where seoEntity is_active true for current locale
+        $products->whereHas('seoEntity', function ($query) {
+            $query->where('is_active->' . app()->getLocale(), '=', 1);
+        });
+
+        // price range filter
         if (!empty($priceRange)) {
             $products->whereBetween('price', [$priceRange['from'], $priceRange['to']]);
         }
 
+        // product filters
         $productFilterValues = $request->query('selectedProductFilterValues');
         if (!empty($productFilterValues)) {
             $products->whereHas('productFilterValues', function ($query) use ($productFilterValues) {
@@ -26,6 +34,7 @@ class ProductService
             })->get();
         }
 
+        // filter by products group
         $productsGroup = $request->query('productsGroup');
         if (!empty($productsGroup)) {
             $products->whereHas('productsGroups', function ($query) use ($productsGroup) {
@@ -70,6 +79,7 @@ class ProductService
             'name',
             'price',
             'stock',
+            'sorting_index',
             'description'
         ]);
 

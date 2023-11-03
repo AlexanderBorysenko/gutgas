@@ -65,6 +65,7 @@ const generalForm = useForm<TProductForm>({
 	stock: props.product.stock,
 	description: _t(props.product.description),
 	media_file: props.product.media_file,
+	sorting_index: props.product.sorting_index,
 	category_id: props.product.category_id,
 	attributes: props.productAttributes.map(attribute => attribute.id),
 	product_filter_values: props.selectedProductFilterValues.map(

@@ -1,6 +1,9 @@
 <template>
 	<tr>
 		<td>
+			{{ product.sorting_index }}
+		</td>
+		<td>
 			{{ product.id }}
 		</td>
 		<td>

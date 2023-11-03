@@ -39,7 +39,7 @@ class ProductController extends Controller
         return inertia('Admin/Product/Index')->with([
             'products' => Product::with('mediaFile.thumbnail')
                 ->with('seoEntity')
-                ->orderBy('id', 'desc')
+                ->orderBy('sorting_index', 'desc')->orderBy('id', 'desc')
                 ->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('sku', 'LIKE', "%{$search}%")
                 ->orWhere('id', $search)

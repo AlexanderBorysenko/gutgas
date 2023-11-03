@@ -22,8 +22,9 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
+						<th>Пріоритет</th>
 						<th>ID</th>
-						<th>Зображення</th>
+						<th>Img</th>
 						<th>Назва</th>
 						<th>SKU</th>
 						<th>Price</th>

@@ -21,9 +21,9 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        $productsId = '';
+        $productId = '';
         if ($this->product) {
-            $productsId = $this->product->id;
+            $productId = $this->product->id;
         }
         return [
             'name' => [
@@ -35,7 +35,7 @@ class StoreRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                'unique:products,sku' . ',' . $productsId,
+                'unique:products,sku' . ',' . $productId,
             ],
             'price' => [
                 'required',
@@ -75,6 +75,10 @@ class StoreRequest extends FormRequest
             'media_file' => [
                 'nullable',
                 'array',
+            ],
+            'sorting_index' => [
+                'nullable',
+                'integer',
             ],
             'media_file.id' => [
                 'nullable',

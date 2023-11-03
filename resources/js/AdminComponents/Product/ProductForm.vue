@@ -1,21 +1,35 @@
 <template>
-	<div class="row">
-		<div class="col-2">
-			<label class="form-label">Головне Зображення</label>
-			<MediaFileSelect v-model="form.media_file" />
-		</div>
-		<div class="col-10">
-			<div class="row mb-3">
-				<div class="col-8">
-					<label class="form-label">Назва</label>
-					<input
-						class="form-control fs-4"
-						v-model="form.name"
-						placeholder="Назва"
-					/>
-					<FormError :error="form.errors.name" />
+	<div class="row g-1 mb-3">
+		<div class="col-8">
+			<FormFieldWrapper class="h-100" label="Про Товар">
+				<div class="row g-2">
+					<div class="col-4">
+						<label class="form-label">Зображення Каталога</label>
+						<MediaFileSelect v-model="form.media_file" />
+					</div>
+					<div class="col-8">
+						<div class="mb-2">
+							<label class="form-label">Назва У Каталозі</label>
+							<input
+								class="form-control fs-4"
+								v-model="form.name"
+								placeholder="Назва"
+							/>
+							<FormError :error="form.errors.name" />
+						</div>
+						<label class="form-label">Короткий Опис</label>
+						<textarea
+							class="form-control"
+							v-model="form.description"
+							placeholder="Опис"
+						></textarea>
+					</div>
 				</div>
-				<div class="col-4">
+			</FormFieldWrapper>
+		</div>
+		<div class="col-4">
+			<FormFieldWrapper class="h-100" label="Менеджмент">
+				<div class="mb-2">
 					<label class="form-label">SKU(Артикул)</label>
 					<input
 						class="form-control fs-4"
@@ -24,25 +38,17 @@
 					/>
 					<FormError :error="form.errors.sku" />
 				</div>
-			</div>
-			<div class="row mb-3">
-				<div class="col-8">
-					<label class="form-label">Короткий Опис</label>
-					<textarea
-						class="form-control"
-						v-model="form.description"
-						placeholder="Опис"
-					></textarea>
-				</div>
-				<div class="col-4">
-					<label class="form-label">Ціна</label>
+				<div class="mb-2">
+					<label class="form-label">Ціна (грн)</label>
 					<input
 						class="form-control"
 						v-model="form.price"
 						placeholder="Ціна"
 					/>
 					<FormError :error="form.errors.price" />
-					<label class="form-label mt-3">Кількість У Наявності</label>
+				</div>
+				<div class="">
+					<label class="form-label">Кількість У Наявності</label>
 					<input
 						class="form-control"
 						v-model="form.stock"
@@ -50,7 +56,7 @@
 					/>
 					<FormError :error="form.errors.stock" />
 				</div>
-			</div>
+			</FormFieldWrapper>
 		</div>
 	</div>
 	<!-- <FormFieldWrapper label="Категорія" class="mb-3">
@@ -67,6 +73,15 @@
 		/>
 	</FormFieldWrapper>
 	<FormFieldWrapper label="Фільтри" class="mb-3">
+		<div class="mb-3">
+			<label class="form-label">Піоритет Відображення у Каталозі</label>
+			<input
+				class="form-control"
+				v-model="form.sorting_index"
+				placeholder="Піорітет Відображення у Каталозі"
+			/>
+			<FormError :error="form.errors.sorting_index" />
+		</div>
 		<ProductFiltersSelect
 			:productFilters="productFilters"
 			v-model="form.product_filter_values"

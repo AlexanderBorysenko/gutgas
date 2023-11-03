@@ -9,7 +9,13 @@
 		<div class="inner">
 			<img class="icon" src="@/assets/ukr-logo.svg" alt="Ukraine" />
 			<p class="text">{{ __('togetherToVictory') }}</p>
-			<a href="#" class="link">{{ __('helpArmy') }}</a>
+			<a
+				href="https://www.azov-one.com/campaigns"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="link"
+				>{{ __('helpArmy') }}</a
+			>
 		</div>
 	</div>
 </template>

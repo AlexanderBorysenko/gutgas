@@ -54,6 +54,7 @@ const form = useForm<TProductForm>({
 	description: '',
 	media_file: null,
 	category_id: null,
+	sorting_index: 0,
 	attributes: [],
 	product_filter_values: [],
 	products_groups: [],
