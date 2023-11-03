@@ -59,7 +59,7 @@ class ProductService
                 'from' => +$priceMin,
                 'to' => +$priceMax,
             ],
-            'products' => $productsQuery->frontendPaginate(1),
+            'products' => $productsQuery->frontendPaginate(12),
 
             'productFilters' => ProductFilter::orderBy('sequence')->get(),
             'selectedProductFilterValues' => $request->query('selectedProductFilterValues') ?? [],
