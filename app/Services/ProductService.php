@@ -12,7 +12,7 @@ class ProductService
 {
     public function productsCatalogQuery(Request $request)
     {
-        $products = Product::query()->orderBy('sorting_index', 'desc');
+        $products = Product::query()->orderBy('sorting_index', 'desc')->orderBy('id', 'desc');
 
         $priceRange = $request->query('priceRange');
 
