@@ -16,7 +16,6 @@ class ProductService
 
         $priceRange = $request->query('priceRange');
 
-        // exclude where seoEntity is_active true for current locale
         $products->whereHas('seoEntity', function ($query) {
             $query->where('is_active->' . app()->getLocale(), '=', 1);
         });
