@@ -15,7 +15,8 @@
     @foreach (config('app.locales') as $locale => $localeFullName)
         <link
             href="{{ str_replace(request()->getHttpHost() . '/' . app()->getLocale(), request()->getHttpHost() . '/' . $locale, Request::url()) }}"
-            rel="alternate" hreflang="{{ $locale === app()->getLocale() ? 'x-default' : $localeFullName }}" />
+            rel="alternate"
+            hreflang="{{ $locale === config('app.fallback_locale') ? 'x-default' : $localeFullName }}" />
     @endforeach
 
     @if (Request::is('admin*'))
