@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', config('app.locales')[app()->getLocale()]) }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{-- <title inertia>{{ config('app.name', 'Laravel') }}</title> --}}
     <meta name="google-site-verification" content="Ul9Uz2ZUtv3wLZlr4YFWO_jKwt8MtdyluHt1vQimpqI">
 
     <meta name="robots" content="noindex">
@@ -13,9 +12,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
+    @foreach (config('app.locales') as $locale => $localeName)
+        <link
+            href="{{ str_replace(request()->getHttpHost() . '/' . app()->getLocale(), request()->getHttpHost() . '/' . $locale, Request::url()) }}"
+            rel="alternate" hreflang="{{ $locale }}" />
+    @endforeach
+
     @if (Request::is('admin*'))
         @php($__inertiaSsrDispatched = true)
         @php($__inertiaSsrResponse = null)
+        <meta name="robots" content="noindex">
     @endif
 
     <!-- Scripts -->

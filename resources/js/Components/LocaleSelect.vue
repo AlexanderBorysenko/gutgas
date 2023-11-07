@@ -8,7 +8,7 @@
 	>
 		<div class="top f-centered">
 			<span class="current-option">
-				{{ locales[currentLocale] }}
+				{{ localeCaption(currentLocale) }}
 			</span>
 			<svg
 				class="carret"
@@ -36,17 +36,27 @@
 					v-for="locale in otherLocales"
 					:key="locale[0]"
 					class="option"
-					@click="
-						router.get(
+				>
+					<a
+						:href="
 							currentUrl.replace(
 								usePage().props.locale,
 								locale[0]
 							)
-						);
-						toggle();
-					"
-				>
-					{{ locale[1] }}
+						"
+						class="option-link"
+						@click.prevent="
+							router.get(
+								currentUrl.replace(
+									usePage().props.locale,
+									locale[0]
+								)
+							);
+							toggle();
+						"
+					>
+						{{ localeCaption(locale[0]) }}</a
+					>
 				</li>
 			</ul>
 		</BaseVerticalSlidable>
@@ -57,8 +67,8 @@
 import { ref } from 'vue';
 import BaseVerticalSlidable from '@/Components/BaseVerticalSlidable.vue';
 import { router, useForm, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
 import { onMounted } from 'vue';
+import localeCaption from '@/utils/localeCaption';
 
 const {
 	props: { locales, locale: currentLocale }
@@ -74,7 +84,7 @@ const form = useForm({
 	locale: currentLocale
 });
 const otherLocales = ref(
-	Object.entries(locales).filter(locale => locale[0] !== currentLocale)
+	Object.entries(locales).filter(([key]) => key !== currentLocale)
 );
 const isActive = ref(false);
 

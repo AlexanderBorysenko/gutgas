@@ -77,7 +77,7 @@ return [
     'adviseBalon?' => 'Подобрать Балон?',
     'fillFormAndWeWillHelpChouseBalon' => 'Заполните форму, <br>и Мы поможем подобрать балон.',
 
-    'viewAllProducts' => 'Смтртеть все товары',
+    'viewAllProducts' => 'Смотреть все товары',
 
     'all' => 'ВСе',
 
