@@ -6,7 +6,7 @@
 		}"
 	>
 		<div class="f- justify-between align-center top">
-			<Link href="/" class="logo">
+			<Link :href="`/${usePage().props.locale}`" class="logo">
 				<img src="@/assets/header-logo.svg" alt="Gutgas" />
 			</Link>
 			<button class="f- align-center" @click="opened = !opened">
@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import { THeaderMenuItem } from '@/types/THeaderMenu';
 import { getGlobalSetting } from '@/utils/getGlobalSetting';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { onMounted, ref, watch } from 'vue';
 import HeaderPhone from './HeaderPhone.vue';
 import LocaleSelect from './LocaleSelect.vue';

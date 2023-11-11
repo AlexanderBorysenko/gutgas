@@ -11,7 +11,6 @@ class SeoEndpoint extends Controller
     public function __invoke(Request $request, $locale, $route = '')
     {
         $isHomePage = $route === '' || preg_match('/^page-[0-9]+$/', $route);
-
         if (
             $isHomePage
         ) {
@@ -19,6 +18,7 @@ class SeoEndpoint extends Controller
         } else {
             $seoEntity = SeoEntity::where('slug', 'LIKE', $route)->firstOrFail();
         }
+
         if (!$seoEntity || !$seoEntity->is_active) {
             abort(404);
         }
@@ -27,6 +27,13 @@ class SeoEndpoint extends Controller
 
         if (!$seoEntiteable) {
             abort(404);
+        }
+
+        if ($route !== $seoEntity->slug) {
+            return redirect()->to(
+                str_replace($request->path(), $seoEntity->slug, $request->path()),
+                301
+            );
         }
 
         return App::make($seoEntity->controller)->callAction($seoEntity->action, [

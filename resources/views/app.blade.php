@@ -17,14 +17,13 @@
             hreflang="{{ $locale === config('app.fallback_locale') ? 'x-default' : $localeFullName }}" />
     @endforeach
 
+    <meta name="robots" content="noindex, nofollow">
     @if (Request::is('admin*'))
         @php($__inertiaSsrDispatched = true)
         @php($__inertiaSsrResponse = null)
         <meta name="robots" content="noindex, nofollow">
     @endif
-    <meta name="robots" content="noindex, nofollow">
 
-    <!-- Scripts -->
     @routes
     @vite(['resources/js/app.ts', "resources/js/Pages/{$page['component']}.vue"])
 

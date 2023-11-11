@@ -28,7 +28,11 @@ Route::post('/mail/requestCall', [MailController::class, 'requestCallMail'])->na
 
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 
-Route::prefix('{locale?}')->middleware(['urlLocaleHandler', 'shareSeoEntityBreadcrumbs'])->group(function () {
+Route::prefix('{locale?}')->middleware([
+    'urlLocaleHandler',
+    'shareSeoEntityBreadcrumbs',
+    'seoRedirect'
+])->group(function () {
     Route::get('/checkout', CheckoutController::class)->name('checkout');
 
     Route::get('/thank-you', function () {

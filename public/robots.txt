@@ -3,6 +3,7 @@ Disallow: *utm*=
 Disalllow: *price*
 Disallow: *selectedProduct*
 Disallow: /admin
+Disallow: /admin*
 Allow: /*.css
 Allow: /*.js
 Allow: /*.jpg

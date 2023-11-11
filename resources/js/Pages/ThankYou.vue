@@ -11,7 +11,7 @@
 				<strong class="fw-800">{{ order.id }}</strong>
 			</p>
 			<Link
-				href="/"
+				:href="`/${usePage().props.locale}`"
 				class="lh-100 underline color-danger fs-medium mt-12"
 			>
 				{{ __('backToHome') }}
@@ -24,7 +24,7 @@
 import WebsitePage from '@/Layouts/WebsitePage.vue';
 import { TPage } from '@/types/TPage';
 import PageHeadSpacer from '@/Components/PageHeadSpacer.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { TOrder } from '@/types/TOreder';
 
 const props = defineProps<{

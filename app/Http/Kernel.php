@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\SeoRedirectionsMiddleware;
 use App\Http\Middleware\SessionLocaleHandler;
 use App\Http\Middleware\ShareSeoEntityBreadcrumbs;
 use App\Http\Middleware\UrlLocaleHandler;
@@ -81,5 +82,6 @@ class Kernel extends HttpKernel
         'urlLocaleHandler' => UrlLocaleHandler::class,
         'sessionLocaleHandler' => SessionLocaleHandler::class,
         'shareSeoEntityBreadcrumbs' => ShareSeoEntityBreadcrumbs::class,
+        'seoRedirect' => SeoRedirectionsMiddleware::class,
     ];
 }
