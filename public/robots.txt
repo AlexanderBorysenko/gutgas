@@ -12,3 +12,4 @@ Allow: /*.gif
 Allow: /*.svg
 Allow: /*.pdf
 Allow: /*.webp
+SiteMap: /sitemap.xml
