@@ -79,9 +79,9 @@ class Kernel extends HttpKernel
         'permission' => PermissionMiddleware::class,
         'role_or_permission' => RoleOrPermissionMiddleware::class,
 
+        'seoRedirect' => SeoRedirectionsMiddleware::class,
         'urlLocaleHandler' => UrlLocaleHandler::class,
         'sessionLocaleHandler' => SessionLocaleHandler::class,
         'shareSeoEntityBreadcrumbs' => ShareSeoEntityBreadcrumbs::class,
-        'seoRedirect' => SeoRedirectionsMiddleware::class,
     ];
 }

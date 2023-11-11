@@ -15,15 +15,19 @@ class SeoRedirectionsMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $url = $request->getRequestUri();
+        $path = $request->getRequestUri();
 
         if (
-            preg_match('/^\/index.php/', $url)
+            preg_match('/^\/index.php/', $path)
             ||
-            preg_match('/\/$/', $url)
+            preg_match('/\/$/', $path)
+            &&
+            $path !== '/'
         ) {
-            $url = preg_replace('/^\/index.php/', '', $url);
-            $url = preg_replace('/\/$/', '', $url);
+            $path = preg_replace('/^\/index.php/', '', $path);
+            $path = preg_replace('/\/$/', '', $path);
+
+            $url = $request->getSchemeAndHttpHost() . $path;
 
             return redirect()->to(
                 $url,

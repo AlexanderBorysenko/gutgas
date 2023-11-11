@@ -20,8 +20,7 @@ class UrlLocaleHandler
     {
 
         $locale = $request->segment(1);
-        // if (!$locale)
-        //     return abort(404);
+
         // Примусова передача поточної мови в УРЛ
         if (!array_key_exists($locale, config('app.locales'))) {
             App::setLocale(config('app.fallback_locale'));
