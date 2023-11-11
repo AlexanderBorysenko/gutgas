@@ -16,7 +16,7 @@ class SeoRedirectionsMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $url = $request->getRequestUri();
-        dd($url, preg_match('/\/$/', $url));
+
         if (
             preg_match('/^\/index.php/', $url)
             ||
