@@ -68,7 +68,13 @@
 					<ViewAllProductsButton
 						v-if="previewSections && previewProducts"
 						class="g-col-12"
-						:slug="getGlobalSetting('productsCatalogSlug') ?? '/'"
+						:slug="
+							route('seo-entity', [
+								usePage().props.locale,
+								getGlobalSetting('productsCatalogSlug') ||
+									'catalog'
+							])
+						"
 						:total-count="productsCatalogData.products.total"
 					/>
 				</template>

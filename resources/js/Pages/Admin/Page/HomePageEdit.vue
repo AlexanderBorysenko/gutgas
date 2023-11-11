@@ -66,7 +66,6 @@
 					:data-setter="
 						({ title, slug, items }) => {
 							pageForm.meta.catalogPreviewTitle = title;
-							pageForm.meta.catalogPreviewSlug = slug;
 							pageForm.meta.catalogPreviewItems = items;
 						}
 					"
@@ -76,12 +75,6 @@
 						placeholder="Заголовок"
 						class="form-control mb-1"
 						v-model="pageForm.meta.catalogPreviewTitle"
-					/>
-					<input
-						type="text"
-						placeholder="Шлях до повного каталогу"
-						class="form-control mb-1"
-						v-model="pageForm.meta.catalogPreviewSlug"
 					/>
 					<ProductsCatalogPreviewEditBlock
 						v-model="pageForm.meta.catalogPreviewItems"
@@ -255,8 +248,6 @@ const pageForm = useForm<TPageForm>({
 
 		catalogPreviewTitle:
 			getMeta<string>(props.page.meta, 'catalogPreviewTitle') ?? '',
-		catalogPreviewSlug:
-			getMeta<string>(props.page.meta, 'catalogPreviewSlug') ?? '',
 		catalogPreviewItems:
 			getMeta<TProductsCatalogPreviewSectionStoreData[]>(
 				props.page.meta,
