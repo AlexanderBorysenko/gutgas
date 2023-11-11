@@ -1,12 +1,6 @@
 <template>
 	<Head>
 		<title>{{ _t(seoEntity.title) }}</title>
-		<link
-			rel="canonical"
-			:href="
-				route('seo-entity', [usePage().props.locale, seoEntity.slug])
-			"
-		/>
 		<meta name="description" :content="_t(seoEntity.description)" />
 		<meta property="og:title" :content="_t(seoEntity.title)" />
 		<meta property="og:description" :content="_t(seoEntity.description)" />
@@ -22,26 +16,27 @@
 			property="og:image"
 			:content="seoEntity.og_image"
 		/>
-		<meta
-			property="og:locale"
-			:content="
-				usePage().props.locale +
-				'_' +
-				usePage().props.locale.toUpperCase()
-			"
-		/>
+		<meta property="og:locale" :content="usePage().props.locale" />
+		<link rel="canonical" :href="currentPath" />
 	</Head>
 </template>
 
 <script setup lang="ts">
 import { TSeoEntity } from '@/types/TSeoEntity';
 import { Head, usePage } from '@inertiajs/vue3';
+import { onMounted } from 'vue';
+import { ref } from 'vue';
 
 const { _t } = useTranslations();
 
 const props = defineProps<{
 	seoEntity: TSeoEntity;
 }>();
+
+const currentPath = ref<string | undefined>(undefined);
+onMounted(() => {
+	currentPath.value = window.location.pathname;
+});
 </script>
 
 <style scoped></style>

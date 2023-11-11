@@ -1,2 +1,14 @@
 User-agent: *
-Disallow:
+Disallow: *utm*=
+Disalllow: *price*
+Disallow: *selectedProduct*
+Disallow: /admin
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.pdf
+Allow: /*.webp

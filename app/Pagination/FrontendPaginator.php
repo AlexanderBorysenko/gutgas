@@ -16,7 +16,9 @@ class FrontendPaginator extends LengthAwarePaginator
         $url = rtrim($url, '/');
         $url = $url . '/page-' . $page;
         $url = preg_replace('/\/page-1/', '', $url);
-        $url = $url . '?' . http_build_query(request()->query());
+        if (count(request()->query())) {
+            $url = $url . '?' . http_build_query(request()->query());
+        }
         return $url;
     }
 }

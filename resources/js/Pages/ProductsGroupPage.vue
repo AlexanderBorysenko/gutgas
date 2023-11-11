@@ -2,10 +2,6 @@
 	<SeoEntityMetaFields :seo-entity="productsGroup.seo_entity" />
 	<Head>
 		<link
-			rel="canonical"
-			:href="baseUrl + '/' + productsGroup.seo_entity.slug"
-		/>
-		<link
 			rel="prev"
 			:href="productsCatalogData.products.prev_page_url"
 			v-if="productsCatalogData.products.prev_page_url"
