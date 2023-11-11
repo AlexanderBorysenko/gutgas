@@ -1,10 +1,6 @@
 <template>
 	<SeoEntityMetaFields :seo-entity="page.seo_entity" />
 	<Head>
-		<title v-if="productsCatalogData.products.current_page !== 1">
-			{{ _t(page.seo_entity.title) }} - {{ __('page') }}
-			{{ productsCatalogData.products.current_page }}
-		</title>
 		<link
 			rel="prev"
 			:href="productsCatalogData.products.prev_page_url"

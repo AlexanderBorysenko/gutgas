@@ -1,6 +1,15 @@
 <template>
 	<Head>
 		<title>{{ _t(seoEntity.title) }}</title>
+		<title>
+			{{ _t(seoEntity.title)
+			}}{{
+				usePage().props.pageNumber !== 1
+					? ` - ${__('page')} ${usePage().props.pageNumber}`
+					: ''
+			}}
+			| GUTGAS
+		</title>
 		<meta name="description" :content="_t(seoEntity.description)" />
 		<meta property="og:title" :content="_t(seoEntity.title)" />
 		<meta property="og:description" :content="_t(seoEntity.description)" />
@@ -29,7 +38,7 @@ import { Head, usePage } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
 
-const { _t } = useTranslations();
+const { _t, __ } = useTranslations();
 
 const props = defineProps<{
 	seoEntity: TSeoEntity;
