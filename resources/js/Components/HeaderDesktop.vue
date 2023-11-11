@@ -7,7 +7,7 @@
 			ref="headerRef"
 		>
 			<div class="container fs-medium" :class="{ scrolled: isScrolled }">
-				<Link href="/" class="logo">
+				<Link :href="`/${usePage().props.locale}`" class="logo">
 					<img src="@/assets/header-logo.svg" alt="Gutgas" />
 				</Link>
 				<HeaderDesktopMenu class="" />
@@ -41,7 +41,7 @@ import HeaderDesktopMenu from '@/Components/HeaderDesktopMenu.vue';
 import LocaleSelect from '@/Components/LocaleSelect.vue';
 import { onMounted, ref } from 'vue';
 import CartPopup from './CartPopup.vue';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import Preheader from './Preheader.vue';
 import useHeaderElement from '@/composables/headerElement';
 import useCart from '@/composables/cart';

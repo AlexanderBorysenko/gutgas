@@ -51,8 +51,6 @@ const props = defineProps<{
 	page: TPage;
 }>();
 
-console.log(getMeta<string[]>(props.page.meta, 'sidebarSliderImages'));
-
 const images = ref<string[]>(
 	getMeta<IMediaFile[]>(props.page.meta, 'sidebarSliderImages')?.map(
 		mediaFile => mediaFile.url

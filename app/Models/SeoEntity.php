@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Spatie\Sitemap\Tags\Url;
 
 class SeoEntity extends Model
 {
@@ -45,4 +46,11 @@ class SeoEntity extends Model
 
         return $breadcrumbs;
     }
+
+    // public function toSitemapTag(): Url|string|array
+    // {
+    //     return Url::create(route('seo-entity', $this))
+    //         ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+    //         ->setPriority(0.8);
+    // }
 }

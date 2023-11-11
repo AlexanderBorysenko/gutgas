@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SeoEndpoint;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Psr\Http\Message\UriInterface;
 
 /*
 |--------------------------------------------------------------------------
