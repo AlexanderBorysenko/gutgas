@@ -16,6 +16,7 @@
 				<div class="g-col-6 g-tablet-col-12">
 					<ProductGallerySlider
 						:images="images"
+						:image-base-alt="_t(page.title)"
 						class="mb-48 images-slider"
 					/>
 				</div>

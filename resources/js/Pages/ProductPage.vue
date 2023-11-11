@@ -37,6 +37,7 @@
 						:images="
 							productPage.media_gallery.map(mediaFile => mediaFile.url)
 						"
+						:image-base-alt="_t(product.name)"
 					/>
 					<BaseTabs controlsBackground="#141414">
 						<BaseTab

@@ -19,7 +19,12 @@
 				:key="index"
 			>
 				<div class="main-slider-slide__image-container">
-					<img :src="image" />
+					<img
+						:alt="
+							imageBaseAlt + ' ' + __('photo') + ' ' + (index + 1)
+						"
+						:src="image"
+					/>
 				</div>
 			</swiper-slide>
 			<button class="navigation-button prev" ref="prevRef">
@@ -60,7 +65,16 @@
 				:key="index"
 				class="thumb"
 			>
-				<img :src="image" />
+				<img
+					:src="image"
+					:alt="
+						imageBaseAlt +
+						' ' +
+						__('photoThumbnail') +
+						' ' +
+						(index + 1)
+					"
+				/>
 			</swiper-slide>
 		</swiper>
 	</div>
@@ -77,8 +91,11 @@ import 'swiper/css/thumbs';
 
 import { ref } from 'vue';
 
+const { __ } = useTranslations();
+
 const props = defineProps<{
 	images: string[];
+	imageBaseAlt: string;
 }>();
 
 const thumbsSwiper = ref<null | ISwiper>(null);

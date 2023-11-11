@@ -90,4 +90,7 @@ return [
     'askAQuestion' => 'Задать вопрос',
 
     'page' => 'Страница',
+
+    'photo' => 'Фото',
+    'photoThumbnail' => 'Фото миниатюра',
 ];

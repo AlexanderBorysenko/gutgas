@@ -89,5 +89,8 @@ return [
     'contactInfo' => 'Contact info',
     'askAQuestion' => 'Ask a question',
 
-    'page' => 'Page'
+    'page' => 'Page',
+
+    'photo' => 'Photo',
+    'photoThumbnail' => 'Photo thumbnail',
 ];
