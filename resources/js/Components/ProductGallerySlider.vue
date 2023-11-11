@@ -21,7 +21,11 @@
 				<div class="main-slider-slide__image-container">
 					<img
 						:alt="
-							imageBaseAlt + ' ' + __('photo') + ' ' + (index + 1)
+							imageBaseAlt +
+							' | ' +
+							__('photo') +
+							' ' +
+							(index + 1)
 						"
 						:src="image"
 					/>
@@ -69,7 +73,7 @@
 					:src="image"
 					:alt="
 						imageBaseAlt +
-						' ' +
+						' | ' +
 						__('photoThumbnail') +
 						' ' +
 						(index + 1)

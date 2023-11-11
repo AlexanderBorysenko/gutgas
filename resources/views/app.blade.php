@@ -13,9 +13,11 @@
     @foreach (config('app.locales') as $locale => $localeFullName)
         <link
             href="{{ str_replace(request()->getHttpHost() . '/' . app()->getLocale(), request()->getHttpHost() . '/' . $locale, Request::url()) }}"
-            rel="alternate"
-            hreflang="{{ $locale === config('app.fallback_locale') ? 'x-default' : $localeFullName }}" />
+            rel="alternate" hreflang="{{ $localeFullName }}" />
     @endforeach
+    <link
+        href="{{ str_replace(request()->getHttpHost() . '/' . app()->getLocale(), request()->getHttpHost() . '/' . config('app.fallback_locale'), Request::url()) }}"
+        rel="alternate" hreflang="x-default" />
 
     <meta name="robots" content="noindex, nofollow">
     @if (Request::is('admin*'))

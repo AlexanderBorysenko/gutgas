@@ -89,7 +89,7 @@ return [
 
     'locales' => [
         'ua' => 'uk-UA',
-        'ru' => 'ru-UA"',
+        'ru' => 'ru-UA',
     ],
 
     /*
