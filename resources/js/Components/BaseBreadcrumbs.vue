@@ -14,7 +14,7 @@
 				itemtype="https://schema.org/ListItem"
 			>
 				<Link
-					v-if="currentUrl !== '/' + breadcrumb.slug"
+					v-if="currentUrl !== breadcrumb.slug"
 					:href="breadcrumb.slug || ''"
 					itemscope
 					itemtype="http://schema.org/Thing"
@@ -26,6 +26,9 @@
 						{{ breadcrumb.title }}
 					</span>
 				</Link>
+				<span v-else itemprop="name">
+					{{ breadcrumb.title }}
+				</span>
 				<meta itemprop="position" :content="`${index + 1}`" />
 			</li>
 		</ul>
@@ -44,9 +47,8 @@ const {
 const currentUrl = ref('');
 onMounted(() => {
 	currentUrl.value = window.location.href.replace(window.location.origin, '');
+	console.log(currentUrl.value);
 });
-
-const counter = ref(1);
 </script>
 
 <style scoped lang="scss">
@@ -74,8 +76,9 @@ const counter = ref(1);
 		height: 16px;
 		margin: 0 6px 0 4px;
 	}
-	&:last-child a {
+	&:last-child {
 		opacity: 0.5;
+		pointer-events: none;
 	}
 }
 </style>
