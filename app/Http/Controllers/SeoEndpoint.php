@@ -29,7 +29,7 @@ class SeoEndpoint extends Controller
             abort(404);
         }
 
-        if ($route !== $seoEntity->slug) {
+        if ($route !== $seoEntity->slug && !$isHomePage) {
             return redirect()->to(
                 str_replace($request->path(), $seoEntity->slug, $request->path()),
                 301
