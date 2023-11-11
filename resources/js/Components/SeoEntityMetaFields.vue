@@ -18,6 +18,8 @@
 		/>
 		<meta property="og:locale" :content="usePage().props.locale" />
 		<link rel="canonical" :href="currentPath" />
+
+		<meta name="robots" v-if="hasQueryParams" content="noindex, nofollow" />
 	</Head>
 </template>
 
@@ -34,8 +36,10 @@ const props = defineProps<{
 }>();
 
 const currentPath = ref<string | undefined>(undefined);
+const hasQueryParams = ref(false);
 onMounted(() => {
 	currentPath.value = window.location.pathname;
+	hasQueryParams.value = window.location.search.length > 0;
 });
 </script>
 
