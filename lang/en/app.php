@@ -55,6 +55,7 @@ return [
     'documentation' => 'Documentation',
 
     'home' => 'Home',
+    'toHome' => 'To home',
 
     'order' => 'Order',
     'orderCall' => 'Order a call',

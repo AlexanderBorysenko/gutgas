@@ -44,3 +44,7 @@ Route::prefix('{locale?}')->middleware([
         ->name('seo-entity-paged');
     Route::get('/{route?}', SeoEndpoint::class)->where('route', '.*')->name('seo-entity');
 });
+
+Route::fallback(function () {
+    return Inertia::render('404');
+});
