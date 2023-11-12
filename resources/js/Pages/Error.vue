@@ -20,9 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseButton from '@/Components/BaseButton.vue';
 import PageHeadSpacer from '@/Components/PageHeadSpacer.vue';
-import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 import WebsitePage from '@/Layouts/WebsitePage.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 

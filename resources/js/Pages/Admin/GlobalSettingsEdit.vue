@@ -158,6 +158,20 @@
 						</FormFieldWrapper>
 					</template>
 				</KeepAlive>
+				<KeepAlive>
+					<template v-if="currentTab === 'microdata'">
+						<FormFieldWrapper
+							label="Додаткові Глобальні Мікродані"
+							class="mb-1"
+						>
+							<textarea
+								class="form-control"
+								rows="10"
+								v-model="form.globalSettings.extraMicrodata"
+							></textarea>
+						</FormFieldWrapper>
+					</template>
+				</KeepAlive>
 			</div>
 			<div class="col-3">
 				<div class="sticky-top">
@@ -203,6 +217,17 @@
 						>
 							Сторінки
 						</button>
+						<button
+							@click="currentTab = 'microdata'"
+							class="btn w-100 mb-1"
+							:class="{
+								'btn-outline-primary':
+									currentTab !== 'microdata',
+								'btn-primary': currentTab === 'microdata'
+							}"
+						>
+							Мікродані
+						</button>
 					</div>
 					<button
 						class="btn btn-success w-100 mt-3"
@@ -238,7 +263,9 @@ const props = defineProps<{
 
 const { addMessage } = useMessages();
 
-const currentTab = ref<'contacts' | 'header' | 'footer' | 'pages'>('contacts');
+const currentTab = ref<
+	'contacts' | 'header' | 'footer' | 'pages' | 'microdata'
+>('contacts');
 watch(currentTab, () => {
 	localStorage.setItem('currentGlobalSettingsTab', currentTab.value);
 });
@@ -266,6 +293,8 @@ const form = useForm({
 		footerMenu: getGlobalSetting<TFooterMenuSection[]>('footerMenu') ?? [],
 
 		footerText: getGlobalSetting('footerText') ?? '',
+
+		extraMicrodata: getGlobalSetting('extraMicrodata') ?? '',
 
 		productsCatalogSlug: getGlobalSetting('productsCatalogSlug') ?? ''
 	},

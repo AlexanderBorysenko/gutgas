@@ -28,12 +28,17 @@
 		<meta property="og:locale" :content="usePage().props.locale" />
 		<link rel="canonical" :href="currentPath" />
 
+		<component :is="'script'" type="application/ld+json">
+			{{ JSON.stringify(getGlobalSetting('extraMicrodata')) }}
+		</component>
+
 		<meta name="robots" v-if="hasQueryParams" content="noindex, nofollow" />
 	</Head>
 </template>
 
 <script setup lang="ts">
 import { TSeoEntity } from '@/types/TSeoEntity';
+import { getGlobalSetting } from '@/utils/getGlobalSetting';
 import { Head, usePage } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
