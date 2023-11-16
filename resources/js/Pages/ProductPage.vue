@@ -33,7 +33,7 @@
 				<!-- MAIN -->
 				<main class="g-col-8 g-large-mobile-col-12">
 					<ProductGallerySlider
-						class="mt-72 mb-88"
+						class="mt-72 mb-88 gallery"
 						:images="
 							productPage.media_gallery.map(mediaFile => mediaFile.url)
 						"
@@ -186,4 +186,9 @@ const { headerHeight } = useHeaderElement();
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 	gap: 8px;
 }
+
+:deep(.gallery .thumb img) {
+	object-fit: contain;
+}
+
 </style>
