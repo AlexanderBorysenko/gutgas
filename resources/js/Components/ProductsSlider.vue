@@ -71,7 +71,6 @@ import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import ISwiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
 import { TProduct } from '@/types/TProduct';
 import { ref } from 'vue';
 import ProductCatalogCard from './ProductCatalogCard.vue';

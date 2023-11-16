@@ -189,6 +189,7 @@ const { headerHeight } = useHeaderElement();
 
 :deep(.gallery .thumb img) {
 	object-fit: contain;
+	width: auto;
 }
 
 </style>

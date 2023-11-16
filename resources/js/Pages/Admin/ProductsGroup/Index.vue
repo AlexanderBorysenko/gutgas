@@ -14,7 +14,7 @@
 				<thead>
 					<tr>
 						<th>Назва</th>
-						<th>Є Активним</th>
+						<th>Відображати в меню</th>
 						<th class="text-right">Дії</th>
 					</tr>
 				</thead>

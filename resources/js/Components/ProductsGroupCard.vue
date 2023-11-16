@@ -4,6 +4,7 @@
 		:class="{
 			active: active
 		}"
+		@click="$emit('click', $event)"
 	>
 		<span class="head mb-16">
 			<img class="icon icon-default" :src="icon" :alt="name" />
@@ -20,11 +21,15 @@
 				:alt="name"
 			/>
 		</span>
-		<span class="name fs-medium">{{ name }}</span>
+		<Link v-if="link" :href="link" class="name fs-medium" @click.prevent="">
+			{{ name }}
+		</Link>
+		<span class="name fs-medium" v-else>{{ name }}</span>
 	</div>
 </template>
 
 <script setup lang="ts">
+import { Link, usePage } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
 const { _t } = useTranslations();
@@ -35,7 +40,12 @@ const props = defineProps<{
 	active: boolean;
 	iconHover?: string;
 	iconActive?: string;
+	link?: string;
 }>();
+
+const onClick = defineEmits({
+	click: (e: Event) => true
+});
 
 const currentPath = ref<string>(hasWindow() ? window.location.pathname : '');
 onMounted(() => {
