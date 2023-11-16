@@ -46,7 +46,7 @@ const props = defineProps<{
 const productSeoEntityForm = useForm<TSeoEntityForm>({
 	title: _t(props.seoEntity.title),
 	description: _t(props.seoEntity.description),
-	og_image: props.seoEntity.og_image,
+	og_image: _t(props.seoEntity.og_image),
 	slug: props.seoEntity.slug,
 	is_active: +_t(props.seoEntity.is_active, true) === 1
 });

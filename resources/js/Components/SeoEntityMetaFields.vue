@@ -23,7 +23,7 @@
 		<meta
 			v-if="seoEntity.og_image"
 			property="og:image"
-			:content="seoEntity.og_image"
+			:content="_t(seoEntity.og_image)"
 		/>
 		<meta property="og:locale" :content="usePage().props.locale" />
 		<link rel="canonical" :href="currentPath" />

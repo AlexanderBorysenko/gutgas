@@ -1,3 +1,5 @@
+import { ITranslate } from './ITranslate';
+
 export type TSeoEntity = {
 	id: number;
 	slug: string;
