@@ -91,7 +91,7 @@ const inCart = computed(() => isInCart(props.product));
 	background: radial-gradient(
 		45.83% 105.48% at 50% 100%,
 		#000 0%,
-		rgba(0, 0, 0, 0.63) 58.85%,
+		rgba(0, 0, 0, 0.43) 58.85%,
 		rgba(0, 0, 0, 0) 100%
 	);
 	height: 228px;
@@ -126,7 +126,7 @@ const inCart = computed(() => isInCart(props.product));
 	max-height: 100%;
 	height: min-content;
 	width: auto;
-	opacity: 0.9;
+	opacity: 0.95;
 	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 	position: relative;
 	z-index: 1;
