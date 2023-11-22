@@ -7,6 +7,7 @@
 			:modules="[Navigation]"
 			wrapperTag="ul"
 			@active-index-change="onSlideChange"
+			:speed="0"
 			@after-init="onSliderInit"
 			:navigation="{
 				enabled: true,
@@ -184,6 +185,7 @@ const onSliderInit = (swiper: any) => {
 	console.log(swiper, localStorage.getItem('productsGroupMenuSliderIndex'));
 	const index = localStorage.getItem('productsGroupMenuSliderIndex');
 	if (index) swiper.slideTo(+index);
+	swiper.params.speed = 300;
 };
 </script>
 
@@ -258,12 +260,16 @@ const onSliderInit = (swiper: any) => {
 	top: calc(52px - 22px);
 	border: 1px solid #b73e38;
 	border-radius: 50%;
-	transition: border-color 0.3s;
+	transition: border-color 0.3s, opacity 0.3s;
 	&.prev {
 		left: 8px;
 	}
 	&.next {
 		right: 8px;
+	}
+	&.swiper-button-disabled {
+		opacity: 0.5;
+		pointer-events: none;
 	}
 	&:hover {
 		border-color: #f24942;
