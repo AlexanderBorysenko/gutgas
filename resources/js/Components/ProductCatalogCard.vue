@@ -113,7 +113,7 @@ const inCart = computed(() => isInCart(props.product));
 	}
 
 	@media (max-width: $tablet-width) {
-		height: 173px;
+		height: 200px;
 	}
 }
 .simplified {
