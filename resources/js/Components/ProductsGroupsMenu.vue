@@ -260,7 +260,7 @@ const onSliderInit = (swiper: any) => {
 	top: calc(52px - 22px);
 	border: 1px solid #b73e38;
 	border-radius: 50%;
-	transition: border-color 0.3s, opacity 0.3s;
+	transition: border-color 0.3s;
 	&.prev {
 		left: 8px;
 	}
