@@ -145,6 +145,7 @@ import { Navigation } from 'swiper/modules';
 
 const nextRef = ref<null | HTMLElement>(null);
 const prevRef = ref<null | HTMLElement>(null);
+const sliderRef = ref<null | typeof Swiper>(null);
 
 const { _t, __ } = useTranslations();
 

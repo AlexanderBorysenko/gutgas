@@ -101,8 +101,6 @@
 import BaseRangeSliderField from './BaseRangeSliderField.vue';
 import BaseCheckboxField from './BaseCheckboxField.vue';
 import BaseCancelButton from './BaseCancelButton.vue';
-import { TAttributeGroup } from '@/types/TAttributeGroup';
-import { TAttribute } from '@/types/TAttribute';
 import { ref } from 'vue';
 import { watch } from 'vue';
 import { onMounted } from 'vue';
@@ -191,6 +189,7 @@ const emit = defineEmits({
 
 <style scoped lang="scss">
 @import '@/styles/variables.scss';
+/*! purgecss start ignore */
 .product-catalog-filters {
 	border-radius: 2px;
 	background: #202020;
@@ -272,4 +271,5 @@ const emit = defineEmits({
 	padding: 15px 12px;
 	width: 100%;
 }
+/*! purgecss end ignore */
 </style>
