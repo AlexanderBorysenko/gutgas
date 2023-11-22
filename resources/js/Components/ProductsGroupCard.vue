@@ -107,6 +107,7 @@ onMounted(() => {
 	color: #838d97;
 	font-weight: 600;
 	transition: color 0.2s ease-in-out;
+	width: min-content;
 }
 .active .name {
 	color: #f24942;

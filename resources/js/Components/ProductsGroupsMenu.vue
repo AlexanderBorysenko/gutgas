@@ -6,6 +6,8 @@
 			:slides-per-view="1"
 			:modules="[Navigation]"
 			wrapperTag="ul"
+			@active-index-change="onSlideChange"
+			@after-init="onSliderInit"
 			:navigation="{
 				enabled: true,
 				nextEl: nextRef,
@@ -145,8 +147,6 @@ import { Navigation } from 'swiper/modules';
 
 const nextRef = ref<null | HTMLElement>(null);
 const prevRef = ref<null | HTMLElement>(null);
-const sliderRef = ref<null | typeof Swiper>(null);
-
 const { _t, __ } = useTranslations();
 
 const props = defineProps<{
@@ -172,6 +172,19 @@ const onProductsGroupSelect = (e: Event, id: number | null) => {
 const emit = defineEmits({
 	productsGroupSelect: (id: number | null) => true
 });
+
+const onSlideChange = (swiper: any) => {
+	localStorage.setItem(
+		'productsGroupMenuSliderIndex',
+		`${swiper.activeIndex}`
+	);
+};
+
+const onSliderInit = (swiper: any) => {
+	console.log(swiper, localStorage.getItem('productsGroupMenuSliderIndex'));
+	const index = localStorage.getItem('productsGroupMenuSliderIndex');
+	if (index) swiper.slideTo(+index);
+};
 </script>
 
 <style scoped lang="scss">
