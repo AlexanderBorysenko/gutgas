@@ -13,4 +13,4 @@ Allow: /*.gif
 Allow: /*.svg
 Allow: /*.pdf
 Allow: /*.webp
-SiteMap: /sitemap.xml
+SiteMap: https://gutgas.eu/sitemap.xml

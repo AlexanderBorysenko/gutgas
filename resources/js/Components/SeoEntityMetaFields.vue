@@ -26,7 +26,7 @@
 			:content="_t(seoEntity.og_image)"
 		/>
 		<meta property="og:locale" :content="usePage().props.locale" />
-		<link rel="canonical" :href="currentPath" />
+		<link rel="canonical" :href="currentLocation" />
 
 		<component :is="'script'" type="application/ld+json">
 			{{ JSON.stringify(getGlobalSetting('extraMicrodata')) }}
@@ -49,10 +49,10 @@ const props = defineProps<{
 	seoEntity: TSeoEntity;
 }>();
 
-const currentPath = ref<string | undefined>(undefined);
+const currentLocation = ref<string | undefined>(undefined);
 const hasQueryParams = ref(false);
 onMounted(() => {
-	currentPath.value = window.location.pathname;
+	currentLocation.value = window.location.href;
 	hasQueryParams.value = window.location.search.length > 0;
 });
 </script>
