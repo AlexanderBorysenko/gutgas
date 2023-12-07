@@ -14,6 +14,7 @@ export type PageProps<
 	};
 	globalSettings: TGlobalSetting[];
 	baseUrl: string;
+	currentUrl: string;
 	search?: string;
 	locale: string;
 	locales: Record<string, string>;

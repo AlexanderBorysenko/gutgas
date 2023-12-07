@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
-class HandleInertiaRequests extends Middleware
-{
+class HandleInertiaRequests extends Middleware {
     /**
      * The root template that is loaded on the first page visit.
      *
@@ -23,8 +22,7 @@ class HandleInertiaRequests extends Middleware
     /**
      * Determine the current asset version.
      */
-    public function version(Request $request): string|null
-    {
+    public function version(Request $request): string|null {
         return parent::version($request);
     }
 
@@ -33,18 +31,17 @@ class HandleInertiaRequests extends Middleware
      *
      * @return array<string, mixed>
      */
-    public function share(Request $request): array
-    {
+    public function share(Request $request): array {
         $user = Auth::user();
 
-        if ($request->routeIs('logout'))
+        if($request->routeIs('logout'))
             $user = null;
-
         return array_merge(parent::share($request), [
             // message
             'message' => $request->session()->get('message'),
 
             'baseUrl' => url('/'),
+            'currentUrl' => $request->fullUrl(),
 
             'auth' => [
                 'user' => $user,

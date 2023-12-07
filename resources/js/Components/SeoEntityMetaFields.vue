@@ -49,12 +49,9 @@ const props = defineProps<{
 	seoEntity: TSeoEntity;
 }>();
 
-const currentLocation = ref<string | undefined>(undefined);
-const hasQueryParams = ref(false);
-onMounted(() => {
-	currentLocation.value = window.location.href;
-	hasQueryParams.value = window.location.search.length > 0;
-});
+const fullUrl = usePage().props.currentUrl;
+const currentLocation = ref<string>(fullUrl.split('?')[0]);
+const hasQueryParams = ref<boolean>(fullUrl.includes('?'));
 </script>
 
 <style scoped></style>
