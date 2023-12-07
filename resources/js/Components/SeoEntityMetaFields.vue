@@ -40,7 +40,6 @@
 import { TSeoEntity } from '@/types/TSeoEntity';
 import { getGlobalSetting } from '@/utils/getGlobalSetting';
 import { Head, usePage } from '@inertiajs/vue3';
-import { onMounted } from 'vue';
 import { ref } from 'vue';
 
 const { _t, __ } = useTranslations();
