@@ -65,12 +65,12 @@ class OrderController extends Controller
             // 'status_color' => 'nullable|string|max:255',
             // 'compleated' => 'nullable|boolean',
 
-            Mail::send('emails.newOrder', $data, function ($message) {
-                $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
-                // $message->to('sale@gutgas.eu');
-                $message->to('borysenko.alexander@gmail.com');
-                $message->subject('$$$ Нове Замовлення $$$');
-            });
+            // Mail::send('emails.newOrder', $data, function ($message) {
+            //     $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+            //     // $message->to('sale@gutgas.eu');
+            //     $message->to('borysenko.alexander@gmail.com');
+            //     $message->subject('$$$ Нове Замовлення $$$');
+            // });
 
             DB::commit();
 
@@ -94,10 +94,13 @@ class OrderController extends Controller
                 $counter++;
                 $messageText .= "{$counter}. {$product['name'][app()->getLocale()]} - {$product['quantity']} шт. - {$product['price']}грн/шт.<br/>";
             }
-            //DD/MM/YYYY/  12:34
             $messageText .= "<code>" . date('d/m/Y') . "    " . date('H:i') . "</code>";
-            $text = urlencode($messageText);
-            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?chat_id={$chat_id}&text={$text}&parse_mode=HTML";
+            $data = [
+                'chat_id' => $chat_id,
+                'text' => $messageText,
+                'parse_mode' => 'HTML'
+            ];
+            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?" . http_build_query($data);
             file_get_contents($url);
 
             return redirect()->route('thankYou')
