@@ -97,10 +97,15 @@ class OrderController extends Controller
             $data = [
                 'chat_id' => $chat_id,
                 'text' => $messageText,
-                'parse_mode' => 'HTML',
+                'parse_mode' => 'html',
             ];
             $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?" . http_build_query($data);
-            file_get_contents($url);
+            // curl
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            $result = curl_exec($ch);
+            curl_close($ch);
 
             return redirect()->route('thankYou')
                 ->with('order', $order)->with('thankYouTranslations', trans('thank-you'));
