@@ -6,7 +6,6 @@ use App\Http\Requests\Order\StoreRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class OrderController extends Controller
@@ -97,7 +96,8 @@ class OrderController extends Controller
             $messageText .= "<code>" . date('d/m/Y') . "    " . date('H:i') . "</code>";
             $data = [
                 'chat_id' => $chat_id,
-                'text' => $messageText
+                'text' => $messageText,
+                'parse_mode' => 'HTML',
             ];
             $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?" . http_build_query($data);
             file_get_contents($url);
