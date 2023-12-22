@@ -64,15 +64,7 @@ class OrderController extends Controller
             // 'status_name' => 'nullable|string|max:255',
             // 'status_color' => 'nullable|string|max:255',
             // 'compleated' => 'nullable|boolean',
-            $messageText = "Нове замовлення №{$order->id} від {$order->client_name} на суму {$order->total_price} грн.
-            Телефон: {$order->client_phone} 
-            Email: {$order->client_email} 
-            Коментар: {$order->client_message}  
-            Доставка: {$order->shipping_message}
-            Додані товари: ";
-            foreach ($order->cart_content as $product) {
-                $messageText .= "\n{$product['name']['ua']} - {$product['quantity']} шт. - {$product['price']}грн/шт.";
-            }
+
             Mail::send('emails.newOrder', $data, function ($message) {
                 $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
                 // $message->to('sale@gutgas.eu');
@@ -82,10 +74,30 @@ class OrderController extends Controller
 
             DB::commit();
 
+            $totalPrice = 0;
+            foreach ($order->cart_content as $product) {
+                $totalPrice += $product['price'] * $product['quantity'];
+            }
+
             $bot_token = '6483041228:AAE77cZN7t_Fd-5_Bnz1kC_1NWj9MBhiNFo';
             $chat_id = '-4078811387';
+            $messageText = "<u>✅ Нове замовлення №{$order->id}</u><br/><br/>
+            👤 {$order->client_name}<br/>
+            💰 {$totalPrice}<br/><br/>
+            📞 {$order->client_phone}
+            📩 <a href='mailto:{$order->client_email}'>{$order->client_email}<br/><br/>
+            ———————————————<br/><br/>
+            <pre>💬:{$order->client_message}</pre><br/><br/>
+            ";
+            $counter = 1;
+            foreach ($order->cart_content as $product) {
+                $counter++;
+                $messageText .= "{$counter}. {$product['name'][app()->getLocale()]} - {$product['quantity']} шт. - {$product['price']}грн/шт.<br/>";
+            }
+            //DD/MM/YYYY/  12:34
+            $messageText .= "<code>" . date('d/m/Y') . "    " . date('H:i') . "</code>";
             $text = urlencode($messageText);
-            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?chat_id={$chat_id}&text={$text}";
+            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?chat_id={$chat_id}&text={$text}&parse_mode=HTML";
             file_get_contents($url);
 
             return redirect()->route('thankYou')
