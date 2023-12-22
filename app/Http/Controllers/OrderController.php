@@ -97,8 +97,7 @@ class OrderController extends Controller
             $messageText .= "<code>" . date('d/m/Y') . "    " . date('H:i') . "</code>";
             $data = [
                 'chat_id' => $chat_id,
-                'text' => $messageText,
-                'parse_mode' => 'HTML'
+                'text' => $messageText
             ];
             $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?" . http_build_query($data);
             file_get_contents($url);
