@@ -78,8 +78,6 @@ class OrderController extends Controller
                 $totalPrice += $product['price'] * $product['quantity'];
             }
 
-            $bot_token = '6483041228:AAE77cZN7t_Fd-5_Bnz1kC_1NWj9MBhiNFo';
-            $chat_id = '-4078811387';
             $messageText = "<u>✅ Нове замовлення №{$order->id}</u><br/><br/>
             👤 {$order->client_name}<br/>
             💰 {$totalPrice}<br/><br/>
@@ -94,16 +92,22 @@ class OrderController extends Controller
                 $messageText .= "{$counter}. {$product['name'][app()->getLocale()]} - {$product['quantity']} шт. - {$product['price']}грн/шт.<br/>";
             }
             $messageText .= "<code>" . date('d/m/Y') . "    " . date('H:i') . "</code>";
-            $data = [
-                'chat_id' => $chat_id,
+
+            $botToken = '6483041228:AAE77cZN7t_Fd-5_Bnz1kC_1NWj9MBhiNFo';
+            $website = "https://api.telegram.org/bot" . $botToken;
+            $chatId = '-4078811387';
+            $params = [
+                'chat_id' => $chatId,
                 'text' => $messageText,
                 'parse_mode' => 'html',
             ];
-            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?" . http_build_query($data);
-            // curl
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+            $ch = curl_init($website . '/sendMessage');
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             $result = curl_exec($ch);
             curl_close($ch);
 
