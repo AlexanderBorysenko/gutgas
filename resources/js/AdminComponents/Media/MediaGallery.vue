@@ -134,15 +134,9 @@ onMounted(() => {
 
 const onUpload = (files: IMediaFile[]) => {
 	mediaFiles.value.unshift(...files);
-	if (!props.selectMode) return;
-	if (props.selectionLimit)
-		selectedMediaFiles.value.push(
-			...files.slice(
-				0,
-				props.selectionLimit - selectedMediaFiles.value.length
-			)
-		);
-	else selectedMediaFiles.value.push(...files);
+	if (props.selectMode) {
+		selectedMediaFiles.value.push(...files);
+	}
 };
 
 const onDelete = (file: IMediaFile) => {

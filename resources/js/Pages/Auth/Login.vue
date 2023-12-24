@@ -25,7 +25,7 @@ const submit = () => {
 	<WebsitePage>
 		<PageHeadSpacer />
 		<div class="container">
-			<form class="login-form p-16 mt-88" @submit.prevent="submit">
+			<form class="login-form p-16 mt-88 mb-88" @submit.prevent="submit">
 				<h2 class="fs-h4 fw-800 mb-20">Login</h2>
 				<BaseFormInput
 					type="identifier"
