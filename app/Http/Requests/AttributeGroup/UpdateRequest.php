@@ -23,7 +23,6 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'use_in_filters' => ['required', 'boolean'],
         ];
     }
 }
