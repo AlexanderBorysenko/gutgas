@@ -24,11 +24,15 @@ class MailController extends Controller
         });
 
         $messageText = "**✅ Запит на консультацію**\n\n";
-        $messageText .= "👤 " . $data['name'] . "\n";
-        $messageText .= "📞 " . $data['phone'] . "\n";
-        $messageText .= "📧 " . $data['email'] . "\n\n";
+        if (isset($data['name']))
+            $messageText .= "👤 " . $data['name'] . "\n";
+        if (isset($data['phone']))
+            $messageText .= "📞 " . $data['phone'] . "\n";
+        if (isset($data['email']))
+            $messageText .= "📧 " . $data['email'] . "\n\n";
         $messageText .= "———————————————\n\n";
-        $messageText .= "📝 " . $data['question'] . "\n\n";
+        if (isset($data['question']))
+            $messageText .= "📝 " . $data['question'] . "\n\n";
         $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i', +2) . "`";
 
         $data = [
