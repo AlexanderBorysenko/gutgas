@@ -80,21 +80,21 @@ class OrderController extends Controller
 
             $bot_token = '6483041228:AAE77cZN7t_Fd-5_Bnz1kC_1NWj9MBhiNFo';
             $chat_id = '-4078811387';
-            $messageText = "✅ Нове замовлення №{$order->id}\n";
+            $messageText = "**✅ Нове замовлення №{$order->id}**\n\n";
             $messageText .= "👤 {$order->client_name}\n";
-            $messageText .= "💰 {$totalPrice}\n";
-            $messageText .= "\n";
+            $messageText .= "💰 {$totalPrice}\n\n";
             $messageText .= "📞 {$order->client_phone}\n";
-            $messageText .= "📩 [{$order->client_email}](mailto:{$order->client_email})\n";
-            $messageText .= "———————————————";
-            $messageText .= "💬:{$order->client_message}\n\n";
-
+            $messageText .= "📩 [{$order->client_email}](mailto:{$order->client_email})\n\n";
+            $messageText .= "———————————————\n\n";
+            $messageText .= "__💬: {$order->client_message}__\n";
+            $messageText .= "__🚚: {$order->shipping_message}__\n\n";
+            $messageText .= "🛒";
             $counter = 1;
             foreach ($order->cart_content as $product) {
                 $counter++;
                 $messageText .= "{$counter}. {$product['name'][app()->getLocale()]} - {$product['quantity']} шт. - {$product['price']}грн/шт.\n";
             }
-            $messageText .= "\n\n\n" . date('d/m/Y') . "    " . date('H:i');
+            $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i') . "`";
             $data = [
                 'chat_id' => $chat_id,
                 'text' => $messageText,
