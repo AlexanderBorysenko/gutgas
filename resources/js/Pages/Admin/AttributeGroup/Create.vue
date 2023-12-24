@@ -14,8 +14,7 @@ import { TAttributeGroupForm } from '@/types/TAttributeGroup';
 import { useForm } from '@inertiajs/vue3';
 
 const form = useForm<TAttributeGroupForm>({
-	name: '',
-	use_in_filters: false
+	name: ''
 });
 
 const submitForm = () => {

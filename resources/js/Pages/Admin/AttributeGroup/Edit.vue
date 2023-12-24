@@ -64,8 +64,7 @@ const props = defineProps<{
 }>();
 
 const form = useForm<TAttributeGroupForm>({
-	name: _t(props.attributeGroup.name),
-	use_in_filters: props.attributeGroup.use_in_filters === 1
+	name: _t(props.attributeGroup.name)
 });
 
 const onSubmitForm = () => {

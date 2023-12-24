@@ -11,5 +11,4 @@ export type TAttributeGroup = {
 
 export type TAttributeGroupForm = {
 	name: string;
-	use_in_filters: boolean;
 };
