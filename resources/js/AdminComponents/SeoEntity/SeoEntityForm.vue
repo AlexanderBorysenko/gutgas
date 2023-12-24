@@ -8,8 +8,7 @@
 			</div>
 			<div class="col-8">
 				<FormFieldWrapper label="Заголовок" class="mb-1">
-					<textarea
-						rows="1"
+					<input
 						class="form-control"
 						v-model="form.title"
 						placeholder="Заголовок"
@@ -35,8 +34,7 @@
 			</div>
 		</div>
 		<FormFieldWrapper label="Посилання (Slug)" class="mb-3">
-			<textarea
-				rows="1"
+			<input
 				class="form-control"
 				v-model="form.slug"
 				placeholder="Slug"

@@ -7,8 +7,7 @@
 						class="mb-1"
 						v-model="advantageItem.image"
 					/>
-					<textarea
-						rows="1"
+					<input
 						class="form-control mb-1"
 						v-model="advantageItem.title"
 						placeholder="Заголовок"

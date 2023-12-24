@@ -14,8 +14,7 @@
 					/>
 				</div>
 				<div class="col-9">
-					<textarea
-						rows="1"
+					<input
 						class="form-control mb-1"
 						v-model="item.title"
 						placeholder="Заголовок"
@@ -38,8 +37,7 @@
 				</div>
 			</div>
 			<label for="">ID продуктів розділені з ";"</label>
-			<textarea
-				rows="1"
+			<input
 				class="form-control mb-1"
 				:value="item.products.join('; ')"
 				@change="(event: Event) => {

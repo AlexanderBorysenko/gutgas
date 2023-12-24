@@ -2,12 +2,12 @@
 	<div>
 		<div class="mb-1">
 			<label class="form-label">Назва</label>
-			<textarea rows="1" class="form-control" v-model="form.name" />
+			<input class="form-control" v-model="form.name" />
 			<FormError :error="form.errors.name" />
 		</div>
 		<div>
 			<label class="form-label">Індекс Послідовності</label>
-			<textarea rows="1" class="form-control" v-model="form.sequence" />
+			<input class="form-control" v-model="form.sequence" />
 			<FormError :error="form.errors.sequence" />
 		</div>
 	</div>

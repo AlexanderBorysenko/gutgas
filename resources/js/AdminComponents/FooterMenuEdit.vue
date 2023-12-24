@@ -9,8 +9,7 @@
 				<div class="card-header">
 					<div class="d-flex gap-1">
 						<div class="flex-grow-1">
-							<textarea
-								rows="1"
+							<input
 								type="text"
 								placeholder="Заголовок"
 								class="form-control"
@@ -33,15 +32,13 @@
 				>
 					<div class="d-flex gap-1">
 						<div class="flex-grow-1">
-							<textarea
-								rows="1"
+							<input
 								type="text"
 								placeholder="Заголовок"
 								class="form-control"
 								v-model="item.title"
 							/>
-							<textarea
-								rows="1"
+							<input
 								type="text"
 								placeholder="Посилання"
 								class="form-control mt-1"

@@ -2,20 +2,14 @@
 	<tr>
 		<td>
 			<div v-if="isEdit">
-				<textarea
-					rows="1"
-					v-model="form.name"
-					class="form-control"
-					type="text"
-				/>
+				<input v-model="form.name" class="form-control" type="text" />
 				<FormError class="mb-0" :error="form.errors.name" />
 			</div>
 			<span v-else>{{ _t(attribute.name) }}</span>
 		</td>
 		<td>
 			<div v-if="isEdit">
-				<textarea
-					rows="1"
+				<input
 					v-model="form.sequence"
 					class="form-control"
 					type="text"

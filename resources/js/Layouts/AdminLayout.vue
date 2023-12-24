@@ -55,11 +55,8 @@ const {
 const { messages } = useMessages();
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .admin-layout__inner {
 	min-height: 100vh;
-}
-textarea [rows='1'] {
-	resize: none;
 }
 </style>
