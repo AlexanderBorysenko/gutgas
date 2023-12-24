@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -53,23 +54,12 @@ class OrderController extends Controller
 
             $data['order_id'] = $order->id;
 
-            // form message from following template
-            // 'client_name' => 'required|string|max:255',
-            // 'client_phone' => 'required|string|max:255',
-            // 'client_email' => 'required|string|regex:/(.+)@(.+)\.(.+)/i|max:255',
-            // 'client_message' => 'nullable|string|max:255',
-            // 'cart_content' => 'required|array',
-            // 'shipping_message' => 'nullable|string|max:255',
-            // 'status_name' => 'nullable|string|max:255',
-            // 'status_color' => 'nullable|string|max:255',
-            // 'compleated' => 'nullable|boolean',
-
-            // Mail::send('emails.newOrder', $data, function ($message) {
-            //     $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
-            //     // $message->to('sale@gutgas.eu');
-            //     $message->to('borysenko.alexander@gmail.com');
-            //     $message->subject('$$$ Нове Замовлення $$$');
-            // });
+            Mail::send('emails.newOrder', $data, function ($message) {
+                $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+                $message->to('sale@gutgas.eu');
+                // $message->to('borysenko.alexander@gmail.com');
+                $message->subject('$$$ Нове Замовлення $$$');
+            });
 
             DB::commit();
 
@@ -78,8 +68,6 @@ class OrderController extends Controller
                 $totalPrice += $product['price'] * $product['quantity'];
             }
 
-            $bot_token = '6483041228:AAE77cZN7t_Fd-5_Bnz1kC_1NWj9MBhiNFo';
-            $chat_id = '-4078811387';
             $messageText = "**✅ Нове замовлення №{$order->id}**\n\n";
             $messageText .= "👤 {$order->client_name}\n";
             $messageText .= "💰 {$totalPrice}\n\n";
@@ -88,7 +76,7 @@ class OrderController extends Controller
             $messageText .= "———————————————\n\n";
             $messageText .= "__💬: {$order->client_message}__\n";
             $messageText .= "__🚚: {$order->shipping_message}__\n\n";
-            $messageText .= "🛒";
+            $messageText .= "🛒\n";
             $counter = 1;
             foreach ($order->cart_content as $product) {
                 $counter++;
@@ -96,11 +84,11 @@ class OrderController extends Controller
             }
             $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i') . "`";
             $data = [
-                'chat_id' => $chat_id,
+                'chat_id' => env('TELEGRAM_CHAT_ID'),
                 'text' => $messageText,
                 'parse_mode' => 'Markdown'
             ];
-            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?" . http_build_query($data);
+            $url = "https://api.telegram.org/bot" . env('TELEGAM_BOT_TOKEN') . "/sendMessage?" . http_build_query($data);
             file_get_contents($url);
 
             return redirect()->route('thankYou')
