@@ -78,39 +78,29 @@ class OrderController extends Controller
                 $totalPrice += $product['price'] * $product['quantity'];
             }
 
-            $messageText = "<u>✅ Нове замовлення №{$order->id}</u><br/><br/>
-            👤 {$order->client_name}<br/>
-            💰 {$totalPrice}<br/><br/>
-            📞 {$order->client_phone}
-            📩 <a href='mailto:{$order->client_email}'>{$order->client_email}<br/><br/>
-            ———————————————<br/><br/>
-            <pre>💬:{$order->client_message}</pre><br/><br/>
-            ";
+            $bot_token = '6483041228:AAE77cZN7t_Fd-5_Bnz1kC_1NWj9MBhiNFo';
+            $chat_id = '-4078811387';
+            $messageText = "✅ Нове замовлення №{$order->id}";
+            $messageText .= "👤 {$order->client_name}";
+            $messageText .= "💰 {$totalPrice}";
+            $messageText .= "";
+            $messageText .= "📞 {$order->client_phone}";
+            $messageText .= "📩 [{$order->client_email}](mailto:{$order->client_email})";
+            $messageText .= "———————————————";
+            $messageText .= "💬:{$order->client_message}";
+
             $counter = 1;
             foreach ($order->cart_content as $product) {
                 $counter++;
-                $messageText .= "{$counter}. {$product['name'][app()->getLocale()]} - {$product['quantity']} шт. - {$product['price']}грн/шт.<br/>";
+                $messageText .= "{$counter}. {$product['name'][app()->getLocale()]} - {$product['quantity']} шт. - {$product['price']}грн/шт.";
             }
-            $messageText .= "<code>" . date('d/m/Y') . "    " . date('H:i') . "</code>";
-
-            $botToken = '6483041228:AAE77cZN7t_Fd-5_Bnz1kC_1NWj9MBhiNFo';
-            $website = "https://api.telegram.org/bot" . $botToken;
-            $chatId = '-4078811387';
-            $params = [
-                'chat_id' => $chatId,
+            $messageText .= date('d/m/Y') . "    " . date('H:i');
+            $data = [
+                'chat_id' => $chat_id,
                 'text' => $messageText,
-                'parse_mode' => 'html',
             ];
-
-            dd($website . '/sendMessage');
-            $ch = curl_init($website . '/sendMessage');
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            $result = curl_exec($ch);
-            curl_close($ch);
+            $url = "https://api.telegram.org/bot{$bot_token}/sendMessage?" . http_build_query($data);
+            file_get_contents($url);
 
             return redirect()->route('thankYou')
                 ->with('order', $order)->with('thankYouTranslations', trans('thank-you'));
