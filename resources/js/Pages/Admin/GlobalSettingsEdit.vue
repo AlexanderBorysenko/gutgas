@@ -294,7 +294,8 @@ const form = useForm({
 
 		footerText: getGlobalSetting('footerText') ?? '',
 
-		extraMicrodata: getGlobalSetting('extraMicrodata') ?? '',
+		extraMicrodata:
+			JSON.stringify(getGlobalSetting('extraMicrodata')) ?? '',
 
 		productsCatalogSlug: getGlobalSetting('productsCatalogSlug') ?? ''
 	},
