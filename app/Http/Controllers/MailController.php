@@ -65,6 +65,7 @@ class MailController extends Controller
             'parse_mode' => 'Markdown'
         ];
         $url = "https://api.telegram.org/bot" . env('TELEGAM_BOT_TOKEN') . "/sendMessage?" . http_build_query($data);
+        file_get_contents($url);
 
         return redirect()->route('thankYou');
     }
