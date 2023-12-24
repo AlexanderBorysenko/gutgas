@@ -54,12 +54,12 @@ class OrderController extends Controller
 
             $data['order_id'] = $order->id;
 
-            // Mail::send('emails.newOrder', $data, function ($message) {
-            //     $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
-            //     $message->to('sale@gutgas.eu');
-            //     // $message->to('borysenko.alexander@gmail.com');
-            //     $message->subject('$$$ Нове Замовлення $$$');
-            // });
+            Mail::send('emails.newOrder', $data, function ($message) {
+                $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+                $message->to('sale@gutgas.eu');
+                // $message->to('borysenko.alexander@gmail.com');
+                $message->subject('$$$ Нове Замовлення $$$');
+            });
 
             DB::commit();
 
