@@ -14,7 +14,9 @@ export const getMeta = <ExpectedValueType>(
 
 	let metaField = metaValues.find(meta => meta.key === `${key}_${locale}`);
 	if (!strict && !metaField)
-		metaField = metaValues.find(meta => meta.value.length > 0);
+		metaField = metaValues.find(
+			meta => meta.key.startsWith(`${key}_`) && meta.value !== null
+		);
 
 	if (!metaField) {
 		metaField = metaValues.find(meta => meta.key === key);
