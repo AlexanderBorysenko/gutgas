@@ -5,7 +5,8 @@
 				<div class="card-body border p-1" :key="index">
 					<div class="row">
 						<div class="col-4">
-							<input
+							<textarea
+								rows="1"
 								class="form-control mb-1"
 								v-model="contactItem.name"
 								placeholder="Назва Контакту"
@@ -25,17 +26,20 @@
 								) in contactItem.values"
 							>
 								<div class="card-body" :key="index">
-									<input
+									<textarea
+										rows="1"
 										class="form-control mb-1"
 										v-model="contactItemValue.value"
 										placeholder="Значення"
 									/>
-									<input
+									<textarea
+										rows="1"
 										class="form-control mb-1"
 										v-model="contactItemValue.comment"
 										placeholder="Примітка"
 									/>
-									<input
+									<textarea
+										rows="1"
 										class="form-control mb-1"
 										v-model="contactItemValue.link"
 										placeholder="Посилання"

@@ -18,7 +18,8 @@
 							</div>
 						</div>
 						<!-- title -->
-						<input
+						<textarea
+							rows="1"
 							type="text"
 							class="form-control mb-1"
 							placeholder="Заголовок"

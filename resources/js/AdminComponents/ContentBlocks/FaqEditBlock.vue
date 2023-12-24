@@ -4,7 +4,8 @@
 			<div class="col-4 mb-3" v-for="(faqItem, index) in items">
 				<div class="card-body" :key="index">
 					<div class="mb-1">
-						<input
+						<textarea
+							rows="1"
 							class="form-control mb-1"
 							v-model="faqItem.question"
 							placeholder="Питання"

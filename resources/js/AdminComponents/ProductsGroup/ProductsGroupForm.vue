@@ -4,7 +4,11 @@
 			<div class="col-3">
 				<div class="mb-3">
 					<label class="form-label">Назва</label>
-					<input class="form-control" v-model="form.name" />
+					<textarea
+						rows="1"
+						class="form-control"
+						v-model="form.name"
+					/>
 					<FormError :error="form.errors.name" />
 				</div>
 				<div class="mb-3">
@@ -42,7 +46,8 @@
 		</div>
 		<h3 class="mb-3">Налаштування Сторінки</h3>
 		<FormFieldWrapper class="mb-3" label="H1 заголовок">
-			<input
+			<textarea
+				rows="1"
 				type="text"
 				placeholder="Заголовок"
 				class="form-control"
@@ -50,7 +55,8 @@
 			/>
 		</FormFieldWrapper>
 		<FormFieldWrapper class="mb-3" label="Заголовок текстового Контенту">
-			<input
+			<textarea
+				rows="1"
 				type="text"
 				placeholder="Заголовок"
 				class="form-control"

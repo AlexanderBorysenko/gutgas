@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<FormFieldWrapper label="Заголовок" class="mb-3">
-			<input
+			<textarea
+				rows="1"
 				class="form-control fs-4"
 				v-model="form.title"
 				placeholder="Заголовок"

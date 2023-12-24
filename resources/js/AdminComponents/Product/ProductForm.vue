@@ -10,7 +10,8 @@
 					<div class="col-8">
 						<div class="mb-2">
 							<label class="form-label">Назва У Каталозі</label>
-							<input
+							<textarea
+								rows="1"
 								class="form-control fs-4"
 								v-model="form.name"
 								placeholder="Назва"
@@ -31,7 +32,8 @@
 			<FormFieldWrapper class="h-100" label="Менеджмент">
 				<div class="mb-2">
 					<label class="form-label">SKU(Артикул)</label>
-					<input
+					<textarea
+						rows="1"
 						class="form-control fs-4"
 						v-model="form.sku"
 						placeholder="SKU(Артикул)"
@@ -41,6 +43,7 @@
 				<div class="mb-2">
 					<label class="form-label">Ціна (грн)</label>
 					<input
+						rows="1"
 						class="form-control"
 						v-model="form.price"
 						placeholder="Ціна"
@@ -50,6 +53,7 @@
 				<div class="">
 					<label class="form-label">Кількість У Наявності</label>
 					<input
+						rows="1"
 						class="form-control"
 						v-model="form.stock"
 						placeholder="0"
@@ -75,7 +79,8 @@
 	<FormFieldWrapper label="Фільтри" class="mb-3">
 		<div class="mb-3">
 			<label class="form-label">Піоритет Відображення у Каталозі</label>
-			<input
+			<textarea
+				rows="1"
 				class="form-control"
 				v-model="form.sorting_index"
 				placeholder="Піорітет Відображення у Каталозі"

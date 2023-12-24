@@ -5,7 +5,8 @@
 				<div class="card-body" :key="index">
 					<div class="mb-1">
 						<MediaFileUrlSelect class="mb-1" v-model="item.image" />
-						<input
+						<textarea
+							rows="1"
 							class="form-control mb-1"
 							v-model="item.title"
 							placeholder="Заголовок"

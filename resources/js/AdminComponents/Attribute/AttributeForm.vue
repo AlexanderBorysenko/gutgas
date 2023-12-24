@@ -1,14 +1,16 @@
 <template>
 	<div class="mb-3">
 		<label class="form-label">Значення</label>
-		<input
+		<textarea
+			rows="1"
 			class="form-control mb-1"
 			v-model="form.name"
 			placeholder="Значення"
 		/>
 		<FormError :error="form.errors.name" />
 		<label class="form-label">Значення для сортування</label>
-		<input
+		<textarea
+			rows="1"
 			class="form-control"
 			v-model="form.sequence"
 			placeholder="Індекс Сортування"

@@ -2,11 +2,11 @@
 	<div>
 		<FormFieldWrapper label="Назва" class="mb-3">
 			<label class="form-label">Назва</label>
-			<input class="form-control" v-model="form.name" />
+			<textarea rows="1" class="form-control" v-model="form.name" />
 		</FormFieldWrapper>
 		<FormFieldWrapper label="Products" class="mb-3">
 			<label class="form-label">ID товарів розділені через "; "</label>
-			<input class="form-control" v-model="products" />
+			<textarea rows="1" class="form-control" v-model="products" />
 		</FormFieldWrapper>
 	</div>
 </template>
