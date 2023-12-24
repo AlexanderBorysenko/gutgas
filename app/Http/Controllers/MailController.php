@@ -33,7 +33,7 @@ class MailController extends Controller
         $messageText .= "———————————————\n\n";
         if (isset($data['question']))
             $messageText .= "📝 " . $data['question'] . "\n\n";
-        $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i', +2) . "`";
+        $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i') . "`";
 
         $data = [
             'chat_id' => env('TELEGRAM_CHAT_ID'),
@@ -61,7 +61,7 @@ class MailController extends Controller
         $messageText = "**✅ Запит на консультацію**\n\n";
         $messageText .= "📞 " . $data['phone'] . "\n\n";
         $messageText .= "———————————————\n\n";
-        $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i', +2) . "`";
+        $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i') . "`";
 
         $data = [
             'chat_id' => env('TELEGRAM_CHAT_ID'),
