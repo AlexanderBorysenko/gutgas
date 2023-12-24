@@ -24,11 +24,11 @@ class MailController extends Controller
         });
 
         $messageText = "**✅ Запит на консультацію**\n\n";
-        $messageText .= "👤 $data[name]\n";
-        $messageText .= "📞 $data[phone]\n";
-        $messageText .= "📧 $data[email]\n\n";
+        $messageText .= "👤 " . $data['name'] . "\n";
+        $messageText .= "📞 " . $data['phone'] . "\n";
+        $messageText .= "📧 " . $data['email'] . "\n\n";
         $messageText .= "———————————————\n\n";
-        $messageText .= "📝 $data[question]\n\n";
+        $messageText .= "📝 " . $data['question'] . "\n\n";
         $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i', +2) . "`";
 
         $data = [
@@ -55,7 +55,7 @@ class MailController extends Controller
         });
 
         $messageText = "**✅ Запит на консультацію**\n\n";
-        $messageText .= "📞 $data[phone]\n";
+        $messageText .= "📞 " . $data['phone'] . "\n\n";
         $messageText .= "———————————————\n\n";
         $messageText .= "\n\n`" . date('d/m/Y') . "    " . date('H:i', +2) . "`";
 
