@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'name' => 'Mark',
             'username' => 'super',
             'email' => 'super@gmail.com',
-            'password' => bcrypt('super'),
+            'password' => bcrypt('y8UHGJoWFqz0mCkpvojx'),
         ]);
         $super->assignRole('super');
 
@@ -25,16 +25,8 @@ class UserSeeder extends Seeder
             'name' => 'August',
             'username' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin'),
+            'password' => bcrypt('y8UHGJoWFqz0mCkpvojx'),
         ]);
         $admin->assignRole('admin');
-
-        $user = User::factory()->create([
-            'name' => 'Avrelij',
-            'username' => 'user',
-            'email' => 'user@gmail.com',
-            'password' => bcrypt('user'),
-        ]);
-        $user->assignRole('user');
     }
 }

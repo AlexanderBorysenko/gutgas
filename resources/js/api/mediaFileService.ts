@@ -1,5 +1,4 @@
 import { IMediaFile } from '@/types/IMediaFile';
-import { TMediaFileScales } from '@/types/TMediaFileScales';
 import axios from 'axios';
 
 // laravel pagination response

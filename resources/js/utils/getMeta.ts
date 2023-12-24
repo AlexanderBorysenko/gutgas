@@ -5,19 +5,23 @@ export type MetaValue<Value> = IMetaField<Value> | null;
 
 export const getMeta = <ExpectedValueType>(
 	metaValues: IMetaField<any>[],
-	key: string
+	key: string,
+	strict = false
 ): ExpectedValueType | undefined => {
 	const { locale } = usePage().props;
 
 	if (!metaValues) return undefined;
+
 	let metaField = metaValues.find(meta => meta.key === `${key}_${locale}`);
+	// if !strict and !metaField return first metaField which has any value
+	if (!strict && !metaField) {
+		metaField = metaValues.find(meta => meta.value);
+	}
 	if (!metaField) {
 		metaField = metaValues.find(meta => meta.key === key);
 	}
 	if (!metaField) return undefined;
 
-	// Since ExpectedValueType is a generic type, we need to perform type assertion
-	// to ensure that the value retrieved from the metaField matches the expected type.
 	const value = metaField.value as ExpectedValueType;
 
 	// if value is json, we need to parse it
