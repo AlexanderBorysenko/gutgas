@@ -29,7 +29,7 @@
 			:text="getMeta(page.meta, 'contactFormText')"
 		/>
 		<AdvantagesSection
-			:items="getMeta(page.meta, 'advantagesItems') || []"
+			:items="getGlobalSetting('ourAdvantages')"
 			class="mb-116"
 		/>
 	</WebsitePage>
@@ -47,6 +47,7 @@ import AdvantagesSection from '@/Components/AdvantagesSection.vue';
 import { IMediaFile } from '@/types/IMediaFile';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 import BaseBreadcrumbs from '@/Components/BaseBreadcrumbs.vue';
+import { getGlobalSetting } from '@/utils/getGlobalSetting';
 
 const props = defineProps<{
 	page: TPage;

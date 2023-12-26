@@ -171,26 +171,6 @@
 						:content="pageForm.meta.contactFormText"
 					/>
 				</FormFieldWrapper>
-				<FormFieldWrapper
-					label="Переваги"
-					class="mb-3"
-					:data-getter="
-						() => {
-							return {
-								items: pageForm.meta.advantagesItems
-							};
-						}
-					"
-					:data-setter="
-						({ items }) => {
-							pageForm.meta.advantagesItems = items;
-						}
-					"
-				>
-					<AdvantagesEditBlock
-						v-model="pageForm.meta.advantagesItems"
-					/>
-				</FormFieldWrapper>
 			</div>
 			<div class="col-3">
 				<div class="sticky-top">
@@ -219,13 +199,11 @@ import FormFieldWrapper from '@/AdminComponents/FormFieldWrapper.vue';
 import FormError from '@/AdminComponents/FormError.vue';
 import { TProductProsConsCardProps } from '@/types/TProductProsConsCardProps';
 import { TUseCaseCardProps } from '@/types/TUseCaseCardProps';
-import { TAdvantageCardProps } from '@/types/TAdvantageCardProps';
 import { TProductsCatalogPreviewSectionStoreData } from '@/types/TProductsCatalogPreviewSectionProps';
 import ProsConsEditBlock from '@/AdminComponents/ContentBlocks/ProsConsEditBlock.vue';
 import { QuillEditor } from '@vueup/vue-quill';
 import UseCaseEditBlock from '@/AdminComponents/ContentBlocks/UseCaseEditBlock.vue';
 import ProductsCatalogPreviewEditBlock from '@/AdminComponents/ContentBlocks/ProductsCatalogPreviewEditBlock.vue';
-import AdvantagesEditBlock from '@/AdminComponents/ContentBlocks/AdvantagesEditBlock.vue';
 import { useSaveShortcut } from '@/modules/useSaveShortcut';
 
 const { _t } = useTranslations();
@@ -273,11 +251,7 @@ const pageForm = useForm<TPageForm>({
 		contactFormSubTitle:
 			getMeta<string>(props.page.meta, 'contactFormSubTitle') ?? '',
 		contactFormText:
-			getMeta<string>(props.page.meta, 'contactFormText') ?? '',
-
-		advantagesItems:
-			getMeta<TAdvantageCardProps>(props.page.meta, 'advantagesItems') ??
-			[]
+			getMeta<string>(props.page.meta, 'contactFormText') ?? ''
 	},
 	translatableMetaKeys: [
 		'heroTitle',
@@ -294,8 +268,7 @@ const pageForm = useForm<TPageForm>({
 		'useCasesItems',
 		'contactFormTitle',
 		'contactFormSubTitle',
-		'contactFormText',
-		'advantagesItems'
+		'contactFormText'
 	]
 });
 

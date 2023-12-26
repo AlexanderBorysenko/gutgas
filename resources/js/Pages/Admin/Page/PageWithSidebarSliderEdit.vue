@@ -60,26 +60,6 @@
 						:content="pageForm.meta.contactFormText"
 					/>
 				</FormFieldWrapper>
-				<FormFieldWrapper
-					label="Advantages"
-					class="mb-3"
-					:data-getter="
-						() => {
-							return {
-								items: pageForm.meta.advantagesItems
-							};
-						}
-					"
-					:data-setter="
-						({ items }) => {
-							pageForm.meta.advantagesItems = items;
-						}
-					"
-				>
-					<AdvantagesEditBlock
-						v-model="pageForm.meta.advantagesItems"
-					/>
-				</FormFieldWrapper>
 			</div>
 			<div class="col-3">
 				<div class="sticky-top">
@@ -110,7 +90,6 @@ import FormError from '@/AdminComponents/FormError.vue';
 import TextContentEditor from '@/AdminComponents/TextContentEditor.vue';
 import { useSaveShortcut } from '@/modules/useSaveShortcut';
 import { QuillEditor } from '@vueup/vue-quill';
-import AdvantagesEditBlock from '@/AdminComponents/ContentBlocks/AdvantagesEditBlock.vue';
 import MediaFileMultiSelect from '@/AdminComponents/Media/MediaFileMultiSelect.vue';
 
 const { _t } = useTranslations();

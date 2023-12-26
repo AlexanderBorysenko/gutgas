@@ -156,6 +156,20 @@
 								"
 							/>
 						</FormFieldWrapper>
+						<FormFieldWrapper
+							:dataGetter="
+								() => form.globalSettings.ourAdvantages
+							"
+							:dataSetter="
+								value =>
+									(form.globalSettings.ourAdvantages = value)
+							"
+							label="Переваги"
+						>
+							<AdvantagesEditBlock
+								v-model="form.globalSettings.ourAdvantages"
+							/>
+						</FormFieldWrapper>
 					</template>
 				</KeepAlive>
 				<KeepAlive>
@@ -242,11 +256,13 @@
 </template>
 
 <script setup lang="ts">
+import AdvantagesEditBlock from '@/AdminComponents/ContentBlocks/AdvantagesEditBlock.vue';
 import ContactsEditBlock from '@/AdminComponents/ContentBlocks/ContactsEditBlock.vue';
 import FooterMenuEdit from '@/AdminComponents/FooterMenuEdit.vue';
 import FormFieldWrapper from '@/AdminComponents/FormFieldWrapper.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import useMessages from '@/modules/useMessages';
+import { TAdvantageCardProps } from '@/types/TAdvantageCardProps';
 import { TContactItemProps } from '@/types/TContactItemProps';
 import { TFooterMenuSection } from '@/types/TFooterMenu';
 import { TGlobalSetting } from '@/types/TGlobalSetting';
@@ -288,7 +304,8 @@ const form = useForm({
 		telegram: getGlobalSetting('telegram') ?? '',
 		contactItems:
 			getGlobalSetting<TContactItemProps[]>('contactItems') ?? [],
-
+		ourAdvantages:
+			getGlobalSetting<TAdvantageCardProps[]>('ourAdvantages') ?? [],
 		headerMenu: getGlobalSetting<THeaderMenuItem[]>('headerMenu') ?? [],
 		footerMenu: getGlobalSetting<TFooterMenuSection[]>('footerMenu') ?? [],
 
@@ -304,7 +321,8 @@ const form = useForm({
 		'workTime',
 		'footerMenu',
 		'footerText',
-		'contactItems'
+		'contactItems',
+		'ourAdvantages'
 	]
 });
 

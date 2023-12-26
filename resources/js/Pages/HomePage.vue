@@ -62,7 +62,7 @@
 			:text="getMeta(page.meta, 'contactFormText')"
 		/>
 		<AdvantagesSection
-			:items="getMeta(page.meta, 'advantagesItems') || []"
+			:items="getGlobalSetting('ourAdvantages')"
 			class="mb-116"
 		/>
 	</WebsitePage>
@@ -84,6 +84,7 @@ import { TproductsCatalogData } from '@/types/TproductsCatalogData';
 import ProductsCatalog from '@/Components/ProductsCatalog.vue';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
 import { Head, usePage } from '@inertiajs/vue3';
+import { getGlobalSetting } from '@/utils/getGlobalSetting';
 
 const props = defineProps<{
 	page: TPage;

@@ -111,7 +111,7 @@
 		</div>
 		<PageSeparator class="mt-72 mb-116" color="#26282B" />
 		<FaqSection v-if="faqItems?.length" :faq-items="faqItems" class="mb-116" />
-		<AdvantagesSection v-if="advantageItems?.length" :items="advantageItems" class="mb-116" />
+		<AdvantagesSection :items="getGlobalSetting('ourAdvantages')" class="mb-116" />
 	</WebsitePage>
 </template>
 
@@ -139,6 +139,7 @@ import { TAdvantageCardProps } from '@/types/TAdvantageCardProps';
 import { Head } from '@inertiajs/vue3';
 import { TSeoEntity } from '@/types/TSeoEntity';
 import SeoEntityMetaFields from '@/Components/SeoEntityMetaFields.vue';
+import { getGlobalSetting } from '@/utils/getGlobalSetting';
 
 const { __, _t } = useTranslations();
 
@@ -155,7 +156,6 @@ const props = defineProps<{
 }>();
 
 const faqItems = ref<TFaqItemProps[] | undefined>(getMeta(props.productPage.meta, 'faqItems'));
-const advantageItems = ref<TAdvantageCardProps[] | undefined>(getMeta(props.productPage.meta, 'advantageItems'));
 
 const { headerHeight } = useHeaderElement();
 </script>

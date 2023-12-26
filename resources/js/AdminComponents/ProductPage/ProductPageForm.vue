@@ -51,13 +51,6 @@
 		>
 			<FaqEditBlock v-model="form.faqItems" />
 		</FormFieldWrapper>
-		<FormFieldWrapper
-			:dataGetter="() => form.advantageItems"
-			:dataSetter="value => (form.advantageItems = value)"
-			label="Переваги"
-		>
-			<AdvantagesEditBlock v-model="form.advantageItems" />
-		</FormFieldWrapper>
 	</div>
 </template>
 
@@ -67,10 +60,8 @@ import { InertiaForm } from '@inertiajs/vue3';
 import FormError from '../FormError.vue';
 import MediaFileMultiSelect from '../Media/MediaFileMultiSelect.vue';
 import { QuillEditor } from '@vueup/vue-quill';
-import MediaFileUrlSelect from '../Media/MediaFileUrlSelect.vue';
 import FormFieldWrapper from '../FormFieldWrapper.vue';
 import FaqEditBlock from '../ContentBlocks/FaqEditBlock.vue';
-import AdvantagesEditBlock from '../ContentBlocks/AdvantagesEditBlock.vue';
 
 const props = defineProps<{
 	form: InertiaForm<TProductPageForm>;

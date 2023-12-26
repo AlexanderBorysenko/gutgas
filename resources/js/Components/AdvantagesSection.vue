@@ -1,5 +1,5 @@
 <template>
-	<div class="advantages-section" v-if="items">
+	<div class="advantages-section" v-if="items?.length">
 		<div class="container">
 			<div class="f-row justify-center">
 				<AdvantageCard
