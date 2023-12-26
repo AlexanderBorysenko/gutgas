@@ -61,10 +61,6 @@ const isImage = computed(() => {
 			object-fit: cover;
 		}
 	}
-	&__name {
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
 	&__top {
 		position: relative;
 	}
