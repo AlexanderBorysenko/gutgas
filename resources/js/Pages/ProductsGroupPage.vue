@@ -16,12 +16,12 @@
 		<PageHeadSpacer class="mb-60" />
 		<BaseBreadcrumbs class="mb-40" />
 		<section class="container mb-88">
-			<h2 class="fs-h2 mb-68">
+			<h1 class="fs-h2 mb-68">
 				{{
 					getMeta(productsGroup.meta, 'title') ||
 					_t(productsGroup.name)
 				}}
-			</h2>
+			</h1>
 			<div ref="productsCatalogLayoutRef">
 				<ProductsCatalog
 					:catalog-slug="productsGroup.seo_entity.slug"
