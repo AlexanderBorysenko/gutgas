@@ -22,7 +22,7 @@ class ShareSeoEntityBreadcrumbs
 
         $urlParts = explode('/', $route);
 
-        $urlPathesArray = [];
+        $urlPathesArray = ['/'];
         for ($i = 0; $i < count($urlParts); $i++) {
             $urlPathesArray[] = implode('/', array_slice($urlParts, 0, $i + 1));
         }
@@ -42,12 +42,12 @@ class ShareSeoEntityBreadcrumbs
             return $item !== null;
         })->toArray();
 
-        $homePage = SeoEntity::where('slug', 'LIKE', '/')->first();
-        if ($homePage)
-            array_unshift($breadcrumbs, [
-                'title' => __('app.home'),
-                'slug' => '/' . App::currentLocale()
-            ]);
+        // $homePage = SeoEntity::where('slug', 'LIKE', '/')->first();
+        // if ($homePage)
+        //     array_unshift($breadcrumbs, [
+        //         'title' => __('app.home'),
+        //         'slug' => '/' . App::currentLocale()
+        //     ]);
 
         Inertia::share('breadcrumbs', $breadcrumbs);
         return $next($request);
