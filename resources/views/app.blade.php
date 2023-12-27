@@ -19,7 +19,7 @@
         href="{{ str_replace(request()->getHttpHost() . '/' . app()->getLocale(), request()->getHttpHost() . '/' . config('app.fallback_locale'), Request::url()) }}"
         rel="alternate" hreflang="x-default" />
 
-    {{-- <meta name="robots" content="noindex, nofollow"> --}}
+    <meta name="robots" content="index, follow">
     @if (Request::is('admin*'))
         @php($__inertiaSsrDispatched = true)
         @php($__inertiaSsrResponse = null)
