@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('controller')->nullable();
             $table->string('action')->nullable();
             $table->json('title')->nullable();
-            $table->string('breadcrumbs_title')->nullable();
+            $table->json('breadcrumbs_title')->nullable();
             $table->json('description')->nullable();
             $table->string('og_image')->nullable();
             $table->json('is_active')->nullable();

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('seo_entities', function (Blueprint $table) {
-            $table->string('breadcrumbs_title')->nullable();
+            $table->json('breadcrumbs_title')->nullable();
         });
     }
 
