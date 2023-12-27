@@ -12,7 +12,7 @@ class SeoEntity extends Model
 
     protected $guarded = [];
 
-    public $translatable = ['title', 'og_image', 'description', 'is_active'];
+    public $translatable = ['title', 'breadcrumbs_title', 'og_image', 'description', 'is_active'];
 
     public function getRouteKeyName()
     {

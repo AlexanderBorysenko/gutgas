@@ -31,18 +31,23 @@ class ShareSeoEntityBreadcrumbs
             $seoEntity = SeoEntity::where('slug', 'LIKE', $item)->first();
             if ($seoEntity) {
                 return [
-                    'title' => $seoEntity->title,
+                    'title' =>
+                        $seoEntity->breadcrumbs_title
+                        ? $seoEntity->breadcrumbs_title
+                        : $seoEntity->title,
                     'slug' => '/' . App::currentLocale() . '/' . $seoEntity->slug,
                 ];
             }
         })->filter(function ($item) {
             return $item !== null;
         })->toArray();
+
         $homePage = SeoEntity::where('slug', 'LIKE', '/')->first();
-        if ($homePage) array_unshift($breadcrumbs, [
-            'title' => __('app.home'),
-            'slug' => '/' . App::currentLocale()
-        ]);
+        if ($homePage)
+            array_unshift($breadcrumbs, [
+                'title' => __('app.home'),
+                'slug' => '/' . App::currentLocale()
+            ]);
 
         Inertia::share('breadcrumbs', $breadcrumbs);
         return $next($request);
