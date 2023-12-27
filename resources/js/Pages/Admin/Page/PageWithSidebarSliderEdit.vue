@@ -68,7 +68,7 @@
 					</div>
 					<button
 						class="btn btn-success w-100 mt-3"
-						@click="onSubmitSeoEntityForm"
+						@click="onSubmitForm"
 					>
 						Зберегти
 					</button>
@@ -123,7 +123,7 @@ const pageForm = useForm<TPageForm>({
 	]
 });
 
-const onSubmitSeoEntityForm = () => {
+const onSubmitForm = () => {
 	pageForm.clearErrors();
 	pageForm.put(route('admin.page.update', props.page.id), {
 		preserveScroll: true,
@@ -139,7 +139,7 @@ const onSubmitSeoEntityForm = () => {
 	});
 };
 
-useSaveShortcut(onSubmitSeoEntityForm);
+useSaveShortcut(onSubmitForm);
 </script>
 
 <style scoped></style>

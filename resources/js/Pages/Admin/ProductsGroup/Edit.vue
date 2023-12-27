@@ -13,7 +13,7 @@
 					</div>
 					<button
 						class="btn btn-success w-100 mt-3"
-						@click="onSubmitSeoEntityForm"
+						@click="onSubmitForm"
 					>
 						Зберегти
 					</button>
@@ -60,7 +60,7 @@ const productsGroupForm = useForm<TProductsGroupForm>({
 	translatableMetaKeys: ['faqItems', 'title', 'contentTitle', 'content']
 });
 
-const onSubmitSeoEntityForm = () => {
+const onSubmitForm = () => {
 	productsGroupForm.clearErrors();
 	productsGroupForm.put(
 		route('admin.productsGroup.update', props.productsGroup.id),
@@ -81,7 +81,7 @@ const onSubmitSeoEntityForm = () => {
 	);
 };
 
-useSaveShortcut(onSubmitSeoEntityForm);
+useSaveShortcut(onSubmitForm);
 </script>
 
 <style scoped></style>

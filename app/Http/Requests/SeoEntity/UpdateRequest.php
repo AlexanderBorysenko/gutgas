@@ -30,6 +30,7 @@ class UpdateRequest extends FormRequest
 
         return [
             'title' => ['nullable', 'string', 'max:255'],
+            'breadcrumbs_title' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:255'],
             'og_image' => ['nullable', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', 'unique:seo_entities,slug,' . $seoEntityId],

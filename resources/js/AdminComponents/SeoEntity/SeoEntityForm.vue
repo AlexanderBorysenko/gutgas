@@ -33,6 +33,18 @@
 				</FormFieldWrapper>
 			</div>
 		</div>
+		<FormFieldWrapper label="Заголовок Хлібних Крихт" class="mb-1">
+			<input
+				class="form-control"
+				v-model="form.breadcrumbs_title"
+				placeholder="Заголовок Breadcrumbs"
+			/>
+			<FormError
+				v-if="form.errors.breadcrumbs_title"
+				class="mt-1"
+				:error="form.errors.breadcrumbs_title"
+			/>
+		</FormFieldWrapper>
 		<FormFieldWrapper label="Посилання (Slug)" class="mb-3">
 			<input
 				class="form-control"

@@ -4,6 +4,7 @@ export type TSeoEntity = {
 	id: number;
 	slug: string;
 	title: string;
+	breadcrumbs_title: string;
 	description: string;
 	og_image: string;
 	controller: string;
@@ -14,6 +15,7 @@ export type TSeoEntity = {
 export type TSeoEntityForm = {
 	slug: string;
 	title: string;
+	breadcrumbs_title: string;
 	description: string;
 	og_image: string;
 	controller?: string;
