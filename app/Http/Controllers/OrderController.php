@@ -51,18 +51,26 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             $order = Order::create($data);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+        DB::commit();
 
-            $data['order_id'] = $order->id;
+        $data['order_id'] = $order->id;
 
-            // Mail::send('emails.newOrder', $data, function ($message) {
-            //     $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
-            //     $message->to('sale@gutgas.eu');
-            //     // $message->to('borysenko.alexander@gmail.com');
-            //     $message->subject('$$$ Нове Замовлення $$$');
-            // });
+        try {
+            Mail::send('emails.newOrder', $data, function ($message) {
+                $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+                $message->to('sale@gutgas.eu');
+                // $message->to('borysenko.alexander@gmail.com');
+                $message->subject('$$$ Нове Замовлення $$$');
+            });
+        } catch (\Exception $e) {
+            throw $e;
+        }
 
-            DB::commit();
-
+        try {
             $totalPrice = 0;
             foreach ($order->cart_content as $product) {
                 $totalPrice += $product['price'] * $product['quantity'];
@@ -89,18 +97,13 @@ class OrderController extends Controller
                 'parse_mode' => 'Markdown'
             ];
             $url = "https://api.telegram.org/bot" . env('TELEGRAM_BOT_TOKEN') . "/sendMessage?" . http_build_query($data);
-            dd($url);
-            try {
-                file_get_contents($url);
-            } catch (\Exception $e) {
-            }
 
-            return redirect()->route('thankYou')
-                ->with('order', $order)->with('thankYouTranslations', trans('thank-you'));
+            file_get_contents($url);
         } catch (\Exception $e) {
-            DB::rollBack();
-            throw $e;
         }
+
+        return redirect()->route('thankYou')
+            ->with('order', $order)->with('thankYouTranslations', trans('thank-you'));
     }
 
     /**
