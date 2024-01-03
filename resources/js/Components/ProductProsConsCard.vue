@@ -14,7 +14,7 @@
 		<div class="body ph-24 pv-32 ls-5">
 			<div class="advantages mb-24" v-if="advantages">
 				<h5 class="fs-semi-large fw-700 color-success mb-16">
-					{{ _t('advantages') }}
+					{{ __('advantages') }}
 				</h5>
 				<ul class="list">
 					<li class="list-item" v-for="advantage in advantages">
@@ -24,7 +24,7 @@
 			</div>
 			<div class="disadvantages" v-if="disadvantages">
 				<h5 class="fs-semi-large fw-700 color-danger mb-16">
-					{{ _t('disadvantages') }}
+					{{ __('disadvantages') }}
 				</h5>
 				<ul class="list">
 					<li class="list-item" v-for="disadvantage in disadvantages">
@@ -41,7 +41,7 @@ import { TProductProsConsCardProps } from '@/types/TProductProsConsCardProps';
 
 const props = defineProps<TProductProsConsCardProps>();
 
-const { _t } = useTranslations();
+const { _t, __ } = useTranslations();
 </script>
 
 <style scoped lang="scss">
