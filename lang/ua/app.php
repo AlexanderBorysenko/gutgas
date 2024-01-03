@@ -93,5 +93,8 @@ return [
     'page' => 'Сторінка',
 
     'photo' => 'Фото',
-    'photoThumbnail' => 'Фото мініатюра'
+    'photoThumbnail' => 'Фото мініатюра',
+
+    'advantages' => 'Переваги',
+    'disadvantages' => 'Недоліки',
 ];

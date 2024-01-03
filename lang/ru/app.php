@@ -44,7 +44,7 @@ return [
 
     'buyInOneClick' => 'Купить в Один Клик',
 
-    'balonInOneClick' => 'Балон в один клик',
+    'balonInOneClick' => 'Баллон в один клик',
 
     'sku' => 'Арт.',
 
@@ -67,7 +67,7 @@ return [
     'continueShopping' => 'Продолжить покупки',
 
     'togetherToVictory' => 'Вместе к победе',
-    'helpArmy' => 'Помощ Армии',
+    'helpArmy' => 'Помощь Армии',
 
     'uah' => 'грн',
 
@@ -80,7 +80,7 @@ return [
 
     'viewAllProducts' => 'Смотреть все товары',
 
-    'all' => 'ВСе',
+    'all' => 'Все',
 
     'menu' => 'Меню',
 
@@ -94,4 +94,7 @@ return [
 
     'photo' => 'Фото',
     'photoThumbnail' => 'Фото миниатюра',
+
+    'advantages' => 'Преимущества',
+    'disadvantages' => 'Недостатки',
 ];

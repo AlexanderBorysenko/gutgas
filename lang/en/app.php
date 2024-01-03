@@ -94,4 +94,7 @@ return [
 
     'photo' => 'Photo',
     'photoThumbnail' => 'Photo thumbnail',
+
+    'advantages' => 'Advantages',
+    'disadvantages' => 'Disadvantages',
 ];

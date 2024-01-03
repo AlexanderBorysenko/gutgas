@@ -67,7 +67,6 @@ class OrderController extends Controller
                 $message->subject('$$$ Нове Замовлення $$$');
             });
         } catch (\Exception $e) {
-            throw $e;
         }
 
         try {
