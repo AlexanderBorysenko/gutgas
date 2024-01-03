@@ -4,9 +4,10 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SeoEndpoint;
+use App\Http\Controllers\StaticHtmlController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Psr\Http\Message\UriInterface;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,20 +23,6 @@ use Psr\Http\Message\UriInterface;
 require __DIR__ . '/admin.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/ajax.php';
-
-// handle {file}.html routes to return static files
-Route::get('/{file}.html', function (UriInterface $uri) {
-    $file = $uri->getPath();
-    $file = str_replace('.html', '', $file);
-    $file = str_replace('/', DIRECTORY_SEPARATOR, $file);
-    $file = public_path($file . '.html');
-
-    if (!file_exists($file)) {
-        return Inertia::render('404');
-    }
-
-    return file_get_contents($file);
-})->where('file', '.*');
 
 Route::post('/mail/consultation', [MailController::class, 'consultationMail'])->name('consultationMail');
 Route::post('/mail/requestCall', [MailController::class, 'requestCallMail'])->name('requestCallMail');
