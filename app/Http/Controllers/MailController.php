@@ -17,11 +17,15 @@ class MailController extends Controller
             'question' => 'nullable|string'
         ]);
 
-        Mail::send('emails.consultation', $data, function ($message) {
-            $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
-            $message->to('sale@gutgas.eu');
-            $message->subject('Заявка на консультацію');
-        });
+        try {
+            Mail::send('emails.consultation', $data, function ($message) {
+                $message->from('form-manager@gutgas.eu', 'Gutgas Sale manager');
+                $message->to('sale@gutgas.eu');
+                $message->subject('Заявка на консультацію');
+            });
+        } catch (\Exception $e) {
+            throw $e;
+        }
 
         $messageText = "**✅ Запит на консультацію**\n\n";
         if (isset($data['name']))
@@ -40,7 +44,7 @@ class MailController extends Controller
             'text' => $messageText,
             'parse_mode' => 'Markdown'
         ];
-        $url = "https://api.telegram.org/bot" . env('TELEGAM_BOT_TOKEN') . "/sendMessage?" . http_build_query($data);
+        $url = "https://api.telegram.org/bot" . env('TELEGRAM_BOT_TOKEN') . "/sendMessage?" . http_build_query($data);
         file_get_contents($url);
 
         return redirect()->route('thankYou');
@@ -68,7 +72,7 @@ class MailController extends Controller
             'text' => $messageText,
             'parse_mode' => 'Markdown'
         ];
-        $url = "https://api.telegram.org/bot" . env('TELEGAM_BOT_TOKEN') . "/sendMessage?" . http_build_query($data);
+        $url = "https://api.telegram.org/bot" . env('TELEGRAM_BOT_TOKEN') . "/sendMessage?" . http_build_query($data);
         file_get_contents($url);
 
         return redirect()->route('thankYou');
