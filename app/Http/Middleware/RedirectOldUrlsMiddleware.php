@@ -15,9 +15,8 @@ class RedirectOldUrlsMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // listen to gutgas.eu/shop redirect to gutgas.eu/catalog
         if ($request->is('shop')) {
-            return redirect()->route('catalog');
+            return redirect()->to('/' . app()->getLocale() . '/catalog');
         }
 
         return $next($request);
