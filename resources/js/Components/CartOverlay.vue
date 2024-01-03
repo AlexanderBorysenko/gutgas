@@ -5,7 +5,7 @@
 			active: isActive
 		}"
 	>
-		<div class="head">
+		<div class="head" @click="isActive = !isActive">
 			<p class="fs-semi-large mb-4">
 				<span class="block">{{ __('cart') }}</span>
 				<span class="block color-secondary"
@@ -13,10 +13,7 @@
 					<span class="fw-700">{{ __('uah') }}</span></span
 				>
 			</p>
-			<CartToggleButton
-				:isActive="isActive"
-				@click="isActive = !isActive"
-			/>
+			<CartToggleButton :isActive="isActive" />
 		</div>
 		<div class="body">
 			<CartProductsList class="products-list" />
