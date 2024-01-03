@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\RedirectOldUrlsMiddleware;
 use App\Http\Middleware\SeoRedirectionsMiddleware;
 use App\Http\Middleware\SessionLocaleHandler;
 use App\Http\Middleware\ShareSeoEntityBreadcrumbs;
@@ -29,6 +30,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+        RedirectOldUrlsMiddleware::class,
     ];
 
     /**
