@@ -21,13 +21,13 @@ class ProductService
         });
 
         // price range filter
-        if (!empty($priceRange)) {
+        if (!empty ($priceRange)) {
             $products->whereBetween('price', [$priceRange['from'], $priceRange['to']]);
         }
 
         // product filters
         $productFilterValues = $request->query('selectedProductFilterValues');
-        if (!empty($productFilterValues)) {
+        if (!empty ($productFilterValues)) {
             $products->whereHas('productFilterValues', function ($query) use ($productFilterValues) {
                 $query->whereIn('product_filter_value_id', $productFilterValues);
             })->get();
@@ -35,7 +35,7 @@ class ProductService
 
         // filter by products group
         $productsGroup = $request->query('productsGroup');
-        if (!empty($productsGroup)) {
+        if (!empty ($productsGroup)) {
             $products->whereHas('productsGroups', function ($query) use ($productsGroup) {
                 $query->where('products_groups.id', $productsGroup);
             });

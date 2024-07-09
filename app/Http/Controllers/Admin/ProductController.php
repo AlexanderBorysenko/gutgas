@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreRequest;
-use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Product;
@@ -12,10 +11,7 @@ use App\Models\ProductFilter;
 use App\Models\ProductsGroup;
 use App\Models\RequiredProductsGroup;
 use App\Services\ProductService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-use function PHPSTORM_META\map;
 
 class ProductController extends Controller
 {

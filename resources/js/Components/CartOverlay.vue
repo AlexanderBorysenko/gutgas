@@ -47,7 +47,7 @@ import CartToggleButton from '@/Components/CartToggleButton.vue';
 import CartProductsList from '@/Components/CartProductsList.vue';
 import { ref } from 'vue';
 import BaseButton from './BaseButton.vue';
-import { Link, router, usePage } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
 
 const { __ } = useTranslations();
 
@@ -69,7 +69,7 @@ const isActive = ref(false);
 	z-index: 100;
 	left: 16px;
 	right: 16px;
-	transform: translateY(calc(100% - 75px));
+	transform: translateY(calc(100dvh - 100px));
 	transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
 
 	display: flex;

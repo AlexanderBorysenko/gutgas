@@ -1,5 +1,3 @@
-// Composable. cart products ref. Exports cartProducts ref and cartTotal computed property
-
 import { ref, computed, watch, onMounted } from 'vue';
 import { TProduct } from '@/types/TProduct';
 import ICartProduct from '@/types/ICartProduct';

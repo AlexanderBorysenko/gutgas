@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, watchEffect } from 'vue';
+import { ref, watchEffect } from 'vue';
 
 const props = defineProps<{
 	value: string;

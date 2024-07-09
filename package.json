@@ -36,7 +36,6 @@
         "bootstrap": "^5.2.3",
         "bootstrap-icons": "^1.10.5",
         "lodash.debounce": "^4.0.8",
-        "maska": "^2.1.10",
         "swiper": "^10.0.4",
         "vite-plugin-purgecss": "^0.2.12",
         "vite-svg-loader": "^4.0.0",
