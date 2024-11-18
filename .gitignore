@@ -1,11 +1,14 @@
+.DS_Store
 /.phpunit.cache
 /bootstrap/ssr
 /node_modules
 /public/build
+/public/public
 /public/hot
 /public/storage
+/public/sitemap.xml
 /public/*sitemap.xml
-/storage/*.key
+/storage/*
 /vendor
 .env
 .env.backup
